@@ -18,7 +18,7 @@ service dans un restaurant.
  * Pour une description plus complète du sujet, veuillez vous référer à :
     - /programmation_system/Ressources/Guide Projet Prog Systeme A3 -2018-2019.docx
 
- * Si vous souhaitez reporter un bug ou bien, proposer des chnagements, veuillez contacter :
+ * Si vous souhaitez reporter un bug ou proposer des changements, veuillez contacter :
     - camille.aubret@viacesi.fr
     - loick.legay@viacesi.fr
     - matthis.moyon@viacesi.fr
