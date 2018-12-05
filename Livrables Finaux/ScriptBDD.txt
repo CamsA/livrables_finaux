@@ -1,0 +1,224 @@
+#------------------------------------------------------------
+#        Script MySQL.
+#------------------------------------------------------------
+
+
+#------------------------------------------------------------
+# Table: Recette
+#------------------------------------------------------------
+
+CREATE TABLE Recette(
+        IDRecette  Int  Auto_increment  NOT NULL ,
+        Categorie  Int NOT NULL ,
+        NomRecette Varchar (15) NOT NULL
+	,CONSTRAINT Recette_PK PRIMARY KEY (IDRecette)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: StockCuisine
+#------------------------------------------------------------
+
+CREATE TABLE StockCuisine(
+        IDStock Int  Auto_increment  NOT NULL
+	,CONSTRAINT StockCuisine_PK PRIMARY KEY (IDStock)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Ingrédient
+#------------------------------------------------------------
+
+CREATE TABLE Ingredient(
+        IDIngredient  Int  Auto_increment  NOT NULL ,
+        Expiration    Int NOT NULL ,
+        Type          Varchar (15) NOT NULL ,
+        NomIngredient Varchar (50) NOT NULL ,
+        QuantiteStock Int NOT NULL ,
+        DateReception Datetime NOT NULL ,
+        IDStock       Int NOT NULL
+	,CONSTRAINT Ingredient_PK PRIMARY KEY (IDIngredient)
+
+	,CONSTRAINT Ingredient_StockCuisine_FK FOREIGN KEY (IDStock) REFERENCES StockCuisine(IDStock)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Tâche
+#------------------------------------------------------------
+
+CREATE TABLE Tache(
+        IDTache    Int  Auto_increment  NOT NULL ,
+        NomTache   Varchar (50) NOT NULL ,
+        DureeTache Int NOT NULL
+	,CONSTRAINT Tache_PK PRIMARY KEY (IDTache)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: StockMateriel
+#------------------------------------------------------------
+
+CREATE TABLE StockMateriel(
+        IDStockMateriel Int  Auto_increment  NOT NULL
+	,CONSTRAINT StockMateriel_PK PRIMARY KEY (IDStockMateriel)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Matériel
+#------------------------------------------------------------
+
+CREATE TABLE Materiel(
+        IDMateriel            Int  Auto_increment  NOT NULL ,
+        NomMateriel           Varchar (50) NOT NULL ,
+        Type                  Int NOT NULL ,
+        EtatMateriel          Bool NOT NULL ,
+        QuantiteMaterielStock Int NOT NULL ,
+        IDStockMateriel       Int NOT NULL
+	,CONSTRAINT Materiel_PK PRIMARY KEY (IDMateriel)
+
+	,CONSTRAINT Materiel_StockMateriel_FK FOREIGN KEY (IDStockMateriel) REFERENCES StockMateriel(IDStockMateriel)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Table
+#------------------------------------------------------------
+
+CREATE TABLE Table(
+        IDTable        Int  Auto_increment  NOT NULL ,
+        IDCarre        Int NOT NULL ,
+        IDRang         Int NOT NULL ,
+        NbrPlacesTable Int NOT NULL ,
+        EtatTable      Int NOT NULL
+	,CONSTRAINT Table_PK PRIMARY KEY (IDTable)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Commande
+#------------------------------------------------------------
+
+CREATE TABLE Commande(
+        NumeroCommande Int  Auto_increment  NOT NULL ,
+        StatutCommande Bool NOT NULL ,
+        IDTable        Int NOT NULL
+	,CONSTRAINT Commande_PK PRIMARY KEY (NumeroCommande)
+
+	,CONSTRAINT Commande_Table_FK FOREIGN KEY (IDTable) REFERENCES Table(IDTable)
+	,CONSTRAINT Commande_Table_AK UNIQUE (IDTable)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: LigneCommande
+#------------------------------------------------------------
+
+CREATE TABLE LigneCommande(
+        IDRecette       Int NOT NULL ,
+        NumeroCommande  Int NOT NULL ,
+        QuantiteRecette Int NOT NULL
+	,CONSTRAINT LigneCommande_PK PRIMARY KEY (IDRecette,NumeroCommande)
+
+	,CONSTRAINT LigneCommande_Recette_FK FOREIGN KEY (IDRecette) REFERENCES Recette(IDRecette)
+	,CONSTRAINT LigneCommande_Commande0_FK FOREIGN KEY (NumeroCommande) REFERENCES Commande(NumeroCommande)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Compose
+#------------------------------------------------------------
+
+CREATE TABLE Compose(
+        IDIngredient       Int NOT NULL ,
+        IDRecette          Int NOT NULL ,
+        QuantiteIngredient Int NOT NULL
+	,CONSTRAINT Compose_PK PRIMARY KEY (IDIngredient,IDRecette)
+
+	,CONSTRAINT Compose_Ingredient_FK FOREIGN KEY (IDIngredient) REFERENCES Ingredient(IDIngredient)
+	,CONSTRAINT Compose_Recette0_FK FOREIGN KEY (IDRecette) REFERENCES Recette(IDRecette)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Necessite
+#------------------------------------------------------------
+
+CREATE TABLE Necessite(
+        IDRecette Int NOT NULL ,
+        IDTache   Int NOT NULL
+	,CONSTRAINT Necessite_PK PRIMARY KEY (IDRecette,IDTache)
+
+	,CONSTRAINT Necessite_Recette_FK FOREIGN KEY (IDRecette) REFERENCES Recette(IDRecette)
+	,CONSTRAINT Necessite_Tache0_FK FOREIGN KEY (IDTache) REFERENCES Tache(IDTache)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Utilise
+#------------------------------------------------------------
+
+CREATE TABLE Utilise(
+        IDMateriel Int NOT NULL  ,
+	  IDTache Int NOT NULL  ,
+  QuantiteMateriel Int NOT NULL
+	,CONSTRAINT Necessite_PK PRIMARY KEY (IDMateriel, IDTache)
+
+	,CONSTRAINT Necessite_Recette_FK FOREIGN KEY (IDMateriel) REFERENCES Recette(IDMateriel)
+	,CONSTRAINT Necessite_Tache0_FK FOREIGN KEY (IDTache) REFERENCES Tache(IDTache)
+)ENGINE=InnoDB;
+
+#------------------------------------------------------------
+# Table: Necessaire2
+#------------------------------------------------------------
+
+CREATE TABLE Necessaire2(
+        IDIngredient Int NOT NULL  ,
+	  IDTache Int NOT NULL
+	,CONSTRAINT Necessite_PK PRIMARY KEY (IDIngredient, IDTache)
+
+	,CONSTRAINT Necessite_Recette_FK FOREIGN KEY (IDIngredient) REFERENCES Recette(IDIngredient)
+	,CONSTRAINT Necessite_Tache0_FK FOREIGN KEY (IDTache) REFERENCES Tache(IDTache)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Passe
+#------------------------------------------------------------
+
+CREATE TABLE Passe(
+        NumeroCommande Int NOT NULL  ,
+	  IDTable Int NOT NULL
+	,CONSTRAINT Necessite_PK PRIMARY KEY (NumeroCommande, IDTable)
+
+	,CONSTRAINT Necessite_Recette_FK FOREIGN KEY (NumeroCommande) REFERENCES Recette(NumeroCommande)
+	,CONSTRAINT Necessite_Tache0_FK FOREIGN KEY (IDTable) REFERENCES Tache(IDTable)
+)ENGINE=InnoDB;
+
+#------------------------------------------------------------
+# Table: Contient
+#------------------------------------------------------------
+
+CREATE TABLE Contient(
+        IDStock Int NOT NULL  ,
+	  IDIngredient Int NOT NULL
+	,CONSTRAINT Necessite_PK PRIMARY KEY (IDS IDIngredient tock, IDTable)
+
+	,CONSTRAINT Necessite_Recette_FK FOREIGN KEY (IDStock) REFERENCES Recette(IDStock)
+	,CONSTRAINT Necessite_Tache0_FK FOREIGN KEY (IDIngredient) REFERENCES Tache(IDIngredient)
+)ENGINE=InnoDB;
+
+#------------------------------------------------------------
+# Table: Stocke
+#------------------------------------------------------------
+
+CREATE TABLE Stocke (
+        IDStockMateriel Int NOT NULL  ,
+	  IDMateriel Int NOT NULL
+	  QuantiteMaterielStock Int NOT NULL
+	,CONSTRAINT Necessite_PK PRIMARY KEY (IDS IDStockMateriel, IDMateriel)
+
+	,CONSTRAINT Necessite_Recette_FK FOREIGN KEY (IDStockMateriel) REFERENCES Recette(IDStockMateriel)
+	,CONSTRAINT Necessite_Tache0_FK FOREIGN KEY (IDMateriel) REFERENCES Tache(IDMateriel)
+)ENGINE=InnoDB;

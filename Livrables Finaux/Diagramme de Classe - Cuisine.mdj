@@ -816,7 +816,7 @@
 											"top": 592,
 											"width": 158.5771484375,
 											"height": 13,
-											"text": "+giveRecipe(): void",
+											"text": "+GiveRecipe(): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1176,7 +1176,7 @@
 											"top": 439,
 											"width": 156.79345703125,
 											"height": 13,
-											"text": "Dishwasher_employe"
+											"text": "Dishwasher_employee"
 										},
 										{
 											"_type": "LabelView",
@@ -3454,7 +3454,7 @@
 											"top": 829,
 											"width": 130.69189453125,
 											"height": 13,
-											"text": "+hasWashed: Boolean",
+											"text": "+isClean: Boolean",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3471,7 +3471,7 @@
 											"top": 844,
 											"width": 130.69189453125,
 											"height": 13,
-											"text": "+heavy: Boolean",
+											"text": "+isHeavy: Boolean",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3488,7 +3488,7 @@
 											"top": 859,
 											"width": 130.69189453125,
 											"height": 13,
-											"text": "+isUse: Boolean",
+											"text": "+isUsed: Boolean",
 											"horizontalAlignment": 0
 										}
 									],
@@ -5718,7 +5718,7 @@
 											"top": 296,
 											"width": 118.1171875,
 											"height": 13,
-											"text": "+addObserver()",
+											"text": "+AddObserver()",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5752,7 +5752,7 @@
 											"top": 326,
 											"width": 118.1171875,
 											"height": 13,
-											"text": "+notifierOversers()",
+											"text": "+NotifierOverseers()",
 											"horizontalAlignment": 0
 										}
 									],
@@ -7571,7 +7571,7 @@
 											"font": "Arial;13;1",
 											"left": 1461,
 											"top": 463,
-											"width": 205.56884765625,
+											"width": 206.1845703125,
 											"height": 13,
 											"text": "Kitchen"
 										},
@@ -7606,7 +7606,7 @@
 									"font": "Arial;13;0",
 									"left": 1456,
 									"top": 456,
-									"width": 215.56884765625,
+									"width": 216.1845703125,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFnfwKsQJFSFoI="
@@ -7643,7 +7643,7 @@
 											"font": "Arial;13;0",
 											"left": 1461,
 											"top": 486,
-											"width": 205.56884765625,
+											"width": 206.1845703125,
 											"height": 13,
 											"text": "+listCrockery: list<Crockery>",
 											"horizontalAlignment": 0
@@ -7660,7 +7660,7 @@
 											"font": "Arial;13;0",
 											"left": 1461,
 											"top": 501,
-											"width": 205.56884765625,
+											"width": 206.1845703125,
 											"height": 13,
 											"text": "+listNapkinDirty: list<napkin>",
 											"horizontalAlignment": 0
@@ -7677,7 +7677,7 @@
 											"font": "Arial;13;0",
 											"left": 1461,
 											"top": 516,
-											"width": 205.56884765625,
+											"width": 206.1845703125,
 											"height": 13,
 											"text": "+listTableclothDirty: list<Tablecloth>",
 											"horizontalAlignment": 0
@@ -7694,7 +7694,7 @@
 											"font": "Arial;13;0",
 											"left": 1461,
 											"top": 531,
-											"width": 205.56884765625,
+											"width": 206.1845703125,
 											"height": 13,
 											"text": "+listUtensilsDirty: list<Utensils>",
 											"horizontalAlignment": 0
@@ -7703,7 +7703,7 @@
 									"font": "Arial;13;0",
 									"left": 1456,
 									"top": 481,
-									"width": 215.56884765625,
+									"width": 216.1845703125,
 									"height": 68
 								},
 								{
@@ -7718,7 +7718,7 @@
 									"font": "Arial;13;0",
 									"left": 1456,
 									"top": 549,
-									"width": 215.56884765625,
+									"width": 216.1845703125,
 									"height": 10
 								},
 								{
@@ -7761,7 +7761,7 @@
 							"containerChangeable": true,
 							"left": 1456,
 							"top": 456,
-							"width": 215.56884765625,
+							"width": 216.1845703125,
 							"height": 116,
 							"nameCompartment": {
 								"$ref": "AAAAAAFnfwKsQJFRqeQ="
@@ -8898,7 +8898,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 2412,
+									"left": 2414,
 									"top": 861,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -8919,7 +8919,7 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 2423,
+									"left": 2425,
 									"top": 871,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -8940,7 +8940,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 2389,
+									"left": 2391,
 									"top": 842,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -8961,7 +8961,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 2434,
+									"left": 2436,
 									"top": 837,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -8982,7 +8982,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 2442,
+									"left": 2445,
 									"top": 847,
 									"height": 13,
 									"alpha": 0.7853981633974483,
@@ -9003,8 +9003,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 2416,
-									"top": 816,
+									"left": 2419,
+									"top": 815,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -9024,7 +9024,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 2390,
+									"left": 2391,
 									"top": 887,
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -9044,7 +9044,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 2401,
+									"left": 2402,
 									"top": 894,
 									"height": 13,
 									"alpha": -0.7853981633974483,
@@ -9064,7 +9064,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 2366,
+									"left": 2368,
 									"top": 872,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -9110,7 +9110,7 @@
 								"$ref": "AAAAAAFnfxPgNR0A4Bo="
 							},
 							"lineStyle": 1,
-							"points": "2440:814;2362:903",
+							"points": "2443:814;2363:903",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFnfxfJkEdb03Q="
@@ -10630,7 +10630,7 @@
 											"font": "Arial;13;1",
 											"left": 2397,
 											"top": 703,
-											"width": 192.56884765625,
+											"width": 199.798828125,
 											"height": 13,
 											"text": "ParamApp"
 										},
@@ -10665,7 +10665,7 @@
 									"font": "Arial;13;0",
 									"left": 2392,
 									"top": 696,
-									"width": 202.56884765625,
+									"width": 209.798828125,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFnfxPgNh0CHYs="
@@ -10702,7 +10702,7 @@
 											"font": "Arial;13;0",
 											"left": 2397,
 											"top": 726,
-											"width": 192.56884765625,
+											"width": 199.798828125,
 											"height": 13,
 											"text": "+nbrCooks: Integer",
 											"horizontalAlignment": 0
@@ -10719,9 +10719,9 @@
 											"font": "Arial;13;0",
 											"left": 2397,
 											"top": 741,
-											"width": 192.56884765625,
+											"width": 199.798828125,
 											"height": 13,
-											"text": "+nbrCommis: Integer",
+											"text": "+nbrClerks: Integer",
 											"horizontalAlignment": 0
 										},
 										{
@@ -10736,16 +10736,16 @@
 											"font": "Arial;13;0",
 											"left": 2397,
 											"top": 756,
-											"width": 192.56884765625,
+											"width": 199.798828125,
 											"height": 13,
-											"text": "+nbrDishwasherEmploye: Integer",
+											"text": "+nbrDishwasherEmployee: Integer",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 2392,
 									"top": 721,
-									"width": 202.56884765625,
+									"width": 209.798828125,
 									"height": 53
 								},
 								{
@@ -10770,16 +10770,16 @@
 											"font": "Arial;13;0",
 											"left": 2397,
 											"top": 779,
-											"width": 192.56884765625,
+											"width": 199.798828125,
 											"height": 13,
-											"text": "+SetAttributs(): void",
+											"text": "+SetAttributes(): void",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 2392,
 									"top": 774,
-									"width": 202.56884765625,
+									"width": 209.798828125,
 									"height": 23
 								},
 								{
@@ -10822,7 +10822,7 @@
 							"containerChangeable": true,
 							"left": 2392,
 							"top": 696,
-							"width": 202.56884765625,
+							"width": 209.798828125,
 							"height": 118,
 							"nameCompartment": {
 								"$ref": "AAAAAAFnfxPgNh0B34Y="
@@ -11188,7 +11188,8 @@
 											"_parent": {
 												"$ref": "AAAAAAFnflR8rXqTWpI="
 											},
-											"name": "TableCloth"
+											"name": "TableCloth",
+											"type": ""
 										},
 										{
 											"_type": "UMLParameter",
@@ -11215,7 +11216,8 @@
 											"_parent": {
 												"$ref": "AAAAAAFnfr+uid/M4tM="
 											},
-											"name": "Napkin"
+											"name": "Napkin",
+											"type": ""
 										},
 										{
 											"_type": "UMLParameter",
@@ -11272,7 +11274,8 @@
 											"_parent": {
 												"$ref": "AAAAAAFnflRWPnqKLGg="
 											},
-											"name": "Crockery"
+											"name": "Crockery",
+											"type": ""
 										},
 										{
 											"_type": "UMLParameter",
@@ -11400,7 +11403,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFnfkwZv3hvBUc="
 									},
-									"name": "giveRecipe",
+									"name": "GiveRecipe",
 									"parameters": [
 										{
 											"_type": "UMLParameter",
@@ -11446,7 +11449,8 @@
 											"_parent": {
 												"$ref": "AAAAAAFnflWN1Hq+RM0="
 											},
-											"name": "menu"
+											"name": "menu",
+											"type": ""
 										},
 										{
 											"_type": "UMLParameter",
@@ -11584,7 +11588,8 @@
 											"_parent": {
 												"$ref": "AAAAAAFnflJWHHo1W3Y="
 											},
-											"name": "Recipe"
+											"name": "Recipe",
+											"type": ""
 										},
 										{
 											"_type": "UMLParameter",
@@ -11605,7 +11610,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFnfkpksnb3g14="
 							},
-							"name": "Dishwasher_employe",
+							"name": "Dishwasher_employee",
 							"ownedElements": [
 								{
 									"_type": "UMLGeneralization",
@@ -11723,7 +11728,8 @@
 											"_parent": {
 												"$ref": "AAAAAAFnflKH5HpAguQ="
 											},
-											"name": "Crockery"
+											"name": "Crockery",
+											"type": ""
 										},
 										{
 											"_type": "UMLParameter",
@@ -11751,7 +11757,8 @@
 											"_parent": {
 												"$ref": "AAAAAAFnflL6HHpLVmw="
 											},
-											"name": "Crockery"
+											"name": "Crockery",
+											"type": ""
 										},
 										{
 											"_type": "UMLParameter",
@@ -11779,7 +11786,8 @@
 											"_parent": {
 												"$ref": "AAAAAAFnfs5MH+A1SmU="
 											},
-											"name": "Napkin"
+											"name": "Napkin",
+											"type": ""
 										},
 										{
 											"_type": "UMLParameter",
@@ -11807,7 +11815,8 @@
 											"_parent": {
 												"$ref": "AAAAAAFnflNHXnpdnfY="
 											},
-											"name": "TableCloth"
+											"name": "TableCloth",
+											"type": ""
 										},
 										{
 											"_type": "UMLParameter",
@@ -11835,7 +11844,8 @@
 											"_parent": {
 												"$ref": "AAAAAAFnflN+BXpmyfs="
 											},
-											"name": "TableCloth"
+											"name": "TableCloth",
+											"type": ""
 										},
 										{
 											"_type": "UMLParameter",
@@ -11863,7 +11873,8 @@
 											"_parent": {
 												"$ref": "AAAAAAFnflOvF3pvn9s="
 											},
-											"name": "Napkin"
+											"name": "Napkin",
+											"type": ""
 										},
 										{
 											"_type": "UMLParameter",
@@ -11891,7 +11902,8 @@
 											"_parent": {
 												"$ref": "AAAAAAFnflYVtnrY5No="
 											},
-											"name": "Utensils"
+											"name": "Utensils",
+											"type": ""
 										},
 										{
 											"_type": "UMLParameter",
@@ -11981,7 +11993,8 @@
 											"_parent": {
 												"$ref": "AAAAAAFnflE/13oRfYo="
 											},
-											"name": "Destination"
+											"name": "Destination",
+											"type": ""
 										},
 										{
 											"_type": "UMLParameter",
@@ -12033,7 +12046,8 @@
 											"_parent": {
 												"$ref": "AAAAAAFnflHtlXoqogY="
 											},
-											"name": "vegetable"
+											"name": "vegetable",
+											"type": ""
 										},
 										{
 											"_type": "UMLParameter",
@@ -12041,7 +12055,8 @@
 											"_parent": {
 												"$ref": "AAAAAAFnflHtlXoqogY="
 											},
-											"name": "Utensils"
+											"name": "Utensils",
+											"type": ""
 										}
 									]
 								},
@@ -12302,7 +12317,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFnfrNZM9jXvsU="
 									},
-									"name": "hasWashed",
+									"name": "isClean",
 									"type": "Boolean"
 								},
 								{
@@ -12311,7 +12326,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFnfrNZM9jXvsU="
 									},
-									"name": "heavy",
+									"name": "isHeavy",
 									"type": "Boolean"
 								},
 								{
@@ -12320,7 +12335,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFnfrNZM9jXvsU="
 									},
-									"name": "isUse",
+									"name": "isUsed",
 									"type": "Boolean"
 								}
 							]
@@ -12391,7 +12406,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFnfvThDi+hQ5c="
 									},
-									"name": "addObserver"
+									"name": "AddObserver"
 								},
 								{
 									"_type": "UMLOperation",
@@ -12407,7 +12422,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFnfvThDi+hQ5c="
 									},
-									"name": "notifierOversers"
+									"name": "NotifierOverseers"
 								}
 							]
 						},
@@ -12894,7 +12909,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFnfxPgNRz+SV8="
 									},
-									"name": "nbrCommis",
+									"name": "nbrClerks",
 									"type": "Integer"
 								},
 								{
@@ -12903,7 +12918,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFnfxPgNRz+SV8="
 									},
-									"name": "nbrDishwasherEmploye",
+									"name": "nbrDishwasherEmployee",
 									"type": "Integer"
 								}
 							],
@@ -12914,7 +12929,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFnfxPgNRz+SV8="
 									},
-									"name": "SetAttributs",
+									"name": "SetAttributes",
 									"parameters": [
 										{
 											"_type": "UMLParameter",
@@ -13002,7 +13017,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFnfxdWO0ENn9E="
 									},
-									"name": "args"
+									"name": "args",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
