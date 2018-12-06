@@ -1,10 +1,10 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace KitchenTests.Model
+namespace KitchenTests
 {
     [TestClass]
-    public class DishWasherEmployeeTests
+    public class UnitTest1
     {
         [TestMethod]
         public void TestMethod1()

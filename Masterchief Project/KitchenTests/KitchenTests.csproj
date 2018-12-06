@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{48C004E7-1DCF-46E1-81AB-943E56FE902E}</ProjectGuid>
+    <ProjectGuid>{054A5D9C-A10E-4036-AA13-149FFDF0FCB4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KitchenTests</RootNamespace>
@@ -51,9 +51,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\DishWasherEmployeeTests.cs" />
-    <Compile Include="Model\DIshWasherMachineTests.cs" />
-    <Compile Include="Model\WashingMachingTest.cs" />
+    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
