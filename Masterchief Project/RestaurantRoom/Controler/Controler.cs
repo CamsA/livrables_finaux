@@ -6,17 +6,23 @@ using System.Windows.Forms;
 
 namespace RestaurantRoom
 {
-    static class Program
+    public class Controler
     {
-        /// <summary>
-        /// Point d'entrée principal de l'application.
-        /// </summary>
+
         [STAThread]
         static void Main()
         {
+            Console.WriteLine("Aaaa");
+            Model model = new Model();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new roomForm());
+            Application.Run(new View());
+        }
+
+        public Controler()
+        {
+            Console.WriteLine("bbb");
         }
     }
 }

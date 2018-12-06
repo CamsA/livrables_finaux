@@ -1,6 +1,6 @@
 ﻿namespace RestaurantRoom
 {
-    partial class roomForm
+    partial class View
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -59,7 +59,6 @@
             this.label1.Size = new System.Drawing.Size(36, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Basse";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -137,11 +136,11 @@
             this.radioButton3.Text = "50 / 50";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
-            // roomForm
+            // View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(302, 284);
+            this.ClientSize = new System.Drawing.Size(303, 284);
             this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
@@ -152,8 +151,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
-            this.Name = "roomForm";
+            this.Name = "View";
             this.Text = "Masterchief options (salle)";
+            this.Load += new System.EventHandler(this.roomForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

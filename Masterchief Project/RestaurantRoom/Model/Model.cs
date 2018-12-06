@@ -4,9 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestaurantRoom.Model
+namespace RestaurantRoom
 {
-    class Model
+    public class Model
     {
+        public int intensityClient;
+        public Model()
+        {
+            Console.WriteLine("Model constructeur");
+        }
     }
 }

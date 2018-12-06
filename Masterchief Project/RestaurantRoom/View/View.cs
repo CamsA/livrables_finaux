@@ -8,13 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace RestaurantRoom
 {
-    public partial class roomForm : Form
+    public partial class View : Form
     {
-        public roomForm()
+        public View()
         {
             InitializeComponent();
+            //Controler controler = new Controler();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -22,8 +24,7 @@ namespace RestaurantRoom
             int value = trackBar1.Value;
             MessageBox.Show(value.ToString());
         }
-
-        private void label1_Click(object sender, EventArgs e)
+        private void roomForm_Load(object sender, EventArgs e)
         {
 
         }
