@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kitchen", "Kitchen\Kitchen.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantRoom", "RestaurantRoom\RestaurantRoom.csproj", "{853B433F-B55D-4F8E-83B7-6765ACBD5732}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KitchenTests", "KitchenTests\KitchenTests.csproj", "{EAD89387-C511-4693-9B15-659A7E6FF661}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{853B433F-B55D-4F8E-83B7-6765ACBD5732}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{853B433F-B55D-4F8E-83B7-6765ACBD5732}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{853B433F-B55D-4F8E-83B7-6765ACBD5732}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAD89387-C511-4693-9B15-659A7E6FF661}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAD89387-C511-4693-9B15-659A7E6FF661}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAD89387-C511-4693-9B15-659A7E6FF661}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAD89387-C511-4693-9B15-659A7E6FF661}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
