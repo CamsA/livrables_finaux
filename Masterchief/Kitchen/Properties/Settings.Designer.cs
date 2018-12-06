@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Masterchief.Properties
+namespace Kitchen.Properties
 {
 
 

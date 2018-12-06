@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A74997A7-4F8C-493F-9175-56D9FF2BD372}</ProjectGuid>
+    <ProjectGuid>{6D4C29FB-CA5D-43AB-BB25-282D9E0CFDD6}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Masterchief</RootNamespace>
-    <AssemblyName>Masterchief</AssemblyName>
+    <RootNamespace>Kitchen</RootNamespace>
+    <AssemblyName>Kitchen</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
