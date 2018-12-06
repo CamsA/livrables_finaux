@@ -1,6 +1,6 @@
-﻿namespace Kitchen
+﻿namespace RestaurantRoom
 {
-    partial class Form1
+    partial class roomForm
     {
         /// <summary>
         /// Variable nécessaire au concepteur.

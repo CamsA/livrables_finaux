@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RestaurantRoom
+namespace Kitchen
 {
-    public partial class Form1 : Form
+    public partial class kitchenForm : Form
     {
-        public Form1()
+        public kitchenForm()
         {
             InitializeComponent();
         }
