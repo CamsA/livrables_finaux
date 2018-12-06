@@ -1,14 +1,15 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace RestaurantRoomTests
+namespace KitchenTests.Model
 {
     [TestClass]
-    public class UnitTest1
+    public class DBConnectTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void DBsource_Retourne_NomPC()
         {
+            Assert.AreEqual(0,0);
         }
     }
 }
