@@ -46,15 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="kitchenForm.cs">
+    <Compile Include="Controller\Class1.cs" />
+    <Compile Include="Model\Class1.cs" />
+    <Compile Include="View\kitchenForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="kitchenForm.Designer.cs">
+    <Compile Include="View\kitchenForm.Designer.cs">
       <DependentUpon>kitchenForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="View\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="kitchenForm.resx">
+    <EmbeddedResource Include="View\kitchenForm.resx">
       <DependentUpon>kitchenForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -79,10 +81,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controller\" />
-    <Folder Include="Model\" />
-    <Folder Include="View\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
