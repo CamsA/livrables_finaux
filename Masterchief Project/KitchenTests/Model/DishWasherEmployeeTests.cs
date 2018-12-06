@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace KitchenTests
 {
     [TestClass]
-    public class UnitTest1
+    public class DishWasherEmployeeTests
     {
         [TestMethod]
         public void TestMethod1()
