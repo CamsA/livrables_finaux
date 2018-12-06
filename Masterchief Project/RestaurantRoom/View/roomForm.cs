@@ -16,5 +16,16 @@ namespace RestaurantRoom
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int value = trackBar1.Value;
+            MessageBox.Show(value.ToString());
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
