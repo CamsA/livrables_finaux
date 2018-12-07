@@ -41,23 +41,20 @@ namespace Kitchen.Model
                 }
             }
 
-            public DataSet getRows(string dataTableName, string rq_sql)
+            public int TestCon()
             {
-                command.CommandText = rq_sql;
-                adapter.SelectCommand = new SqlCommand(command.CommandText);
-                adapter.SelectCommand.Connection = connection; // Permet de lire les données et remplace le SqlDataReader
-                adapter.Fill(data, dataTableName); // Récupère les données
-                return data;
+            //test de la connection
+                if (connection.State == System.Data.ConnectionState.Open)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
             }
 
-            public void actionRows(string rq_sql)
-            {
-
-                command.CommandText = rq_sql;
-                command.ExecuteNonQuery();
-            }
-
-            public void Deconnection()
+        public void Deconnection()
             {
                 // Fermeture de la connexion à la base de données
                 connection.Close();
