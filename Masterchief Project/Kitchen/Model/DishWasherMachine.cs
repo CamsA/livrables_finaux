@@ -5,35 +5,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kitchen
+namespace Kitchen.Model
 {
     public class DishWasherMachine : Entities
     {
-        private bool isRunning;
-        private int dirtyCrokeryStack;
+        private bool isRunning = false;
+        private int dirtyCrockeryStack =0;
 
         public bool IsRunning { get => isRunning; set => isRunning = value; }
-        public int DirtyCrokeryStack { get => dirtyCrokeryStack; set => dirtyCrokeryStack = value; }
+        public int DirtyCrockeryStack { get => dirtyCrockeryStack; set => dirtyCrockeryStack = value; }
 
         public DishWasherMachine()
         {
-            IsRunning = false;
-            DirtyCrokeryStack = 0;
         }
 
-        public void Wash(int crokeryList)
+        public void Wash(int crockeryList)
         {
-            DirtyCrokeryStack = crokeryList;
-            if (this.IsRunning == false)
+            if (IsRunning == false)
             {
-                if (crokeryList != 0 && crokeryList <= 10)
+                if (crockeryList != 0 && crockeryList <= 10)
                 {
-                    dirtyCrokeryStack -= 10;
-                    
+                    dirtyCrockeryStack -= crockeryList;
+                    Kitchen kitchen = Kitchen.GetInstance;
+                    kitchen.CleanCrokeryStack += crockeryList;
+                    isRunning = true;
                 }
-                
             }
-            this.isRunning = true;
         }
     }
 }

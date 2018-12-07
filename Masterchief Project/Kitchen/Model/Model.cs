@@ -8,6 +8,8 @@ namespace Kitchen.Model
 {
     class Model
     {
-        
+        public int clock;
+        Kitchen kitchen = Kitchen.GetInstance;
+
     }
 }

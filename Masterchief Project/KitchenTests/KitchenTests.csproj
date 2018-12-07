@@ -50,13 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\DishWasherMachineTests.cs" />
-    <Compile Include="Model\CrockeryTests.cs" />
     <Compile Include="Model\EntitiesTests.cs" />
     <Compile Include="Model\KitchenTests.cs" />
-    <Compile Include="Model\LaundryTests.cs" />
     <Compile Include="Model\ModelTests.cs" />
-    <Compile Include="Model\NapkinTests.cs" />
-    <Compile Include="Model\TableClothTests.cs" />
+    <Compile Include="Model\ExchangeDeskTests.cs" />
     <Compile Include="Model\UtensilsTests.cs" />
     <Compile Include="Model\WashingMachineTests.cs" />
     <Compile Include="Model\DishWasherEmployeeTests.cs" />
