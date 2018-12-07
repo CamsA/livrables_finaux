@@ -90,5 +90,6 @@ namespace Kitchen.Model
             this.handler.Shutdown(SocketShutdown.Both);
             this.handler.Close();
         }
+
     }
 }
