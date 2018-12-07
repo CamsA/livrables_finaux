@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Kitchen.Controller
 {
-    class Class1
+    class Launcher
     {
+
+        
     }
 }

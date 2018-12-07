@@ -8,5 +8,7 @@ namespace Kitchen.Model
 {
     class Meal
     {
+        public String name;
+        public Boolean isCooked;
     }
 }

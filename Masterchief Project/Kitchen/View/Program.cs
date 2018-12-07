@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kitchen.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,12 +12,13 @@ namespace Kitchen
         /// <summary>
         /// Point d'entrée principal de l'application.
         /// </summary>
-        [STAThread]
+        //[STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new kitchenForm());
+
         }
     }
 }
