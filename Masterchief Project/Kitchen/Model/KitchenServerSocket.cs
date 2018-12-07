@@ -8,7 +8,7 @@ using System.Net.Sockets;
 
 namespace Kitchen.Model
 {
-    class ServerSocket
+    class KitchenServerSocket
     {
         private string data = null;
         private byte[] bytes = null;
