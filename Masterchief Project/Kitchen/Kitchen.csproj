@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\Class1.cs" />
-    <Compile Include="Model\Class1.cs" />
+    <Compile Include="Model\Meal.cs" />
+    <Compile Include="Model\KitchenServerSocket.cs" />
+    <Compile Include="Model\ExchangeDesk.cs" />
     <Compile Include="View\kitchenForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kitchen.Model
 {
-    class Class1
+    class Meal
     {
     }
 }
-

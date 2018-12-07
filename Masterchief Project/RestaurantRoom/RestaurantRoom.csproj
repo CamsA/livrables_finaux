@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\ClientSocket.cs" />
     <Compile Include="Model\Model.cs" />
     <Compile Include="View\View.cs">
       <SubType>Form</SubType>
