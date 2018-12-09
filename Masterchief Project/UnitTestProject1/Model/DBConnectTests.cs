@@ -3,20 +3,18 @@ using System.Linq;
 using System.Text;
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Kitchen.Model;
-
-
+using Kitchen;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace KitchenTests
 {
     [TestClass]
     public class DBConnectTests
     {
+        DBConnect Connectiontest = new DBConnect();
+
         [TestMethod]
-        public void ConstructTest()
-        {
-          db = new Kitchen.Model.DBConnect;
-            Assert.AreEqual(0, 0);
-        }
+        public void ConnectionSourceTest() => Assert.AreEqual("HENDHOLD", Connectiontest.datasrc);
     }
 }
