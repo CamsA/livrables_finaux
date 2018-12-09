@@ -51,9 +51,14 @@
   <ItemGroup>
     <Compile Include="Model\DishWasherMachineTests.cs" />
     <Compile Include="Model\EntitiesTests.cs" />
+    <Compile Include="Model\KitchenClerkTests.cs" />
     <Compile Include="Model\KitchenTests.cs" />
     <Compile Include="Model\ModelTests.cs" />
     <Compile Include="Model\ExchangeDeskTests.cs" />
+    <Compile Include="Model\MealTests.cs" />
+    <Compile Include="Model\MovableEntitesTests.cs" />
+    <Compile Include="Model\CooksTests.cs" />
+    <Compile Include="Model\ChefTests.cs" />
     <Compile Include="Model\UtensilsTests.cs" />
     <Compile Include="Model\WashingMachineTests.cs" />
     <Compile Include="Model\DishWasherEmployeeTests.cs" />

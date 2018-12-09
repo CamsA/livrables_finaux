@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kitchen.Model
 {
-    public class DishWasherEmployee
+    public class DishWasherEmployee : MovableEntities
     {
         public DishWasherEmployee()
         { }
