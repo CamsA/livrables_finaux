@@ -11,13 +11,9 @@ namespace Kitchen.Model
     class KitchenClientSocket
     {
         private Socket sender;
+
+        // Buffer for incoming data
         private byte[] bytes = new byte[2048];
-
-
-
-
-
-
 
         // Constructor of the client socket class
         public KitchenClientSocket()
@@ -32,6 +28,7 @@ namespace Kitchen.Model
             Socket sender = new Socket(ipAddress.AddressFamily,
                     SocketType.Stream, ProtocolType.Tcp);
 
+            // Connect the client socket
             try
             {
                 sender.Connect(remoteEP);
@@ -39,9 +36,27 @@ namespace Kitchen.Model
                 Console.WriteLine("Socket connected to {0}",
                     sender.RemoteEndPoint.ToString());
             }
-            catch (SocketException se)
+            catch (Exception e)
             {
-                Console.WriteLine("SocketException : {0}", se.ToString());
+                Console.WriteLine("Unexpected exception : {0}", e.ToString());
+            }
+        }
+
+        // Function used to send the messages
+        public void SendMessage(String message)
+        {
+            try
+            {
+                // Encode the data string into a byte array
+                byte[] msg = Encoding.ASCII.GetBytes(message + "<EOM>");
+
+                // Send the data
+                int bytesSent = sender.Send(msg);
+
+                // Receive the answer
+                int bytesRec = sender.Receive(bytes);
+                Console.WriteLine("Echoed test = {0}",
+                    Encoding.ASCII.GetString(bytes, 0, bytesRec));
             }
             catch (Exception e)
             {
@@ -49,25 +64,19 @@ namespace Kitchen.Model
             }
         }
 
-        public void SendMessage(String message)
-        {
-            // Encode the data string into a byte array
-            byte[] msg = Encoding.ASCII.GetBytes(message + "<EOM>");
-
-            // Send the data
-            int bytesSent = sender.Send(msg);
-
-            // Receive the answer
-            int bytesRec = sender.Receive(bytes);
-            Console.WriteLine("Echoed test = {0}",
-                Encoding.ASCII.GetString(bytes, 0, bytesRec));
-        }
-
+        // Used to close the socket
         public void CloseSocket()
         {
-            // Release the socket 
-            sender.Shutdown(SocketShutdown.Both);
-            sender.Close();
+            try {
+
+                // Release the socket 
+                sender.Shutdown(SocketShutdown.Both);
+                sender.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Unexpected exception : {0}", e.ToString());
+            }
         }
     }
 }
