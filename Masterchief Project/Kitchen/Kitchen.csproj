@@ -75,6 +75,8 @@
     <Compile Include="Model\ExchangeDesk.cs" />
     <Compile Include="Model\Kitchen.cs" />
     <Compile Include="Model\KitchenClerk.cs" />
+    <Compile Include="Model\KitchenClientSocket.cs" />
+    <Compile Include="Model\KitchenListenerSocket.cs" />
     <Compile Include="Model\Meal.cs" />
     <Compile Include="Model\Model.cs" />
     <Compile Include="Model\MovableEntities.cs" />
