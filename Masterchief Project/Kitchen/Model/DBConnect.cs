@@ -25,7 +25,7 @@ namespace Kitchen
             command = new SqlCommand();
             data = new DataSet();
             datasrc = Environment.MachineName;
-            cnx = "Data Source=" + datasrc + ";Initial Catalog=DB_A2_WS2;Integrated Security=True"; //Paramètres de la connexion
+            cnx = "Data Source=" + datasrc + ";Initial Catalog=MasterChiefDB;Integrated Security=True"; //Paramètres de la connexion
             connection = new SqlConnection(cnx);//Instanciation de la connexion
 
             try
