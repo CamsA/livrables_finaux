@@ -10,10 +10,12 @@ namespace Kitchen
     {
         private string rq_sql;
         private string table;
+        private int category;
 
         //accesseurs
         public string Rq_sql { get => rq_sql; set => rq_sql = value; }
         public string Table { get => table; set => table = value; }
+        public int Category { get => category; set => category = value; }
 
         //Les méthodes
         public string SelectAllFromTable(string ptable)
@@ -23,11 +25,11 @@ namespace Kitchen
             return Rq_sql = "SELECT * FROM " + table;
         }
 
-        public string SelectRecepiesByType(string name)
+        public string SelectRecepiesByType(int pcategory)
         {
-            nom = name;
+            category = pcategory;
 
-            return Rq_sql = "SELECT TOP 1 NomRecette, Categorie, IDRecette FROM Recette WHERE Categorie = 3 ORDER BY NEWID()SELECT NomRecette FROM Recette WHERE";
+            return Rq_sql = "SELECT TOP 1 IDRecette FROM Recette WHERE Categorie = " + category +" ORDER BY NEWID()";
         }
 
         public string delete(int pid)

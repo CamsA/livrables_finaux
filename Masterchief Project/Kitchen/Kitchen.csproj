@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\SQLmethode.cs" />
     <Compile Include="Controller\Class1.cs" />
     <Compile Include="Model\DBConnect.cs" />
     <Compile Include="View\kitchenForm.cs">
