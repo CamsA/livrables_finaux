@@ -34,7 +34,7 @@ namespace Kitchen.Model
                     DirtyNapkinStacks -= 10;
                     DirtyTableClothStacks -= 10;
 
-                    ExchangeDesk exchangeDesk = new ExchangeDesk();
+                    ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
                     exchangeDesk.WaitingDirtyNapkin += 10;
                     exchangeDesk.WaitingDirtyTableClothes += 10;
 
