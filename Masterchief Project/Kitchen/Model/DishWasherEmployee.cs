@@ -35,11 +35,5 @@ namespace Kitchen.Model
                     }
             }
         }
-
-        public void WashUtensils()
-        {
-            Utensils utensil = Kitchen.GetInstance.DirtyUtensilsList.First();
-            //todo avec camille
-        }
     }
 }

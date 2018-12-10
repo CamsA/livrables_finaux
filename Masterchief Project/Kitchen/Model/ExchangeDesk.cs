@@ -19,6 +19,8 @@ namespace Kitchen.Model
         public int WaitingDirtyCrockery { get => waitingDirtyCrockery; set => waitingDirtyCrockery = value; }
         public int WaitingDirtyNapkin { get => waitingDirtyNapkin; set => waitingDirtyNapkin = value; }
         public int WaitingDirtyTableClothes { get => waitingDirtyTableClothes; set => waitingDirtyTableClothes = value; }
+        internal List<Meal> WaitingOrders { get => waitingOrders; set => waitingOrders = value; }
+
 
         ExchangeDesk()
         { }
@@ -37,7 +39,6 @@ namespace Kitchen.Model
                 }
             }
         }
-
 
     }
 }

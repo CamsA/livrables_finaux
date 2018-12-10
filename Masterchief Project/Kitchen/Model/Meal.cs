@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Kitchen.Model
 {
-    class Meal
+    public class Meal
     {
         private string name;
-        private bool isCooked;
+        private bool IsEaten;
 
         public string Name { get => name; set => name = value; }
-        public bool IsCooked { get => isCooked; set => isCooked = value; }
+        public bool IsEaten1 { get => IsEaten; set => IsEaten = value; }
 
         Meal (string name)
         {
