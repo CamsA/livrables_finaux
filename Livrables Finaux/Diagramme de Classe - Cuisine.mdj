@@ -1277,30 +1277,13 @@
 											"height": 13,
 											"text": "-TakesFromExchangeDesk(String type, int number): void",
 											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAFnflYV5nrbloM=",
-											"_parent": {
-												"$ref": "AAAAAAFnfktPh3ek2lY="
-											},
-											"model": {
-												"$ref": "AAAAAAFnflYVtnrY5No="
-											},
-											"font": "Arial;13;0",
-											"left": 1381,
-											"top": 342,
-											"width": 326.57421875,
-											"height": 13,
-											"text": "-Wash(Utensils): void",
-											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 1376,
 									"top": 307,
 									"width": 336.57421875,
-									"height": 53
+									"height": 38
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -1816,7 +1799,7 @@
 											"font": "Arial;13;1",
 											"left": 749,
 											"top": 415,
-											"width": 152.10888671875,
+											"width": 163.68701171875,
 											"height": 13,
 											"text": "Kitchen_Clerk"
 										},
@@ -1851,7 +1834,7 @@
 									"font": "Arial;13;0",
 									"left": 744,
 									"top": 408,
-									"width": 162.10888671875,
+									"width": 173.68701171875,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFnfkvvV3hJa2k="
@@ -1878,7 +1861,7 @@
 									"font": "Arial;13;0",
 									"left": 744,
 									"top": 433,
-									"width": 162.10888671875,
+									"width": 173.68701171875,
 									"height": 10
 								},
 								{
@@ -1903,9 +1886,9 @@
 											"font": "Arial;13;0",
 											"left": 749,
 											"top": 448,
-											"width": 152.10888671875,
+											"width": 163.68701171875,
 											"height": 13,
-											"text": "+Peel(vegetable, Utensils)",
+											"text": "+Peel(ingredient): ingredient",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1920,7 +1903,7 @@
 											"font": "Arial;13;0",
 											"left": 749,
 											"top": 463,
-											"width": 152.10888671875,
+											"width": 163.68701171875,
 											"height": 13,
 											"text": "+getIngredients()",
 											"horizontalAlignment": 0
@@ -1937,7 +1920,7 @@
 											"font": "Arial;13;0",
 											"left": 749,
 											"top": 478,
-											"width": 152.10888671875,
+											"width": 163.68701171875,
 											"height": 13,
 											"text": "+BringMeals()",
 											"horizontalAlignment": 0
@@ -1946,7 +1929,7 @@
 									"font": "Arial;13;0",
 									"left": 744,
 									"top": 443,
-									"width": 162.10888671875,
+									"width": 173.68701171875,
 									"height": 53
 								},
 								{
@@ -1989,7 +1972,7 @@
 							"containerChangeable": true,
 							"left": 744,
 							"top": 408,
-							"width": 162.10888671875,
+							"width": 173.68701171875,
 							"height": 89,
 							"nameCompartment": {
 								"$ref": "AAAAAAFnfkvvV3hIcp8="
@@ -2217,7 +2200,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 922,
+									"left": 928,
 									"top": 421,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -2238,7 +2221,7 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 920,
+									"left": 927,
 									"top": 406,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -2259,7 +2242,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 925,
+									"left": 931,
 									"top": 450,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -2278,7 +2261,7 @@
 								"$ref": "AAAAAAFnfkvvV3hHniw="
 							},
 							"lineStyle": 1,
-							"points": "906:444;943:440",
+							"points": "918:443;943:441",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFnfk+In3nBAVU="
@@ -3653,7 +3636,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 705,
-									"top": 471,
+									"top": 472,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -3674,7 +3657,7 @@
 									"visible": null,
 									"font": "Arial;13;0",
 									"left": 700,
-									"top": 457,
+									"top": 458,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -3695,7 +3678,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 714,
-									"top": 500,
+									"top": 501,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -3737,7 +3720,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 695,
-									"top": 461,
+									"top": 462,
 									"height": 13,
 									"alpha": 0.7853981633974483,
 									"distance": 40,
@@ -3779,7 +3762,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 713,
-									"top": 469,
+									"top": 470,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 30,
@@ -3798,8 +3781,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 706,
-									"top": 457,
+									"left": 707,
+									"top": 458,
 									"height": 13,
 									"alpha": -0.7853981633974483,
 									"distance": 40,
@@ -3866,7 +3849,7 @@
 								"$ref": "AAAAAAFnfkvSYHgdyto="
 							},
 							"lineStyle": 1,
-							"points": "678:504;743:481",
+							"points": "678:504;743:482",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFnfusDWfFrSN0="
@@ -6055,30 +6038,13 @@
 											"height": 13,
 											"text": "+cleanCrockeryStack: int",
 											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAFnfwQoZZo9F18=",
-											"_parent": {
-												"$ref": "AAAAAAFnfwKsQJFWRus="
-											},
-											"model": {
-												"$ref": "AAAAAAFnfwQoNJof/VU="
-											},
-											"font": "Arial;13;0",
-											"left": 1437,
-											"top": 501,
-											"width": 206.1845703125,
-											"height": 13,
-											"text": "+dirtyUtensilsList: list<Utensils>",
-											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 1432,
 									"top": 481,
 									"width": 216.1845703125,
-									"height": 38
+									"height": 23
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -6091,7 +6057,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 1432,
-									"top": 519,
+									"top": 504,
 									"width": 216.1845703125,
 									"height": 10
 								},
@@ -11890,35 +11856,6 @@
 											"type": ""
 										}
 									]
-								},
-								{
-									"_type": "UMLOperation",
-									"_id": "AAAAAAFnflYVtnrY5No=",
-									"_parent": {
-										"$ref": "AAAAAAFnfktPhnebp60="
-									},
-									"name": "Wash",
-									"visibility": "private",
-									"parameters": [
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAFnflZNoXrfpWI=",
-											"_parent": {
-												"$ref": "AAAAAAFnflYVtnrY5No="
-											},
-											"name": "Utensils",
-											"type": ""
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAFnfwi+6d2IQos=",
-											"_parent": {
-												"$ref": "AAAAAAFnflYVtnrY5No="
-											},
-											"type": "void",
-											"direction": "return"
-										}
-									]
 								}
 							]
 						},
@@ -12050,17 +11987,16 @@
 											"_parent": {
 												"$ref": "AAAAAAFnflHtlXoqogY="
 											},
-											"name": "vegetable",
-											"type": ""
+											"name": "ingredient"
 										},
 										{
 											"_type": "UMLParameter",
-											"_id": "AAAAAAFnflIVa3oyx3U=",
+											"_id": "AAAAAAFnl1oGdxg4TLk=",
 											"_parent": {
 												"$ref": "AAAAAAFnflHtlXoqogY="
 											},
-											"name": "Utensils",
-											"type": ""
+											"type": "ingredient",
+											"direction": "return"
 										}
 									]
 								},
@@ -12590,15 +12526,6 @@
 									},
 									"name": "cleanCrockeryStack",
 									"type": "int"
-								},
-								{
-									"_type": "UMLAttribute",
-									"_id": "AAAAAAFnfwQoNJof/VU=",
-									"_parent": {
-										"$ref": "AAAAAAFnfwKsQJFOZf8="
-									},
-									"name": "dirtyUtensilsList",
-									"type": "list<Utensils>"
 								}
 							]
 						},
