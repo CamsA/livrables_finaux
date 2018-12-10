@@ -9,11 +9,9 @@ namespace Kitchen.Model
     public class KitchenClerk : MovableEntities
     {
 
-        public void Peel(string vegetable, Utensils utensils)
+        public void Peel(string vegetable)
         {
             // todo with vegetable
-            utensils.IsClean = false;
-
         }
 
         public void GetIngredients()

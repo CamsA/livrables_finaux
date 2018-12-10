@@ -13,24 +13,26 @@ namespace Kitchen.Model
 
         public void TakeAndDeposite(string type, int number)
         {
+            Kitchen kitchen = Kitchen.GetInstance;
+            ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
             switch (type)
             {
                 case "Cockery":
                     {
-                        ExchangeDesk.GetInstance.WaitingDirtyCrockery -= number;
-                        Kitchen.GetInstance.DishMachine.DirtyCrockeryStack += number;
+                        exchangeDesk.WaitingDirtyCrockery -= number;
+                        kitchen.DishMachine.DirtyCrockeryStack += number;
                         break;
                     }
                 case "TableCloth":
                     {
-                        ExchangeDesk.GetInstance.WaitingDirtyTableClothes -= number;
-                        Kitchen.GetInstance.WashingMachine.DirtyTableClothStacks += number;
+                        exchangeDesk.WaitingDirtyTableClothes -= number;
+                        kitchen.WashingMachine.DirtyTableClothStacks += number;
                         break;
                     }
                 case "Napkin":
                     {
-                        ExchangeDesk.GetInstance.WaitingDirtyCrockery -= number;
-                        Kitchen.GetInstance.WashingMachine.DirtyNapkinStacks += number;
+                        exchangeDesk.WaitingDirtyCrockery -= number;
+                        kitchen.WashingMachine.DirtyNapkinStacks += number;
                         break;
                     }
             }

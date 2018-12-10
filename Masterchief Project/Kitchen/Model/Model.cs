@@ -10,6 +10,6 @@ namespace Kitchen.Model
     {
         public int clock;
         Kitchen kitchen = Kitchen.GetInstance;
-
+        ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
     }
 }

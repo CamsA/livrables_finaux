@@ -22,7 +22,7 @@ namespace Kitchen.Model
         internal List<Meal> WaitingOrders { get => waitingOrders; set => waitingOrders = value; }
 
 
-        ExchangeDesk()
+        private ExchangeDesk()
         { }
 
         public static ExchangeDesk GetInstance

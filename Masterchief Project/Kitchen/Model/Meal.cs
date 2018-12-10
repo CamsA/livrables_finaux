@@ -9,10 +9,8 @@ namespace Kitchen.Model
     public class Meal
     {
         private string name;
-        private bool IsEaten;
 
         public string Name { get => name; set => name = value; }
-        public bool IsEaten1 { get => IsEaten; set => IsEaten = value; }
 
         Meal (string name)
         {
