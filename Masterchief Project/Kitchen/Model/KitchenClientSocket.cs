@@ -51,18 +51,23 @@ namespace Kitchen.Model
 
         public void SendMessage(String message)
         {
-            // Encode the data string into a byte array.  
+            // Encode the data string into a byte array
             byte[] msg = Encoding.ASCII.GetBytes(message + "<EOM>");
 
-            // Send the data through the socket.  
+            // Send the data
             int bytesSent = sender.Send(msg);
 
-            // Receive the response from the remote device.  
+            // Receive the answer
             int bytesRec = sender.Receive(bytes);
             Console.WriteLine("Echoed test = {0}",
                 Encoding.ASCII.GetString(bytes, 0, bytesRec));
         }
 
-
+        public void CloseSocket()
+        {
+            // Release the socket 
+            sender.Shutdown(SocketShutdown.Both);
+            sender.Close();
+        }
     }
 }
