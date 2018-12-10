@@ -15,9 +15,11 @@ namespace Kitchen
         private SqlConnection connection = null;
         private SqlCommand command = null;
         private DataSet data = null;
-        public string datasrc = "local";
+        private string datasrc = "local";
+        private string dbname = null;
 
-        public DBConnect()
+
+        public DBConnect(string namedb)
         {
             // Connexion à la base de données
 
@@ -25,7 +27,8 @@ namespace Kitchen
             command = new SqlCommand();
             data = new DataSet();
             datasrc = Environment.MachineName;
-            cnx = "Data Source=" + datasrc + ";Initial Catalog=MasterChiefDB;Integrated Security=True"; //Paramètres de la connexion
+            dbname = namedb;
+            cnx = "Data Source=" + datasrc + ";Initial Catalog=" + dbname + ";Integrated Security=True"; //Paramètres de la connexion
             connection = new SqlConnection(cnx);//Instanciation de la connexion
 
             try
@@ -38,5 +41,8 @@ namespace Kitchen
                 Console.WriteLine("Pas reussi à joindre la base de donnée");
             }
         }
+
+        public string Datasrc { get => datasrc; set => datasrc = value; }
+        public string DBname { get => DBname; set => DBname = value; }
     }
 }
