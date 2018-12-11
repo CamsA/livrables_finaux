@@ -52,6 +52,7 @@
     <Compile Include="Model\DishWasherMachineTests.cs" />
     <Compile Include="Model\EntitiesTests.cs" />
     <Compile Include="Model\KitchenClerkTests.cs" />
+    <Compile Include="Model\KitchenListenerSocket.cs" />
     <Compile Include="Model\KitchenTests.cs" />
     <Compile Include="Model\ModelTests.cs" />
     <Compile Include="Model\ExchangeDeskTests.cs" />
