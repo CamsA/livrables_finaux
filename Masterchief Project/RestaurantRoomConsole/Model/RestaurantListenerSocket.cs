@@ -73,10 +73,11 @@ namespace RestaurantRoomConsole.Model
                     }
                 }
 
-                // Show the data on the console.  
-                Console.WriteLine("Text received : {0}", data);
-
+                // Send the confirmation to the other socket that the message has been received
                 this.SendMessage("Message Received : " + data);
+
+                // Handle the message
+                this.HandleMessage(data);
 
                 data = null;
             }
@@ -102,6 +103,13 @@ namespace RestaurantRoomConsole.Model
         {
             this.handler.Shutdown(SocketShutdown.Both);
             this.handler.Close();
+        }
+
+        // Read the message and start differents actions according to the content
+        private void HandleMessage(String msg)
+        {
+            // Show the data on the console
+            Console.WriteLine("Message received : " + data);
         }
     }
 }
