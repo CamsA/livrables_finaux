@@ -59,6 +59,7 @@
     <Compile Include="Model\MovableEntitesTests.cs" />
     <Compile Include="Model\CooksTests.cs" />
     <Compile Include="Model\ChefTests.cs" />
+    <Compile Include="Model\DBConnectTests.cs" />
     <Compile Include="Model\WashingMachineTests.cs" />
     <Compile Include="Model\DishWasherEmployeeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
