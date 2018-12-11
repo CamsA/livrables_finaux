@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kitchen.Model
+namespace Kitchen
 {
     class SQLmethode
     {
@@ -32,29 +32,29 @@ namespace Kitchen.Model
             return Rq_sql = "SELECT TOP 1 IDRecette FROM Recette WHERE Categorie = " + category + " ORDER BY NEWID()";
         }
 
-        public string delete(int pid)
-        {
-            id = pid;
+        //public string delete(int pid)
+        //{
+        //    id = pid;
 
-            return Rq_sql = "DELETE FROM TB_A2_WS2 WHERE" + pid;
-        }
+        //    return Rq_sql = "DELETE FROM TB_A2_WS2 WHERE" + pid;
+        //}
 
-        public string insert(int pid, string name, string firstname)
-        {
-            id = pid;
-            nom = name;
-            prénom = firstname;
+        //public string insert(int pid, string name, string firstname)
+        //{
+        //    id = pid;
+        //    nom = name;
+        //    prénom = firstname;
 
-            return Rq_sql = "INSERT INTO TB_A2_WS2 VALUES ('" + pid + "', '" + name + "','" + firstname + "')";
-        }
+        //    return Rq_sql = "INSERT INTO TB_A2_WS2 VALUES ('" + pid + "', '" + name + "','" + firstname + "')";
+        //}
 
-        public string update(int pid, string name, string firstname)
-        {
-            id = pid;
-            nom = name;
-            prénom = firstname;
+        //public string update(int pid, string name, string firstname)
+        //{
+        //    id = pid;
+        //    nom = name;
+        //    prénom = firstname;
 
-            return Rq_sql = "UPDATE TB_A2_WS2 SET nom = '" + name + "', prenom = '" + firstname + "' WHERE" + pid;
-        }
+        //    return Rq_sql = "UPDATE TB_A2_WS2 SET nom = '" + name + "', prenom = '" + firstname + "' WHERE" + pid;
+        //}
     }
 }

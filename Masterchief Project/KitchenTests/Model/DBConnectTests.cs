@@ -3,10 +3,10 @@ using System.Linq;
 using System.Text;
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Kitchen.Model;
+using Kitchen;
 
 
-namespace KitchenTests.Model
+namespace KitchenTests
 {
     [TestClass]
     public class DBConnectTests
