@@ -115,16 +115,22 @@ namespace RestaurantRoomConsole.Model
 
             string[] splittedMsg= msg.Split(':', '<', '>');
 
+            int number;
+            int.TryParse(splittedMsg[1], out number);
+
             switch (splittedMsg[0])
             {
                 case "CN":
-                    Console.Write("\nServiette(s) propre(s) : " + splittedMsg[1]);
+                    Console.Write("\nServiette(s) propre(s) : " + number);
+                    exchangeDesk.AddCleanObject("Napkins", number);
                     break;
                 case "CTC":
-                    Console.Write("\nNappe(s) de table propre(s) : " + splittedMsg[1]);
+                    Console.Write("\nNappe(s) de table propre(s) : " + number);
+                    exchangeDesk.AddCleanObject("TableClothes", number);
                     break;
                 case "RM":
-                    Console.Write("\nC'est un plat qui a l'ID : " + splittedMsg[1]);
+                    Console.Write("\nC'est un plat qui a l'ID : " + number);
+                    exchangeDesk.AddPreparedMeal(number);
                     break;
                 default:
                     Console.Write("\nCannot Recognize Message");

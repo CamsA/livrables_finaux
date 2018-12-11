@@ -108,19 +108,26 @@ namespace Kitchen.Model
 
             string[] splittedMsg = msg.Split(':', '<', '>');
 
+            int number;
+            int.TryParse(splittedMsg[1], out number);
+
             switch (splittedMsg[0])
             {
                 case "DN":
-                    Console.Write("\nServiette(s) sale(s) : " + splittedMsg[1]);
+                    Console.Write("\nServiette(s) sale(s) : " + number);
+                    exchangeDesk.AddDirtyObject("Napkins", number);
                     break;
                 case "DTC":
-                    Console.Write("\nNappe(s) de table sale(s) : " + splittedMsg[1]);
+                    Console.Write("\nNappe(s) de table sale(s) : " + number);
+                    exchangeDesk.AddDirtyObject("TableClothes", number);
                     break;
                 case "DC":
-                    Console.Write("\nPlat(s) sale(s) : " + splittedMsg[1]);
+                    Console.Write("\nPlat(s) sale(s) : " + number);
+                    exchangeDesk.AddDirtyObject("Crockery", number);
                     break;
                 case "NO":
-                    Console.Write("\nUne commande a été passée pour le plat à l'ID " + splittedMsg[1]);
+                    Console.Write("\nUne commande a été passée pour le plat à l'ID " + number);
+                    exchangeDesk.AddWaitingOrder(number);
                     break;
                 default:
                     Console.Write("\nCannot Recognize Message");
