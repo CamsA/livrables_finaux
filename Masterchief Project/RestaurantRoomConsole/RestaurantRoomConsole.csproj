@@ -52,6 +52,8 @@
     <Compile Include="Model\MaitreHotel.cs" />
     <Compile Include="Model\Model.cs" />
     <Compile Include="Model\Restaurant.cs" />
+    <Compile Include="Model\RestaurantClientSocket.cs" />
+    <Compile Include="Model\RestaurantListenerSocket.cs" />
     <Compile Include="Model\Square.cs" />
     <Compile Include="Model\Tables.cs" />
     <Compile Include="Options.cs">
