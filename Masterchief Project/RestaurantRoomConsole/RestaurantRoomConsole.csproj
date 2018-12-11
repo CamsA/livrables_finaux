@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Controler\Controller.cs" />
     <Compile Include="Model\Clients.cs" />
+    <Compile Include="Model\ExchangeDesk.cs" />
     <Compile Include="Model\GroupClient.cs" />
     <Compile Include="Model\Line.cs" />
     <Compile Include="Model\MaitreHotel.cs" />

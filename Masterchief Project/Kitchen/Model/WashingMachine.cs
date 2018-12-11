@@ -10,18 +10,18 @@ namespace Kitchen.Model
 
     public class WashingMachine : Entities
     {
-        private int dirtyNapkinStack;
-        private int dirtyTableClothStacks;
+        private int dirtyNapkinsStack;
+        private int dirtyTableClothesStacks;
         private bool IsRunning;
 
-        public int DirtyNapkinStacks { get => dirtyNapkinStack; set => dirtyNapkinStack = value; }
-        public int DirtyTableClothStacks { get => dirtyTableClothStacks; set => dirtyTableClothStacks = value; }
+        public int DirtyNapkinsStacks { get => dirtyNapkinsStack; set => dirtyNapkinsStack = value; }
+        public int DirtyTableClothesStacks { get => dirtyTableClothesStacks; set => dirtyTableClothesStacks = value; }
         public bool IsRunning1 { get => IsRunning; set => IsRunning = value; }
 
         public WashingMachine()
         {
-            DirtyNapkinStacks = 0;
-            DirtyTableClothStacks = 0;
+            DirtyNapkinsStacks = 0;
+            DirtyTableClothesStacks = 0;
             IsRunning1 = false;
         }
 
@@ -31,11 +31,11 @@ namespace Kitchen.Model
             {
                 if (napkin ==10 && tableCloth == 10)
                 {
-                    DirtyNapkinStacks -= 10;
-                    DirtyTableClothStacks -= 10;
+                    DirtyNapkinsStacks -= 10;
+                    DirtyTableClothesStacks -= 10;
 
                     ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
-                    exchangeDesk.WaitingDirtyNapkin += 10;
+                    exchangeDesk.WaitingDirtyNapkins += 10;
                     exchangeDesk.WaitingDirtyTableClothes += 10;
 
 
