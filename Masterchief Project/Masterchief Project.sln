@@ -3,11 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kitchen", "Kitchen\Kitchen.csproj", "{06D67994-0BC5-412B-A1EB-CF1780F8B73D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantRoomTests", "RestaurantRoomTests\RestaurantRoomTests.csproj", "{5CE2BF0F-5333-4834-8F51-AE3CF72C5CBF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KitchenTests", "KitchenTests\KitchenTests.csproj", "{EAD89387-C511-4693-9B15-659A7E6FF661}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantRoomConsole", "RestaurantRoomConsole\RestaurantRoomConsole.csproj", "{F1141CF1-8750-4CDD-AB46-EB86F98DED98}"
 EndProject
@@ -17,18 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{06D67994-0BC5-412B-A1EB-CF1780F8B73D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{06D67994-0BC5-412B-A1EB-CF1780F8B73D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{06D67994-0BC5-412B-A1EB-CF1780F8B73D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{06D67994-0BC5-412B-A1EB-CF1780F8B73D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5CE2BF0F-5333-4834-8F51-AE3CF72C5CBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5CE2BF0F-5333-4834-8F51-AE3CF72C5CBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CE2BF0F-5333-4834-8F51-AE3CF72C5CBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CE2BF0F-5333-4834-8F51-AE3CF72C5CBF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EAD89387-C511-4693-9B15-659A7E6FF661}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EAD89387-C511-4693-9B15-659A7E6FF661}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EAD89387-C511-4693-9B15-659A7E6FF661}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EAD89387-C511-4693-9B15-659A7E6FF661}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F1141CF1-8750-4CDD-AB46-EB86F98DED98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F1141CF1-8750-4CDD-AB46-EB86F98DED98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1141CF1-8750-4CDD-AB46-EB86F98DED98}.Release|Any CPU.ActiveCfg = Release|Any CPU
