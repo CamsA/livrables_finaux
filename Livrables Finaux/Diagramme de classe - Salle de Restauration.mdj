@@ -5037,24 +5037,7 @@
 											"top": 1218,
 											"width": 296.61328125,
 											"height": 13,
-											"text": "+AddCleanTableClothes()",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAFnnus4aTSZT3s=",
-											"_parent": {
-												"$ref": "AAAAAAFnfd0Qq8ScX1Q="
-											},
-											"model": {
-												"$ref": "AAAAAAFnnus4EzSHtpI="
-											},
-											"font": "Arial;13;0",
-											"left": 1437,
-											"top": 1233,
-											"width": 296.61328125,
-											"height": 13,
-											"text": "+AddCleanNapkins()",
+											"text": "+AddCleanObjects(string type, int number): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5068,7 +5051,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1437,
-											"top": 1248,
+											"top": 1233,
 											"width": 296.61328125,
 											"height": 13,
 											"text": "+SendEatenMeals(int dirtyCrockery): void",
@@ -5085,7 +5068,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1437,
-											"top": 1263,
+											"top": 1248,
 											"width": 296.61328125,
 											"height": 13,
 											"text": "+SendDirtyNapkins(int dirtyNapkins): void",
@@ -5102,7 +5085,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1437,
-											"top": 1278,
+											"top": 1263,
 											"width": 296.61328125,
 											"height": 13,
 											"text": "+SendDirtyTableClothes(int dirtyTableClothes): void",
@@ -5113,7 +5096,7 @@
 									"left": 1432,
 									"top": 1198,
 									"width": 306.61328125,
-									"height": 98
+									"height": 83
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -12228,15 +12211,36 @@
 									"_parent": {
 										"$ref": "AAAAAAFnfd0Qq8STjro="
 									},
-									"name": "AddCleanTableClothes"
-								},
-								{
-									"_type": "UMLOperation",
-									"_id": "AAAAAAFnnus4EzSHtpI=",
-									"_parent": {
-										"$ref": "AAAAAAFnfd0Qq8STjro="
-									},
-									"name": "AddCleanNapkins"
+									"name": "AddCleanObjects",
+									"parameters": [
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAFnnvHa9juOgy8=",
+											"_parent": {
+												"$ref": "AAAAAAFnnusdDjMbswk="
+											},
+											"name": "string type",
+											"type": ""
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAFnnvHa9juPOKk=",
+											"_parent": {
+												"$ref": "AAAAAAFnnusdDjMbswk="
+											},
+											"name": "int number",
+											"type": ""
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAFnnvHa9zuQEHs=",
+											"_parent": {
+												"$ref": "AAAAAAFnnusdDjMbswk="
+											},
+											"type": "void",
+											"direction": "return"
+										}
+									]
 								},
 								{
 									"_type": "UMLOperation",
