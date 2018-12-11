@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Kitchen.Model
 {
-    class Model
+    public abstract class Entities
     {
-        public int clock;
-        Kitchen kitchen = Kitchen.GetInstance;
-        ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
+        Point position;
     }
 }
