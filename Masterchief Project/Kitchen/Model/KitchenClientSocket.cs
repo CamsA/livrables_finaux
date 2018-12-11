@@ -35,11 +35,8 @@ namespace Kitchen.Model
             {
                 this.sender.Connect(remoteEP);
 
-                Console.WriteLine("Socket connected to {0}",
+                Console.WriteLine("Socket connected to {0}\n",
                     this.sender.RemoteEndPoint.ToString());
-
-                this.SendMessage("Hello World!");
-                this.SendMessage("Hello Again!");
 
             }
             catch (Exception e)

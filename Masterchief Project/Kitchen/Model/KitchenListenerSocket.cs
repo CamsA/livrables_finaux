@@ -17,10 +17,10 @@ namespace Kitchen.Model
         int remotePort = 11011;
 
         // Incoming data from the client
-        public string data = null;
+        private string data = null;
 
         // Buffer for incoming data
-        byte[] bytes = new Byte[2048];
+        private byte[] bytes = new Byte[2048];
 
 
         // Constructor of the server socket class
@@ -59,6 +59,7 @@ namespace Kitchen.Model
             }
         }
 
+        // Launch the loop of listening to incoming data
         public void StartListening()
         {
             while (true)
@@ -73,15 +74,18 @@ namespace Kitchen.Model
                     }
                 }
 
-                // Show the data on the console.  
-                Console.WriteLine("Text received : {0}", data);
-
+                // Send the confirmation to the other socket that the message has been received
                 this.SendMessage("Message Received : " + data);
 
+                // Handle the message
+                this.HandleMessage(data);
+
+                // Reset the string holding the message
                 data = null;
             }
         }
 
+        // Method used to send a message to the connected Client
         public void SendMessage(String message)
         {
             try
@@ -101,16 +105,21 @@ namespace Kitchen.Model
         // Read the message and start differents actions according to the content
         private void HandleMessage(String msg)
         {
+            // Get access to the ExchangeDesk instance
             ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
 
             // Show the data on the console
             Console.WriteLine("\nMessage received : " + msg);
 
+            // Split the message to get the infos
             string[] splittedMsg = msg.Split(':', '<', '>');
 
+            // Convert the number from string to integer
             int number;
             int.TryParse(splittedMsg[1], out number);
 
+            // Choose the action to lead according to the code read in the message
+            // "DN" == "Dirty Napkins", "DTC" == "Dirty Table Clothes", "DC" == "Dirty Crockery", "NO" == "New Order"
             switch (splittedMsg[0])
             {
                 case "DN":
@@ -135,6 +144,7 @@ namespace Kitchen.Model
             }
         }
 
+        // Close the socket
         public void CloseSocket()
         {
             this.handler.Shutdown(SocketShutdown.Both);

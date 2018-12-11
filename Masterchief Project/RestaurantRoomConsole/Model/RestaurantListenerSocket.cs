@@ -59,6 +59,7 @@ namespace RestaurantRoomConsole.Model
             }
         }
 
+        // Launch the loop of listening to incoming data
         public void StartListening()
         {
             while (true)
@@ -79,10 +80,12 @@ namespace RestaurantRoomConsole.Model
                 // Handle the message
                 this.HandleMessage(data);
 
+                // Reset the string holding the message
                 data = null;
             }
         }
 
+        // Method used to send a message to the connected Client
         public void SendMessage(String message)
         {
             try
@@ -99,25 +102,24 @@ namespace RestaurantRoomConsole.Model
             }
         }
 
-        public void CloseSocket()
-        {
-            this.handler.Shutdown(SocketShutdown.Both);
-            this.handler.Close();
-        }
-
         // Read the message and start differents actions according to the content
         private void HandleMessage(String msg)
         {
+            // Get access to the ExchangeDesk instance
             ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
 
             // Show the data on the console
             Console.WriteLine("\nMessage received : " + msg);
 
-            string[] splittedMsg= msg.Split(':', '<', '>');
+            // Split the message to get the infos
+            string[] splittedMsg = msg.Split(':', '<', '>');
 
+            // Convert the number from string to integer
             int number;
             int.TryParse(splittedMsg[1], out number);
 
+            // Choose the action to lead according to the code read in the message
+            // "CN" == "Clean Napkins", "CTC" == "Clean Table Clothes", "RM" == "Ready Meal"
             switch (splittedMsg[0])
             {
                 case "CN":
@@ -136,6 +138,13 @@ namespace RestaurantRoomConsole.Model
                     Console.Write("\nCannot Recognize Message");
                     break;
             }
+        }
+
+        // Close the socket
+        public void CloseSocket()
+        {
+            this.handler.Shutdown(SocketShutdown.Both);
+            this.handler.Close();
         }
     }
 }
