@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controler\Controller.cs.cs" />
+    <Compile Include="Controler\Controller.cs" />
     <Compile Include="Model\Clients.cs" />
     <Compile Include="Model\GroupClient.cs" />
     <Compile Include="Model\Line.cs" />
