@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Chef.cs" />
+    <Compile Include="Model\DBConnect.cs" />
     <Compile Include="Model\Cooks.cs" />
     <Compile Include="Model\DishWasherMachine.cs" />
     <Compile Include="Model\DishWasherEmployee.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Model\Meal.cs" />
     <Compile Include="Model\Model.cs" />
     <Compile Include="Model\MovableEntities.cs" />
+    <Compile Include="Model\SQLmethode.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\WashingMachine.cs" />
