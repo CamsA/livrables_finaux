@@ -41,13 +41,14 @@ namespace Kitchen
             return Rq_sql = "SELECT IDIngredient, QuantiteIngredient FROM Compose WHERE IDRecette =" + idRecipe;
         }
 
+        /*
         public string SelectIngredientsAndQuantitiesByRecipes(int precipe)
         {
             idRecipe = precipe;
 
             return Rq_sql = "SELECT IDIngredient, QuantiteIngredient FROM Compose WHERE IDRecette =" + idRecipe;
         }
-
+        */
 
 
         //public string delete(int pid)

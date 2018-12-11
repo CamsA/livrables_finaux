@@ -38,19 +38,25 @@ namespace RestaurantRoomConsole.Model
             }
         }
 
-        public void AddPreparedMeal(int idOrder)
+        public void AddPreparedMeal(int idMeal)
         {
-            this.preparedMeals.Add(idOrder);
+            this.preparedMeals.Add(idMeal);
         }
 
-        public void AddCleanTableClothes(int number)
+        public void AddCleanObject(string type, int number)
         {
-            this.CleanTableClothes += number;
-        }
-
-        public void AddCleanNapkins(int number)
-        {
-            this.CleanNapkins += number;
+            switch (type)
+            {
+                case "TableClothes":
+                    this.CleanTableClothes += number;
+                    break;
+                case "Napkins":
+                    this.CleanNapkins += number;
+                    break;
+                default:
+                    Console.Write("Error on the restaurant exchange desk\n");
+                    break;
+            }
         }
     }
 }

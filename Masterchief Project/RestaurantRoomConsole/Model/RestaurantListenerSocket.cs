@@ -108,34 +108,28 @@ namespace RestaurantRoomConsole.Model
         // Read the message and start differents actions according to the content
         private void HandleMessage(String msg)
         {
-            ExchangeDesk.GetInstance
+            ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
 
             // Show the data on the console
-            Console.WriteLine("Message received : " + msg);
+            Console.WriteLine("\nMessage received : " + msg);
 
-            string[] processedData = msg.Split(':', '>', '<');
+            string[] splittedMsg= msg.Split(':', '<', '>');
 
-            switch (StrOK[0])
+            switch (splittedMsg[0])
             {
                 case "CN":
-                    Console.Write("Serviette(s) propre(s)");
-                    Console.Write(" : " + StrOK[1]);
+                    Console.Write("\nServiette(s) propre(s) : " + splittedMsg[1]);
                     break;
                 case "CTC":
-                    Console.Write("Nappe(s) de table propre(s)");
-                    Console.Write(" : " + StrOK[1]);
+                    Console.Write("\nNappe(s) de table propre(s) : " + splittedMsg[1]);
                     break;
                 case "RM":
-                    Console.Write("C'est un repas");
-                    Console.Write("Le repas a l'ID : " + StrOK[1]);
+                    Console.Write("\nC'est un plat qui a l'ID : " + splittedMsg[1]);
                     break;
                 default:
-                    Console.Write("Cannot Recognize");
+                    Console.Write("\nCannot Recognize Message");
                     break;
             }
-
-
-
         }
     }
 }

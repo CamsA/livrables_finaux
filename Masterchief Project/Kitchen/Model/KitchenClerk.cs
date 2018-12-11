@@ -19,9 +19,9 @@ namespace Kitchen.Model
             //todo requete sql avec camille
         }
 
-        public void BringMeals(Meal meal)
+        public void BringMeals(int idMeal)
         {
-            ExchangeDesk.GetInstance.WaitingOrders.Add(meal);
+            ExchangeDesk.GetInstance.AddWaitingOrder(idMeal);
         }
     }
 }

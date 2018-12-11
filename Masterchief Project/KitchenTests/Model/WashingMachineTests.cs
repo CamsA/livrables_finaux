@@ -19,12 +19,12 @@ namespace KitchenTests.Model
         {
             WashingMachine washingMachine = new WashingMachine
             {
-                DirtyNapkinStacks = 10,
-                DirtyTableClothStacks = 10
+                DirtyNapkinsStacks = 10,
+                DirtyTableClothesStacks = 10
             };
             washingMachine.Wash(10, 10);
-            Assert.AreEqual(0, washingMachine.DirtyNapkinStacks);
-            Assert.AreEqual(0, washingMachine.DirtyTableClothStacks);
+            Assert.AreEqual(0, washingMachine.DirtyNapkinsStacks);
+            Assert.AreEqual(0, washingMachine.DirtyTableClothesStacks);
         }
     }
 }

@@ -40,25 +40,28 @@ namespace Kitchen.Model
             }
         }
 
-        public void AddWaitingOrder(int idOrder)
+        public void AddWaitingOrder(int idMeal)
         {
-            this.WaitingOrders.Add(idOrder);
+            this.WaitingOrders.Add(idMeal);
         }
 
-        public void AddDirtyCrockery(int number)
+        public void AddDirtyObject(string type, int number)
         {
-            this.WaitingDirtyCrockery += number;
+            switch (type)
+            {
+                case "Crockery":
+                    this.WaitingDirtyCrockery += number;
+                    break;
+                case "Napkins":
+                    this.WaitingDirtyNapkins += number;
+                    break;
+                case "TableClothes":
+                    this.WaitingDirtyTableClothes += number;
+                    break;
+                default:
+                    Console.Write("Error on the kitchen exchange desk\n");
+                    break;
+            }
         }
-
-        public void AddDirtyNapkins(int number)
-        {
-            this.WaitingDirtyNapkins += number;
-        }
-
-        public void AddDirtyTableClothes(int number)
-        {
-            this.WaitingDirtyTableClothes += number;
-        }
-
     }
 }

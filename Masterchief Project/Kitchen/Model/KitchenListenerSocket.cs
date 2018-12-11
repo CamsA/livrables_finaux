@@ -98,6 +98,36 @@ namespace Kitchen.Model
             }
         }
 
+        // Read the message and start differents actions according to the content
+        private void HandleMessage(String msg)
+        {
+            ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
+
+            // Show the data on the console
+            Console.WriteLine("\nMessage received : " + msg);
+
+            string[] splittedMsg = msg.Split(':', '<', '>');
+
+            switch (splittedMsg[0])
+            {
+                case "DN":
+                    Console.Write("\nServiette(s) sale(s) : " + splittedMsg[1]);
+                    break;
+                case "DTC":
+                    Console.Write("\nNappe(s) de table sale(s) : " + splittedMsg[1]);
+                    break;
+                case "DC":
+                    Console.Write("\nPlat(s) sale(s) : " + splittedMsg[1]);
+                    break;
+                case "NO":
+                    Console.Write("\nUne commande a été passée pour le plat à l'ID " + splittedMsg[1]);
+                    break;
+                default:
+                    Console.Write("\nCannot Recognize Message");
+                    break;
+            }
+        }
+
         public void CloseSocket()
         {
             this.handler.Shutdown(SocketShutdown.Both);
