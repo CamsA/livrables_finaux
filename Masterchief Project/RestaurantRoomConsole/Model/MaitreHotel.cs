@@ -24,9 +24,12 @@ namespace RestaurantRoomConsole.Model
 
                     if (grp.isWaitingATable)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine();
                         Console.WriteLine("                                        Un nouveau group pour le maitre d'hotel !");
+
                         Console.WriteLine();
+                        Console.ResetColor();
                         grp.isWaitingATable = false;
                         foreach (Tables table in Restaurant.listTables)
                         {

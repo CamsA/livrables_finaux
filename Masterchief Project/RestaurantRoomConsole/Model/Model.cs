@@ -14,13 +14,12 @@ namespace RestaurantRoomConsole.Model
     {
 
         //default constructor
+        
+        private int loopCount;
 
-        public int cntClient;
-        private int count;
         public Modell()
         {
-            this.count = 0;
-            this.cntClient = 0;
+            this.loopCount = 0;
             MaitreHotel mh = new MaitreHotel();
             Restaurant restaurant = new Restaurant();
 
@@ -61,12 +60,12 @@ namespace RestaurantRoomConsole.Model
         {
             while (true)
             {
-                this.count += 1;
+                this.loopCount += 1;
                 Random rnd = new Random();
                 int nbrClients = rnd.Next(2, 6);
 
 
-                GroupClient group = new GroupClient("group" + this.count, nbrClients);
+                GroupClient group = new GroupClient("group" + this.loopCount, nbrClients);
                 Restaurant.listGroupClient.Add(group);
 
                 // Random entre 10 et 20 sec pour un nouveau groupe de client

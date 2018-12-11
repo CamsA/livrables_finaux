@@ -16,7 +16,6 @@ namespace RestaurantRoomConsole.View
         //Constructeur
         public Display()
         {
-            this.InitializeValues();
         }
 
         public double ClientsPerMinutesMinSG
@@ -33,15 +32,7 @@ namespace RestaurantRoomConsole.View
 
         //Méthode privée pour initialiser les paramètres
         //Appelée par le constructeur
-
-        private void InitializeValues()
-        {
-
-            Console.WriteLine("Nombre de nouveaux clients par minutes (min) :");
-            ClientsPerMinutesMin = double.Parse(Console.ReadLine());
-            Console.WriteLine("Nombre de nouveaux clients par minutes (max) :");
-            ClientsPerMinutesMax = double.Parse(Console.ReadLine());
-        }
+        
 
 
 
