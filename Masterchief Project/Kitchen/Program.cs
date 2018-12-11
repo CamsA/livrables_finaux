@@ -21,8 +21,9 @@ namespace Kitchen
             //Application.Run(new kitchenForm());
 
             KitchenListenerSocket kls = new KitchenListenerSocket();
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
             KitchenClientSocket kss = new KitchenClientSocket();
+            Thread.Sleep(1000);
             kss.SendMessage("Test.<EOM>");
             kls.CloseSocket();
             kss.CloseSocket();
