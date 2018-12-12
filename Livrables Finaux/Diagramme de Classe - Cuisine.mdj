@@ -8485,30 +8485,13 @@
 											"height": 13,
 											"text": "+SendPreparedMeals(idOrder): void",
 											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAFnnuwABKh7RKc=",
-											"_parent": {
-												"$ref": "AAAAAAFng5ni4MJyHlA="
-											},
-											"model": {
-												"$ref": "AAAAAAFnnuv/U6hUOS4="
-											},
-											"font": "Arial;13;0",
-											"left": 1157,
-											"top": 758,
-											"width": 295.8642578125,
-											"height": 13,
-											"text": "+Operation1()",
-											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 1152,
 									"top": 693,
 									"width": 305.8642578125,
-									"height": 83
+									"height": 68
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -12714,7 +12697,8 @@
 											"_parent": {
 												"$ref": "AAAAAAFnnaiFFk4Qe9E="
 											},
-											"name": "String type"
+											"name": "String type",
+											"type": ""
 										},
 										{
 											"_type": "UMLParameter",
@@ -12722,7 +12706,8 @@
 											"_parent": {
 												"$ref": "AAAAAAFnnaiFFk4Qe9E="
 											},
-											"name": "int number"
+											"name": "int number",
+											"type": ""
 										}
 									]
 								},
@@ -12749,7 +12734,8 @@
 											"_parent": {
 												"$ref": "AAAAAAFnnai1TFWByYs="
 											},
-											"name": "int idMeal"
+											"name": "int idMeal",
+											"type": ""
 										}
 									]
 								},
@@ -12817,14 +12803,6 @@
 											"direction": "return"
 										}
 									]
-								},
-								{
-									"_type": "UMLOperation",
-									"_id": "AAAAAAFnnuv/U6hUOS4=",
-									"_parent": {
-										"$ref": "AAAAAAFng5ni3sJpEyU="
-									},
-									"name": "Operation1"
 								}
 							]
 						},

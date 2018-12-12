@@ -8,48 +8,48 @@ using System.Net.Sockets;
 
 namespace RestaurantRoomConsole.Model
 {
-    class RestaurantListenerSocket
+    static class RestaurantListenerSocket
     {
-        private Socket handler;
-        private Socket listener;
+        public static Socket handler;
+        public static Socket listener;
 
         // Port used by the connexion
-        private int remotePort = 11010;
+        private static int remotePort = 11010;
 
         // Incoming data from the client
-        public string data = null;
+        private static string data = null;
 
         // Buffer for incoming data
-        byte[] bytes = new Byte[2048];
+        private static byte[] bytes = new Byte[2048];
 
 
         // Constructor of the server socket class
-        public RestaurantListenerSocket()
+        public static void Initialize()
         {
             // Set the initializing parameters of the socket
             IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
             IPAddress ipAddress = ipHostInfo.AddressList[0];
-            IPEndPoint localEndPoint = new IPEndPoint(ipAddress, this.remotePort);
+            IPEndPoint localEndPoint = new IPEndPoint(ipAddress, remotePort);
 
             // Create a TCP/IP socket.  
-            this.listener = new Socket(ipAddress.AddressFamily,
+            listener = new Socket(ipAddress.AddressFamily,
                 SocketType.Stream, ProtocolType.Tcp);
 
             try
             {
                 // Connect to the EndPoint
-                this.listener.Bind(localEndPoint);
+                listener.Bind(localEndPoint);
 
                 // Start listening for connections
-                this.listener.Listen(10);
+                listener.Listen(10);
 
                 Console.WriteLine("Waiting for a connection...");
 
                 // Program is suspended while waiting for an incoming connection
-                this.handler = listener.Accept();
-                this.data = null;
+                handler = listener.Accept();
+                data = null;
 
-                this.StartListening();
+                StartListening();
 
             }
             catch (Exception e)
@@ -60,13 +60,13 @@ namespace RestaurantRoomConsole.Model
         }
 
         // Launch the loop of listening to incoming data
-        public void StartListening()
+        public static void StartListening()
         {
             while (true)
             {
                 while (true)
                 {
-                    int bytesRec = this.handler.Receive(bytes);
+                    int bytesRec = handler.Receive(bytes);
                     data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
                     if (data.IndexOf("<EOM>") > -1)
                     {
@@ -75,10 +75,10 @@ namespace RestaurantRoomConsole.Model
                 }
 
                 // Send the confirmation to the other socket that the message has been received
-                this.SendMessage("Message Received : " + data);
+                SendMessage("Message Received : " + data);
 
                 // Handle the message
-                this.HandleMessage(data);
+                HandleMessage(data);
 
                 // Reset the string holding the message
                 data = null;
@@ -86,7 +86,7 @@ namespace RestaurantRoomConsole.Model
         }
 
         // Method used to send a message to the connected Client
-        public void SendMessage(String message)
+        public static void SendMessage(String message)
         {
             try
             {
@@ -94,7 +94,7 @@ namespace RestaurantRoomConsole.Model
                 byte[] msg = Encoding.ASCII.GetBytes(message + "<EOM>");
 
                 // Send the data
-                int bytesSent = this.handler.Send(msg);
+                int bytesSent = handler.Send(msg);
             }
             catch (Exception e)
             {
@@ -103,7 +103,7 @@ namespace RestaurantRoomConsole.Model
         }
 
         // Read the message and start differents actions according to the content
-        private void HandleMessage(String msg)
+        private static void HandleMessage(String msg)
         {
             // Get access to the ExchangeDesk instance
             ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
@@ -141,10 +141,10 @@ namespace RestaurantRoomConsole.Model
         }
 
         // Close the socket
-        public void CloseSocket()
+        public static void CloseSocket()
         {
-            this.handler.Shutdown(SocketShutdown.Both);
-            this.handler.Close();
+            handler.Shutdown(SocketShutdown.Both);
+            handler.Close();
         }
     }
 }
