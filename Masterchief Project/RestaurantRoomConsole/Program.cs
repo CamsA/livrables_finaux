@@ -13,13 +13,13 @@ namespace RestaurantRoomConsole
     {
         static void Main(string[] args)
         {
-            /*
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Options());
-            */
+            
 
-            TestsSocketsKitchenToRestaurant();
+           /* TestsSocketsKitchenToRestaurant();
 
             Thread.Sleep(3000);
 
@@ -28,7 +28,7 @@ namespace RestaurantRoomConsole
             Thread.Sleep(20000);
 
             RestaurantListenerSocket.CloseSocket();
-            RestaurantClientSocket.CloseSocket();
+            RestaurantClientSocket.CloseSocket();*/
         }
 
         public static void TestsSocketsKitchenToRestaurant()
