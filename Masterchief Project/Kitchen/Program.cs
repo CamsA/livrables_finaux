@@ -38,15 +38,29 @@ namespace Kitchen
 
         public static void TestsSocketsKitchenToRestaurant()
         {
+            ExchangeDesk eD = ExchangeDesk.GetInstance;
+
             KitchenClientSocket.Initialize();
+
             Thread.Sleep(3000);
-            KitchenClientSocket.SendMessage("CN:2");
+            eD.SendCleanObject("Napkins", 12);
             Thread.Sleep(1000);
-            KitchenClientSocket.SendMessage("CTC:4");
+            eD.SendCleanObject("TableClothes", 5);
+            Thread.Sleep(1000);
+            eD.SendPreparedMeal(12);
+            Thread.Sleep(1000);
+            eD.SendCleanObject("gloubiboulga", 5);
             Thread.Sleep(3000);
-            KitchenClientSocket.SendMessage("RM:12");
-            Thread.Sleep(3000);
-            KitchenClientSocket.SendMessage("gloubiboulga");
+
+            Console.WriteLine("Serviettes sales : " + eD.WaitingDirtyNapkins);
+            Console.WriteLine("Nappes sales : " + eD.WaitingDirtyTableClothes);
+            Console.WriteLine("Vaiselle sale : " + eD.WaitingDirtyCrockery);
+            Console.WriteLine("Commande(s) en attente : " + eD.WaitingOrders.First());
+
+            for(int i=0; i < 100; i++)
+            {
+                eD.SendCleanObject("TableClothes", 5);
+            }
 
             Console.Read();
         }

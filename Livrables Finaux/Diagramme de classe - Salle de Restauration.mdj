@@ -5037,7 +5037,7 @@
 											"top": 1218,
 											"width": 296.61328125,
 											"height": 13,
-											"text": "+AddCleanObjects(string type, int number): void",
+											"text": "+AddCleanObjects(string type, int quantity): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5054,7 +5054,7 @@
 											"top": 1233,
 											"width": 296.61328125,
 											"height": 13,
-											"text": "+SendDirtyObject(string type, int number): void",
+											"text": "+SendDirtyObject(string type, int quantity): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -12202,8 +12202,7 @@
 											"_parent": {
 												"$ref": "AAAAAAFnnusdDjMbswk="
 											},
-											"name": "string type",
-											"type": ""
+											"name": "string type"
 										},
 										{
 											"_type": "UMLParameter",
@@ -12211,8 +12210,7 @@
 											"_parent": {
 												"$ref": "AAAAAAFnnusdDjMbswk="
 											},
-											"name": "int number",
-											"type": ""
+											"name": "int quantity"
 										},
 										{
 											"_type": "UMLParameter",
@@ -12256,8 +12254,7 @@
 											"_parent": {
 												"$ref": "AAAAAAFnnbX+Y6pi//M="
 											},
-											"name": "int number",
-											"type": ""
+											"name": "int quantity"
 										}
 									]
 								},

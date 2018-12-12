@@ -65,9 +65,32 @@ namespace Kitchen.Model
                     this.WaitingDirtyTableClothes += quantity;
                     break;
                 default:
-                    Console.Write("Error on the kitchen exchange desk\n");
+                    Console.WriteLine("Error : Cannot send dirty object from the kitchen");
                     break;
             }
+        }
+
+        // Send clean equipment to the restaurant room
+        public void SendCleanObject(string type, int quantity)
+        {
+            switch (type)
+            {
+                case "Napkins":
+                        KitchenClientSocket.SendMessage("CN:" + quantity);
+                    break;
+                case "TableClothes":
+                        KitchenClientSocket.SendMessage("CTC:" + quantity);
+                    break;
+                default :
+                    Console.WriteLine("Error : Object to send from the kitchen not recognized : " + type);
+                    break;
+            }
+        }
+
+        // Send a prepared meal to the restaurant room
+        public void SendPreparedMeal(int idMeal)
+        {
+            KitchenClientSocket.SendMessage("RM:" + idMeal);
         }
     }
 }

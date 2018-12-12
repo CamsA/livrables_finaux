@@ -40,20 +40,47 @@ namespace RestaurantRoomConsole
 
         public static void TestsSocketsRestaurantToKitchen()
         {
+            ExchangeDesk eD = ExchangeDesk.GetInstance;
+
             RestaurantClientSocket.Initialize();
 
             Thread.Sleep(3000);
-            RestaurantClientSocket.SendMessage("DN:2");
+            eD.SendDirtyObject("Napkins", 6);
             Thread.Sleep(1000);
-            RestaurantClientSocket.SendMessage("DTC:4");
+            eD.SendDirtyObject("TableClothes", 2);
             Thread.Sleep(1000);
-            RestaurantClientSocket.SendMessage("NO:12");
+            eD.SendDirtyObject("Crockery", 22);
             Thread.Sleep(1000);
-            RestaurantClientSocket.SendMessage("DC:5");
-            Thread.Sleep(1000);
-            RestaurantClientSocket.SendMessage("gloubiboulga");
+            eD.SendOrder(14);
+            Thread.Sleep(3000);
+
+            Console.WriteLine("Serviettes propres :" + eD.CleanNapkins);
+            Console.WriteLine("Nappes propres :" + eD.CleanTableClothes);
+            Console.WriteLine("Plat(s) prêt(s) : " + eD.PreparedMeals.First());
+
+
+            Thread th1 = new Thread(SendOverflow);
+            Thread th2 = new Thread(SendOverflow);
+            Thread th3 = new Thread(SendOverflow);
+            Thread th4 = new Thread(SendOverflow);
+
+            th1.Start();
+            th2.Start();
+            th3.Start();
+            th4.Start();
+
+            Thread.Sleep(20000);
 
             Console.Read();
+        }
+
+        public static void SendOverflow()
+        {
+            ExchangeDesk eD = ExchangeDesk.GetInstance;
+            for (int i = 0; i < 500; i++)
+            {
+                eD.SendDirtyObject("TableClothes", 5);
+            }
         }
     }
 }

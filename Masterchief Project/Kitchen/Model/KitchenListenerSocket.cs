@@ -123,23 +123,23 @@ namespace Kitchen.Model
             switch (splittedMsg[0])
             {
                 case "DN":
-                    Console.Write("\nServiette(s) sale(s) : " + number);
+                    Console.WriteLine("Serviette(s) sale(s) : " + number);
                     exchangeDesk.AddDirtyObject("Napkins", number);
                     break;
                 case "DTC":
-                    Console.Write("\nNappe(s) de table sale(s) : " + number);
+                    Console.WriteLine("Nappe(s) de table sale(s) : " + number);
                     exchangeDesk.AddDirtyObject("TableClothes", number);
                     break;
                 case "DC":
-                    Console.Write("\nPlat(s) sale(s) : " + number);
+                    Console.WriteLine("Plat(s) sale(s) : " + number);
                     exchangeDesk.AddDirtyObject("Crockery", number);
                     break;
                 case "NO":
-                    Console.Write("\nUne commande a été passée pour le plat à l'ID " + number);
+                    Console.WriteLine("Une commande a été passée pour le plat à l'ID " + number);
                     exchangeDesk.AddWaitingOrder(number);
                     break;
                 default:
-                    Console.Write("\nCannot Recognize Message");
+                    Console.WriteLine("Cannot Recognize Message");
                     break;
             }
         }

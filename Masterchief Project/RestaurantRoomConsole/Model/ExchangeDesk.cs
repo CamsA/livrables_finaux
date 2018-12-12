@@ -60,15 +60,44 @@ namespace RestaurantRoomConsole.Model
                     this.CleanNapkins += quantity;
                     break;
                 default:
-                    Console.Write("Error on the restaurant exchange desk\n");
+                    Console.WriteLine("Error : Cannot add clean object to the stack in restaurant room");
                     break;
             }
         }
 
-
+        // Send dirty equipment to the kitchen
         public void SendDirtyObject(string type, int quantity)
         {
+            switch(type)
+            {
+                case "Napkins":
+                    RestaurantClientSocket.SendMessage("DN:" + quantity);
+                    break;
+                case "TableClothes":
+                    RestaurantClientSocket.SendMessage("DTC:" + quantity);
+                    break;
+                case "Crockery":
+                    RestaurantClientSocket.SendMessage("DC:" + quantity);
+                    break;
+                default:
+                    Console.WriteLine("Error : Cannot recognize object sent from the restaurant room : " + type);
+                    break;
+            }
+        }
 
+        // Send an order to the kitchen
+        public void SendOrder(int idMeal)
+        {
+            RestaurantClientSocket.SendMessage("NO:" + idMeal);
+        }
+
+        // Send a list of orders to the kitchen
+        public void SendOrders(List<int> listOrders)
+        {
+            foreach(int idMeal in listOrders)
+            {
+                this.SendOrder(idMeal);
+            }
         }
     }
 }
