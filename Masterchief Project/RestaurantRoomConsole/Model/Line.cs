@@ -12,10 +12,9 @@ namespace RestaurantRoomConsole.Model
 
         public Line()
         {
-            listTables2.Add(new Tables(5));
-            listTables2.Add(new Tables(10));
-
-
+            /*listTables2.Add(new Tables(5, "Table1"));
+            listTables2.Add(new Tables(10, "Table2"));*/
+            
         }
     }
 }

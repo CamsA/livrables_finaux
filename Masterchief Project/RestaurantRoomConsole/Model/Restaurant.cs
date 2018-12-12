@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestaurantRoomConsole.Controler;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,6 @@ namespace RestaurantRoomConsole.Model
 {
     public class Restaurant
     {
-        public static int cntClient = 0;
         public static List<Tables> listTables = new List<Tables>();
         public static List<GroupClient> listGroupClient = new List<GroupClient>();
 
@@ -16,12 +16,30 @@ namespace RestaurantRoomConsole.Model
 
         public Restaurant()
         {
-            listSquare.Add(new Square());
-            listSquare.Add(new Square());
 
-            listTables.Add(new Tables(5));
-            listTables.Add(new Tables(6));
-            listTables.Add(new Tables(3));
+            // On créer 5 tables(NOmbreDePlace, NomDeLaTable, RangN°, LineN°)
+            listTables.Add(new Tables(5, "Table1", 1, 1));
+            listTables.Add(new Tables(5, "Table2", 1, 1));
+            listTables.Add(new Tables(5, "Table3", 2, 3));
+            listTables.Add(new Tables(6, "Table4", 2, 4));
+
+            // Initialisation des groupes ayant reservés
+
+            foreach (List<String> list in Parameters.listGroupClientReserved)
+            {
+                // On créer un noueau group, avec la valeur hasReserved = true
+                GroupClient group = new GroupClient(list[0], int.Parse(list[1]),true);
+                foreach(Tables table in listTables)
+                {
+                    if(!table.isOccuped && !table.isReserved)
+                    {
+                        table.isReserved = true;
+                        table.groupAssigned = list[0];
+                        break;
+                    }
+                }
+
+            }
         }
     }
 

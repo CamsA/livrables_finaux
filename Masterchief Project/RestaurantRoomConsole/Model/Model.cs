@@ -6,71 +6,72 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using RestaurantRoomConsole.Controler;
 using RestaurantRoomConsole.Model;
-
+using RestaurantRoomConsole.View;
 namespace RestaurantRoomConsole.Model
 {
     public class Modell
     {
 
         //default constructor
-        
-        private int loopCount;
+        public static int loopCount = 0;
 
         public Modell()
         {
-            this.loopCount = 0;
+
             MaitreHotel mh = new MaitreHotel();
             Restaurant restaurant = new Restaurant();
 
-            Console.WriteLine("Nombre de tables : " + Restaurant.listTables.Count);
+            // Création d'un serveur, assigné à la ligne 1
+
+            Waiter waiter = new Waiter("Serveur1", 1);
+            Waiter waiter2 = new Waiter("Serveur2", 2);
+            Waiter waiter3 = new Waiter("Serveur3", 3);
+            Waiter waiter4 = new Waiter("Serveur4", 4);
 
 
-
-
-            // Loop pour générer les clients
-            Thread thgcl = new Thread(FirstLoop);
-            thgcl.Start();
+            ChefDeRang CDR = new ChefDeRang("ChefDeRang1", 1);
+            
+            
             Thread lpgenClient = new Thread(LoopGenClient);
             lpgenClient.Start();
         }
+
+
 
         public void FirstLoop()
         {
 
             while (true)
             {
-
-
-
-
-                foreach (Tables table in Restaurant.listTables)
-                {
-                    Console.Write("table: " + table.isOccuped + " | ");
-                }
-                Console.WriteLine();
-                Thread.Sleep(2000);
+                Display.DisplayTables();
+                Thread.Sleep(1000);
 
 
 
             }
         }
 
+
+
+        // Générer les clients aléatoirement
         public void LoopGenClient()
         {
             while (true)
             {
-                this.loopCount += 1;
+                loopCount += 1;
                 Random rnd = new Random();
                 int nbrClients = rnd.Next(2, 6);
 
 
-                GroupClient group = new GroupClient("group" + this.loopCount, nbrClients);
-                Restaurant.listGroupClient.Add(group);
-
-                // Random entre 10 et 20 sec pour un nouveau groupe de client
-                Thread.Sleep(rnd.Next(3000, 6000));
+                GroupClient group = new GroupClient("group" + loopCount, nbrClients, false);
+                
+                Display.DisplayMsg("*** Nouveau groupe de " + nbrClients + " client ***", false, true, ConsoleColor.Green);
+                
+                Thread.Sleep(rnd.Next(Parameters.timeSpawnMin, Parameters.timeSpawnMax));
             }
+           
         }
     }
 }

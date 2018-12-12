@@ -8,18 +8,33 @@ namespace RestaurantRoomConsole.Model
 {
     public class Tables
     {
-        public bool isOccuped;
-        public int size;
-        public GroupClient groupAssigned;
+        public int rang;
+        public int line;
 
-        public Tables(int _size)
+        public bool isOccuped;
+        public bool isReserved;
+        public String name;
+        public int size;
+        public String groupAssigned;
+
+        public Tables(int _size, String _name, int _rang, int _line)
         {
+            // Initialisation des rangs et des lignes ou les tables seront placées
+            this.rang = _rang;
+            this.line = _line;
+
+            // Nom
+            this.name = _name;
+
+            // Si la table est occupé ou réservée
+            this.isReserved = false;
             this.isOccuped = false;
+
+            // Taille de la table
             this.size = _size;
-            //this.groupAssigned = _groupAssigned;
 
         }
-        public void assign(GroupClient _groupAssigned)
+        public void assign(String _groupAssigned)
         {
             this.groupAssigned = _groupAssigned;
         }

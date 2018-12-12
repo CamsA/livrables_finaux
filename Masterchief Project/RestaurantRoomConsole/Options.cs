@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestaurantRoomConsole.Controler;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RestaurantRoomConsole.Controler;
+using RestaurantRoomConsole.Model;
+using RestaurantRoomConsole.View;
+
 
 namespace RestaurantRoomConsole
 {
@@ -24,6 +29,27 @@ namespace RestaurantRoomConsole
         {
             button2.Enabled = true;
             button1.Enabled = false;
+
+            // Remplissage des temps dans la classe statique Parameters
+            Parameters.timeChooseMenu = Convert.ToInt32(UDTimeChooseMenu.Value) * 1000;
+            Parameters.timeEatStarter= Convert.ToInt32(UDTimeChooseMenu.Value) * 1000;
+            Parameters.timeEatMainCourse = Convert.ToInt32(UDTimeChooseMenu.Value) * 1000;
+            Parameters.timeEatDessert = Convert.ToInt32(UDTimeChooseMenu.Value) * 1000;
+
+            // Temps de spawn
+            Parameters.timeSpawnMin = Convert.ToInt32(UDTimeSpawnMin.Value) * 1000;
+            Parameters.timeSpawnMax = Convert.ToInt32(UDTimeSpawnMax.Value) * 1000;
+
+            // Remplissage de la liste des groupes ayant reservés (dans la classe Parametres)
+            foreach (ListViewItem itm in listView1.Items)
+            {
+                Parameters.listGroupClientReserved.Add(new List<string>() { itm.SubItems[0].Text,
+                                                                            itm.SubItems[1].Text,
+                                                                            itm.SubItems[2].Text });
+               Modell.loopCount += 1;
+            }
+            
+            // Instanciation du controller
             Conntroller controler = new Conntroller();
         }
         
@@ -48,17 +74,18 @@ namespace RestaurantRoomConsole
         {
             if (numericUpDown1.Text == "0")
             {
-                MessageBox.Show("Il ne peut pas y avoir 0 clients dans un seul groupe !");
+                MessageBox.Show("Il ne peut pas y avoir 0 clients dans un groupe !");
                 numericUpDown1.BackColor = Color.FromArgb(255, 128, 128);
             }
             else if (numericUpDown2.Text == "0")
             {
-                MessageBox.Show("Il nepeuvent pas apparaitre 0 secondes avant le début du programme !");
+                MessageBox.Show("Ils ne peuvent pas apparaitre 0 secondes avant le début du programme !");
                 numericUpDown2.BackColor = Color.FromArgb(255, 128, 128);
             }
             else
             {
-                listView1.Items.Add(new ListViewItem(new string[] { "Groupe " + count, numericUpDown1.Text, numericUpDown2.Text }));
+
+                listView1.Items.Add(new ListViewItem(new string[] { "Group" + count, numericUpDown1.Text, numericUpDown2.Text }));
                 numericUpDown1.BackColor = Color.White;
                 numericUpDown2.BackColor = Color.White;
                 count++;
@@ -74,6 +101,23 @@ namespace RestaurantRoomConsole
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("--------------------------------");
+            foreach (GroupClient group in Restaurant.listGroupClient)
+            {
+                Console.WriteLine("Nom : " + group.name + " A reservé : " + group.hasReserved + "  size : " + group.size + "  Attend une table : " + group.isWaitingATable);
+                
+            }
+            Console.WriteLine("--------------------------------");
+            Display.DisplayTables();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

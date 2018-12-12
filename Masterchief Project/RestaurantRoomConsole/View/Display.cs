@@ -1,37 +1,67 @@
-﻿using System;
+﻿using RestaurantRoomConsole.Model;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace RestaurantRoomConsole.View
 {
     class Display
     {
-
-        // Private variables
-        private double ClientsPerMinutesMin;
-        private double ClientsPerMinutesMax;
+        
 
         //Constructeur
         public Display()
         {
         }
 
-        public double ClientsPerMinutesMinSG
+        public static void DisplayMsg(string msg, bool middle, bool lineBreak, ConsoleColor consoleclr)
         {
-            get { return ClientsPerMinutesMin; }
-            set { ClientsPerMinutesMin = value; }
+            String mdle = "";
+            if(middle) { mdle = "       "; }
+            else { mdle = ""; }
+            
+            if(lineBreak) { Console.WriteLine(); }
+            if(consoleclr != ConsoleColor.White) { Console.ForegroundColor = consoleclr; }
+            
+            Console.Write(DateTime.Now.ToString("mm:ss tt") + " : " + mdle + msg);
+            Console.WriteLine();
+
+            if (lineBreak)  { Console.WriteLine(); }
+
+            Console.ResetColor();
         }
 
-        public double ClientsPerMinutesMaxSG
+        public static void DisplayTables()
         {
-            get { return ClientsPerMinutesMax; }
-            set { ClientsPerMinutesMax = value; }
+            Console.WriteLine();
+            foreach (Tables table in Restaurant.listTables)
+            {
+                String occuped = "";
+                String reserved = "";
+                if (table.isOccuped) { occuped = "Occupé"; } else { occuped = "libre"; }
+                if (table.isReserved) { reserved = "Réservé"; } else { reserved = "Non réservée"; }
+                
+                Console.Write(DateTime.Now.ToString("mm:ss tt") + " " + table.name + " - ");
+                if (occuped == "Occupé") { Console.ForegroundColor = ConsoleColor.Red; }
+                Console.Write(occuped + " - ");
+                Console.ResetColor();
+                if (reserved == "Réservé") { Console.ForegroundColor = ConsoleColor.Red; }
+                Console.Write(reserved + " - ");
+                Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write(table.groupAssigned + " | ");
+                Console.ResetColor();
+                Console.WriteLine();
+               // Console.Write(table.name + " " + occuped + " " + table.groupAssigned + " " + reserved + " | ");
+            }
+            Console.WriteLine();
+            
         }
-
-        //Méthode privée pour initialiser les paramètres
-        //Appelée par le constructeur
+        
         
 
 

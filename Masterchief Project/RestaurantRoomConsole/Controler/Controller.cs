@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using RestaurantRoomConsole.Model;
 using RestaurantRoomConsole.View;
 
-namespace RestaurantRoomConsole
+namespace RestaurantRoomConsole.Controler
 {
     public class Conntroller
     {
@@ -26,23 +26,38 @@ namespace RestaurantRoomConsole
 
         private Modell model;
         private Display display;
-        private double moyClients;
+        private int countSecondes;
 
         public Conntroller()
         {
+            
+            countSecondes = 0;
+
             display = new Display();
             model = new Modell();
-            moyClients = (display.ClientsPerMinutesMaxSG + display.ClientsPerMinutesMinSG) / 2;
-
-            Console.WriteLine("Client par minutes moyenne : {0}", moyClients);
-            Thread lctr = new Thread(loopCtr);
-            lctr.Start();
         }
 
-        public void loopCtr()
+        public void threadLoopController()
         {
-            Console.WriteLine("zf");
-            Thread.Sleep(2000);
+
         }
+
+        /*public void loopCtr()
+        {
+            while (true)
+            {
+                
+                foreach(List<String> list in Parameters.listGroupClientReserved)
+                {
+                    if(countSecondes==int.Parse(list[2]))
+                    {
+                      //  foreach (Restaurant.listGroupClient
+                    }
+                }
+                Thread.Sleep(1000);
+                
+                countSecondes++;
+            }
+        }*/
     }
 }

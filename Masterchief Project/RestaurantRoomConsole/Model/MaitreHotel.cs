@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
+using RestaurantRoomConsole.View;
 namespace RestaurantRoomConsole.Model
 {
     class MaitreHotel
@@ -13,46 +13,43 @@ namespace RestaurantRoomConsole.Model
         {
             Thread thmh = new Thread(loopMh);
             thmh.Start();
+
+
         }
         public void loopMh()
         {
             while (true)
             {
-
-                foreach (GroupClient grp in Restaurant.listGroupClient)
+                if (Restaurant.listTables.Find(item => item.isOccuped == false) != null)
                 {
-
-                    if (grp.isWaitingATable)
+                    if (Restaurant.listTables.Find(item => item.isReserved == false) != null)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine();
-                        Console.WriteLine("                                        Un nouveau group pour le maitre d'hotel !");
-
-                        Console.WriteLine();
-                        Console.ResetColor();
-                        grp.isWaitingATable = false;
-                        foreach (Tables table in Restaurant.listTables)
+                        foreach (GroupClient grp in Restaurant.listGroupClient)
                         {
-                            if (table.isOccuped == false)
+                            if (grp.isWaitingATable)
                             {
-                                table.isOccuped = true;
+                                foreach (Tables table in Restaurant.listTables)
+                                {
+                                    if (!table.isOccuped && !table.isReserved)
+                                    {
+                                        table.isOccuped = true;
+                                        grp.isWaitingATable = false;
+                                        grp.assignedTable = table.name;
+                                        table.groupAssigned = grp.name;
+                                        break;
+                                    }
+                                }
                                 break;
                             }
                         }
-
-                        if (Restaurant.listTables.Find(item => item.isOccuped == false) == null)
-                        {
-                            Console.WriteLine("                   /!\\ Il n'y a plus de table disponibles ! /!\\)");
-                            Console.WriteLine();
-
-                        }
-                        break;
                     }
                 }
+                
 
                 Thread.Sleep(200);
+                }
             }
-        }
 
+        }
     }
-}
+
