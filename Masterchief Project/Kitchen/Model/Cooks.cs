@@ -6,24 +6,21 @@ using System.Threading;
 
 namespace Kitchen.Model
 {
-    class Cooks : MovableEntities
+    public class Cooks : MovableEntities
     {
-        private string recipe;
+        private static ManualResetEvent _doneEvent;
 
-        public string Recipe { get => recipe; set => recipe = value; }
-
-        /*public void Thread()
+        public Cooks(ManualResetEvent doneEvent)
         {
-            ThreadPool.QueueUserWorkItem(test);
+            _doneEvent = doneEvent;
         }
 
-        public void test(object a)
+        public void Cook(Object t)
         {
-        }*/
-
-        public void Cook (string recipe)
-        {
-            //todo avec camile, requete sql
+            UnderTask undertask = (UnderTask)t;
+            Thread.Sleep(undertask.TimeNeeded);
+            undertask.IsDone = true;
+            _doneEvent.Set();
         }
     }
 }

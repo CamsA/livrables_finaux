@@ -85,6 +85,8 @@
     <Compile Include="Model\Model.cs" />
     <Compile Include="Model\MovableEntities.cs" />
     <Compile Include="Model\SQLmethode.cs" />
+    <Compile Include="Model\Tasks.cs" />
+    <Compile Include="Model\UnderTask.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\WashingMachine.cs" />
