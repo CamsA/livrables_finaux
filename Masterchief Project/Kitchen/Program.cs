@@ -16,17 +16,50 @@ namespace Kitchen
         [STAThread]
         static void Main()
         {
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new kitchenForm());
+            /*
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new kitchenForm());
+            */
 
-            KitchenListenerSocket kls = new KitchenListenerSocket();
+            TestsSocketsRestaurantToKitchen();
+
             Thread.Sleep(3000);
-            KitchenClientSocket kss = new KitchenClientSocket();
+
+            TestsSocketsKitchenToRestaurant();
+
+
+
+            Thread.Sleep(20000);
+
+            KitchenClientSocket.CloseSocket();
+            KitchenListenerSocket.CloseSocket();
+        }
+
+        public static void TestsSocketsKitchenToRestaurant()
+        {
+            KitchenClientSocket.Initialize();
+            Thread.Sleep(3000);
+            KitchenClientSocket.SendMessage("CN:2");
             Thread.Sleep(1000);
-            kss.SendMessage("Test.<EOM>");
-            kls.CloseSocket();
-            kss.CloseSocket();
+            KitchenClientSocket.SendMessage("CTC:4");
+            Thread.Sleep(3000);
+            KitchenClientSocket.SendMessage("RM:12");
+            Thread.Sleep(3000);
+            KitchenClientSocket.SendMessage("gloubiboulga");
+
+            Console.Read();
+        }
+
+        public static void TestsSocketsRestaurantToKitchen()
+        {
+
+            Thread klsTh = new Thread(KitchenListenerSocket.Initialize);
+
+
+
+            klsTh.Start();
+
 
         }
     }

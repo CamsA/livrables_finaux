@@ -26,13 +26,13 @@ namespace Kitchen.Model
                 case "TableCloth":
                     {
                         exchangeDesk.WaitingDirtyTableClothes -= number;
-                        kitchen.WashingMachine.DirtyTableClothStacks += number;
+                        kitchen.WashingMachine.DirtyTableClothesStacks += number;
                         break;
                     }
                 case "Napkin":
                     {
-                        exchangeDesk.WaitingDirtyCrockery -= number;
-                        kitchen.WashingMachine.DirtyNapkinStacks += number;
+                        exchangeDesk.WaitingDirtyNapkins -= number;
+                        kitchen.WashingMachine.DirtyNapkinsStacks += number;
                         break;
                     }
             }

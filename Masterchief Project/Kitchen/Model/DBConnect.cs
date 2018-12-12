@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 
 
-namespace Kitchen.Model
+namespace Kitchen
 {
     public class DBConnect
     {

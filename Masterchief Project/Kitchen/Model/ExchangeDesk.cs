@@ -8,23 +8,27 @@ namespace Kitchen.Model
 {
     public class ExchangeDesk : Entities
     {
+        // Static instance to create the Singleton
         private static ExchangeDesk instance = null;
         private static readonly object padlock = new object();
 
-        private int waitingDirtyCrockery;
-        private int waitingDirtyNapkin;
-        private int waitingDirtyTableClothes;
-        private List<Meal> waitingOrders;
+        // Various stacks of equipments and orders waiting to be read by the chef
+        private int waitingDirtyCrockery = 0;
+        private int waitingDirtyNapkins = 0;
+        private int waitingDirtyTableClothes = 0;
+        private List<int> waitingOrders = new List<int>();
 
+        // Getters and Setters for the stacks
         public int WaitingDirtyCrockery { get => waitingDirtyCrockery; set => waitingDirtyCrockery = value; }
-        public int WaitingDirtyNapkin { get => waitingDirtyNapkin; set => waitingDirtyNapkin = value; }
+        public int WaitingDirtyNapkins { get => waitingDirtyNapkins; set => waitingDirtyNapkins = value; }
         public int WaitingDirtyTableClothes { get => waitingDirtyTableClothes; set => waitingDirtyTableClothes = value; }
-        internal List<Meal> WaitingOrders { get => waitingOrders; set => waitingOrders = value; }
+        internal List<int> WaitingOrders { get => waitingOrders; set => waitingOrders = value; }
 
-
+        // Private constructor
         private ExchangeDesk()
         { }
 
+        // Instanciation and transmission of the instance via a Singleton
         public static ExchangeDesk GetInstance
         {
             get
@@ -40,5 +44,30 @@ namespace Kitchen.Model
             }
         }
 
+        // Add an order to the queue
+        public void AddWaitingOrder(int idMeal)
+        {
+            this.WaitingOrders.Add(idMeal);
+        }
+
+        // Add a dirty equipment to the stacks
+        public void AddDirtyObject(string type, int quantity)
+        {
+            switch (type)
+            {
+                case "Crockery":
+                    this.WaitingDirtyCrockery += quantity;
+                    break;
+                case "Napkins":
+                    this.WaitingDirtyNapkins += quantity;
+                    break;
+                case "TableClothes":
+                    this.WaitingDirtyTableClothes += quantity;
+                    break;
+                default:
+                    Console.Write("Error on the kitchen exchange desk\n");
+                    break;
+            }
+        }
     }
 }
