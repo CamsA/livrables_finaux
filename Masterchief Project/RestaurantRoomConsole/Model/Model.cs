@@ -30,7 +30,7 @@ namespace RestaurantRoomConsole.Model
             Waiter waiter3 = new Waiter("Serveur3", 3);
             Waiter waiter4 = new Waiter("Serveur4", 4);
 
-
+            // chef de rang
             ChefDeRang CDR = new ChefDeRang("ChefDeRang1", 1);
             
             
@@ -58,8 +58,8 @@ namespace RestaurantRoomConsole.Model
         // Générer les clients aléatoirement
         public void LoopGenClient()
         {
-            while (true)
-            {
+            //while (true)
+           // {
                 loopCount += 1;
                 Random rnd = new Random();
                 int nbrClients = rnd.Next(2, 6);
@@ -70,7 +70,7 @@ namespace RestaurantRoomConsole.Model
                 Display.DisplayMsg("*** Nouveau groupe de " + nbrClients + " client ***", false, true, ConsoleColor.Green);
                 
                 Thread.Sleep(rnd.Next(Parameters.timeSpawnMin, Parameters.timeSpawnMax));
-            }
+            //}
            
         }
     }

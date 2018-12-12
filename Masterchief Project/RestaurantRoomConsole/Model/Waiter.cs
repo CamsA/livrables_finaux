@@ -15,13 +15,14 @@ namespace RestaurantRoomConsole.Model
     {
         public int lineAssigned;
         public String name;
+        public Thread lpWaiter;
 
         public Waiter(String _name, int _lineAssigned)
         {
             this.lineAssigned = _lineAssigned;
             this.name = _name;
 
-            Thread lpWaiter = new Thread(loopWaiter);
+            lpWaiter = new Thread(new ThreadStart(loopWaiter));
             lpWaiter.Start();
             
         }
@@ -38,6 +39,52 @@ namespace RestaurantRoomConsole.Model
                 } 
             }
             return OK;
+        }
+
+        public void deleteGroupClient(GroupClient grp)
+        {
+            if (!grp.isChoosingMeal && !grp.isEating && grp.mealChoosen)
+            {
+                Display.DisplayMsg("Le " + grp.name + " a fini de manger !", true, true, ConsoleColor.DarkBlue);
+
+
+                // On trouve la table assigné aux clients qui viennent de finir de manger
+                var tbl = Restaurant.listTables.FindIndex(c => c.groupAssigned == grp.name);
+
+                // On met la met à libre et aucun groupe assigné
+                Restaurant.listTables[tbl].isOccuped = false;
+                Restaurant.listTables[tbl].groupAssigned = "";
+
+                // On supprime le client de la liste des client
+                Restaurant.listGroupClient.RemoveAll(c => c.name == grp.name);
+
+                // On arrete les thread de l'objet du groupe pour éviter de manger de la mémoire pour rien
+                grp.thmealchoose.Abort();
+                grp.theat.Abort();
+                
+            }
+        }
+
+        public void giveMeal(GroupClient grp)
+        {
+            // Si le groupe de client a fini son dessert, alors on le supprime (  deleteGroupClient()  )
+            if(grp.stepMeal==3) { deleteGroupClient(grp); }
+
+            // Sinon si le groupe n'est pas en train de choisir, n'est pas en train de manger et a bien choisi les menu 
+            else if (!grp.isChoosingMeal && !grp.isEating && grp.mealChoosen)
+            {
+                String meal=null;
+                if(grp.stepMeal==0) { meal = "l'entrée"; } 
+                else if(grp.stepMeal==1) { meal = "le plat";  }
+                else if(grp.stepMeal==2) { meal = "le dessert"; }
+
+                Display.DisplayMsg("Le " + this.name + " est en train d'apporter "+meal+" au " + grp.name + "...", false, false, ConsoleColor.Yellow);
+
+                Thread.Sleep(5000);
+
+                grp.stepMeal++; // Est rendu à l'entrée
+                grp.isEating = true; // est en train de manger l'entrée
+            }
         }
 
 
@@ -57,70 +104,7 @@ namespace RestaurantRoomConsole.Model
                             // N'a pas reservé (renforcement), est bien assigné à une table (renforcement) :
                             if (grp.isEating == false && grp.isWaitingATable == false && grp.hasReserved == false && grp.assignedTable != "")
                             {
-                                // Selon l'étape du repas (entrée plat dessert)
-                                switch (grp.stepMeal)
-                                {
-                                    // Si le groupe :
-                                    case 0: // N'a pas commencé à manger
-                                        // S'ils ne sont PLUS en train de choisir, n'ont choisi et ne sont pas en train de manger
-                                        if (!grp.isChoosingMeal && !grp.isEating && grp.mealChoosen)
-                                        {
-                                            Display.DisplayMsg("Le " + this.name + " est en train d'apporter l'entrée au " + grp.name + "...", false, false, ConsoleColor.Yellow);
-                                            
-                                            Thread.Sleep(1000);
-                                            grp.stepMeal = 1; // Est rendu à l'entrée
-                                            grp.isEating = true; // est en train de manger l'entrée
-                                        }
-
-                                        break;
-                                    case 1: //  A fini l'entrée
-                                        if (!grp.isChoosingMeal && !grp.isEating && grp.mealChoosen)
-                                        {
-                                            Display.DisplayMsg("Le " + this.name + " est en train d'apporter le plat au " + grp.name + "...", false, false, ConsoleColor.Yellow);
-                                            Thread.Sleep(1000);
-                                            grp.isEating = true; // est en train de manger l'entrée
-                                            grp.stepMeal = 2; // Est rendu à l'entrée
-                                        }
-
-                                        break;
-                                    case 2: //  A fini le repas principal
-                                        if (!grp.isChoosingMeal && !grp.isEating && grp.mealChoosen)
-                                        {
-                                            Display.DisplayMsg("Le " + this.name + " est en train d'apporter le le dessert au " + grp.name + "...", false, false, ConsoleColor.Yellow);
-                                            Thread.Sleep(1000);
-                                            grp.isEating = true; // est en train de manger l'entrée
-                                            grp.stepMeal = 3; // Est rendu à l'entrée
-                                        }
-
-                                        break;
-                                    case 3: // A fini le dessert
-                                        if (!grp.isChoosingMeal && !grp.isEating && grp.mealChoosen)
-                                        {
-                                            Display.DisplayMsg("Le " + grp.name + " a fini de manger !", true, true, ConsoleColor.DarkBlue);
-                                            
-
-                                            // On trouve la table assigné aux clients qui viennent de finir de manger
-                                            var tbl = Restaurant.listTables.FindIndex(c => c.groupAssigned == grp.name);
-
-                                            // On met la met à libre et aucun groupe assigné
-                                            Restaurant.listTables[tbl].isOccuped = false;
-                                            Restaurant.listTables[tbl].groupAssigned = "";
-
-                                            // On supprime le client de la liste des client
-                                            Restaurant.listGroupClient.RemoveAll(c => c.name == grp.name);
-
-                                            // On arrete les thread de l'objet du groupe pour éviter de manger de la mémoire pour rien
-                                            grp.thmealchoose.Abort();
-                                            grp.theat.Abort();
-                                            
-                                            break;
-                                        }
-                                        break;
-                                    default:
-                                        break;
-
-
-                                }
+                                giveMeal(grp);
                             }
                         }
                     }
