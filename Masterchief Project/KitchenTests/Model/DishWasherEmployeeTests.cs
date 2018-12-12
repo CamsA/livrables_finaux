@@ -16,7 +16,7 @@ namespace KitchenTests.Model
         }
 
         [TestMethod]
-        public void TakeAndDeposite_Test_Crockery()
+        public void Test_TakeAndDeposite_Crockery()
         {
             Kitchen.Model.Kitchen kitchen = Kitchen.Model.Kitchen.GetInstance;
             ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
@@ -28,7 +28,7 @@ namespace KitchenTests.Model
         }
 
         [TestMethod]
-        public void TakeAndDeposite_Test_Crockery2()
+        public void Test_TakeAndDeposite_Crockery2()
         {
             Kitchen.Model.Kitchen kitchen = Kitchen.Model.Kitchen.GetInstance;
             ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
@@ -40,7 +40,7 @@ namespace KitchenTests.Model
         }
 
         [TestMethod]
-        public void TakeAndDeposite_Test_TableCloth()
+        public void Test_TakeAndDeposite_TableCloth()
         {
             Kitchen.Model.Kitchen kitchen = Kitchen.Model.Kitchen.GetInstance;
             ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
@@ -52,7 +52,7 @@ namespace KitchenTests.Model
         }
 
         [TestMethod]
-        public void TakeAndDeposite_Test_TableCloth2()
+        public void Test_TakeAndDeposite_TableCloth2()
         {
             Kitchen.Model.Kitchen kitchen = Kitchen.Model.Kitchen.GetInstance;
             ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
@@ -64,7 +64,7 @@ namespace KitchenTests.Model
         }
 
         [TestMethod]
-        public void TakeAndDeposite_Test_Napkin()
+        public void Test_TakeAndDeposite_Napkin()
         {
             Kitchen.Model.Kitchen kitchen = Kitchen.Model.Kitchen.GetInstance;
             ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
@@ -76,7 +76,7 @@ namespace KitchenTests.Model
         }
 
         [TestMethod]
-        public void TakeAndDeposite_Test_Napkin2()
+        public void Test_TakeAndDeposite_Napkin2()
         {
             Kitchen.Model.Kitchen kitchen = Kitchen.Model.Kitchen.GetInstance;
             ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
