@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace Kitchen.Model
 {
-    public class Chef : Entities
+    public class Chef
     {
 
         private int waitingOrder;
@@ -41,6 +41,7 @@ namespace Kitchen.Model
                     {
                         if (undertask.IsDone == false)
                         {
+                            Console.WriteLine("Le chef donne une tache a un cuisinier");
                             ThreadPool.QueueUserWorkItem(cook.Cook, undertask);
                         }
                         if (WaitingTask.UnderTasksList.All(IsDone => true))

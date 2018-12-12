@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kitchen.Model
 {
-    public class ExchangeDesk : Entities
+    public class ExchangeDesk
     {
         // Static instance to create the Singleton
         private static ExchangeDesk instance = null;

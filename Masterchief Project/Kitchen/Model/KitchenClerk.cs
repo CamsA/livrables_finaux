@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kitchen.Model
 {
-    public class KitchenClerk : MovableEntities
+    public class KitchenClerk
     {
 
         public void Peel(string vegetable)
@@ -21,6 +21,7 @@ namespace Kitchen.Model
 
         public void BringMeals(int idMeal)
         {
+            Console.WriteLine("Le commis emmène un plat préparer par le cusinier");
             ExchangeDesk.GetInstance.AddWaitingOrder(idMeal);
         }
     }

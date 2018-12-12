@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace Kitchen.Model
 {
-    public class Cooks : MovableEntities
+    public class Cooks
     {
         private static ManualResetEvent _doneEvent;
 

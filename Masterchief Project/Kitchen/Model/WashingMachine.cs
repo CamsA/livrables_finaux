@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Kitchen.Model
 {
 
-    public class WashingMachine : Entities
+    public class WashingMachine
     {
         private int dirtyNapkinsStack;
         private int dirtyTableClothesStacks;
@@ -38,8 +38,8 @@ namespace Kitchen.Model
                     exchangeDesk.WaitingDirtyNapkins += 10;
                     exchangeDesk.WaitingDirtyTableClothes += 10;
 
-
                     IsRunning1 = true;
+                    Console.WriteLine("Le lave-linge est lancé");
                 }
             }
         }

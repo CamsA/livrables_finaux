@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kitchen.Model
 {
-    public class DishWasherEmployee : MovableEntities
+    public class DishWasherEmployee
     {
         public DishWasherEmployee()
         { }
@@ -21,18 +21,21 @@ namespace Kitchen.Model
                     {
                         exchangeDesk.WaitingDirtyCrockery -= number;
                         kitchen.DishMachine.DirtyCrockeryStack += number;
+                        Console.Write("Le plongeur a pris des plats sale pour les mettre a la machine a laver");
                         break;
                     }
                 case "TableCloth":
                     {
                         exchangeDesk.WaitingDirtyTableClothes -= number;
                         kitchen.WashingMachine.DirtyTableClothesStacks += number;
+                        Console.Write("Le plongeur a pris des nappes pour les mettre aux lave-linges");
                         break;
                     }
                 case "Napkin":
                     {
                         exchangeDesk.WaitingDirtyNapkins -= number;
                         kitchen.WashingMachine.DirtyNapkinsStacks += number;
+                        Console.Write("Le plongeur a pris des servitesse pour les mettre aux lave-linges");
                         break;
                     }
             }

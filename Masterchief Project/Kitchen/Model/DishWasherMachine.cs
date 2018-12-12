@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Kitchen.Model
 {
-    public class DishWasherMachine : Entities
+    public class DishWasherMachine
     {
         private bool isRunning = false;
         private int dirtyCrockeryStack =0;
@@ -29,6 +29,7 @@ namespace Kitchen.Model
                     Kitchen kitchen = Kitchen.GetInstance;
                     kitchen.CleanCrokeryStack += crockeryList;
                     isRunning = true;
+                    Console.WriteLine("La machine a laver se lance");
                 }
             }
         }
