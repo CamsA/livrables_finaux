@@ -31,7 +31,7 @@ namespace Kitchen
         {
             category = pcategory;
 
-            return Rq_sql = "SELECT TOP 1 IDRecette FROM Recette WHERE Categorie = " + category + " ORDER BY NEWID()";
+            return Rq_sql = "SELECT IDRecette FROM Recette WHERE Categorie = " + category;
         }
 
         public string SelectIngredientsAndQuantitiesByRecipes(int precipe)
