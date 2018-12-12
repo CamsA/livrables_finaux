@@ -22,32 +22,45 @@ namespace Kitchen
             Application.Run(new kitchenForm());
             */
 
-            //TestsSocketsKitchenToRestaurant();
+            TestsSocketsRestaurantToKitchen();
 
-            //TestsSocketsRestaurantToKitchen();
-            
+            Thread.Sleep(3000);
+
+            TestsSocketsKitchenToRestaurant();
+
+
+
+            Thread.Sleep(20000);
+
+            KitchenClientSocket.CloseSocket();
+            KitchenListenerSocket.CloseSocket();
         }
 
         public static void TestsSocketsKitchenToRestaurant()
         {
-            KitchenClientSocket kcs = new KitchenClientSocket();
+            KitchenClientSocket.Initialize();
             Thread.Sleep(3000);
-            kcs.SendMessage("CN:2");
+            KitchenClientSocket.SendMessage("CN:2");
             Thread.Sleep(1000);
-            kcs.SendMessage("CTC:4");
-            Thread.Sleep(1000);
-            kcs.SendMessage("RM:12");
-            Thread.Sleep(1000);
-            kcs.SendMessage("gloubiboulga");
+            KitchenClientSocket.SendMessage("CTC:4");
+            Thread.Sleep(3000);
+            KitchenClientSocket.SendMessage("RM:12");
+            Thread.Sleep(3000);
+            KitchenClientSocket.SendMessage("gloubiboulga");
 
             Console.Read();
         }
 
         public static void TestsSocketsRestaurantToKitchen()
         {
-            KitchenListenerSocket kls = new KitchenListenerSocket();
-            Thread.Sleep(3000);
-            kls.StartListening();
+
+            Thread klsTh = new Thread(KitchenListenerSocket.Initialize);
+
+
+
+            klsTh.Start();
+
+
         }
     }
 }

@@ -15,7 +15,7 @@ namespace RestaurantRoomConsole.Model
         // Various stacks of equipments and meals ready to be carried by the waiter
         private int cleanTableClothes;
         private int cleanNapkins;
-        private List<int> preparedMeals;
+        private List<int> preparedMeals = new List<int>();
 
         // Getters and Setters
         public int CleanTableClothes { get => cleanTableClothes; set => cleanTableClothes = value; }
@@ -49,20 +49,26 @@ namespace RestaurantRoomConsole.Model
         }
 
         // Add a clean equipment on the desk
-        public void AddCleanObject(string type, int number)
+        public void AddCleanObject(string type, int quantity)
         {
             switch (type)
             {
                 case "TableClothes":
-                    this.CleanTableClothes += number;
+                    this.CleanTableClothes += quantity;
                     break;
                 case "Napkins":
-                    this.CleanNapkins += number;
+                    this.CleanNapkins += quantity;
                     break;
                 default:
                     Console.Write("Error on the restaurant exchange desk\n");
                     break;
             }
+        }
+
+
+        public void SendDirtyObject(string type, int quantity)
+        {
+
         }
     }
 }

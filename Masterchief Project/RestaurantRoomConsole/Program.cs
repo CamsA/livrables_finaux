@@ -19,31 +19,39 @@ namespace RestaurantRoomConsole
             Application.Run(new Options());
             */
 
-            //TestsSocketsKitchenToRestaurant();
+            TestsSocketsKitchenToRestaurant();
 
-            //TestsSocketsRestaurantToKitchen();
+            Thread.Sleep(3000);
+
+            TestsSocketsRestaurantToKitchen();
+
+            Thread.Sleep(20000);
+
+            RestaurantListenerSocket.CloseSocket();
+            RestaurantClientSocket.CloseSocket();
         }
 
         public static void TestsSocketsKitchenToRestaurant()
         {
-            RestaurantListenerSocket rls = new RestaurantListenerSocket();
-            Thread.Sleep(3000);
-            rls.StartListening();
+            Thread rlsTh = new Thread(RestaurantListenerSocket.Initialize);
+
+            rlsTh.Start();
         }
 
         public static void TestsSocketsRestaurantToKitchen()
         {
-            RestaurantClientSocket rcs = new RestaurantClientSocket();
+            RestaurantClientSocket.Initialize();
+
             Thread.Sleep(3000);
-            rcs.SendMessage("DN:2");
+            RestaurantClientSocket.SendMessage("DN:2");
             Thread.Sleep(1000);
-            rcs.SendMessage("DTC:4");
+            RestaurantClientSocket.SendMessage("DTC:4");
             Thread.Sleep(1000);
-            rcs.SendMessage("NO:12");
+            RestaurantClientSocket.SendMessage("NO:12");
             Thread.Sleep(1000);
-            rcs.SendMessage("DC:5");
+            RestaurantClientSocket.SendMessage("DC:5");
             Thread.Sleep(1000);
-            rcs.SendMessage("gloubiboulga");
+            RestaurantClientSocket.SendMessage("gloubiboulga");
 
             Console.Read();
         }
