@@ -1499,13 +1499,47 @@
 											"height": 13,
 											"text": "+belongsToSquare: int",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAFnotuHMBHiqsg=",
+											"_parent": {
+												"$ref": "AAAAAAFneK+Ya5Zn1pA="
+											},
+											"model": {
+												"$ref": "AAAAAAFnotuHCRHf908="
+											},
+											"font": "Arial;13;0",
+											"left": 869,
+											"top": 973,
+											"width": 209.904296875,
+											"height": 13,
+											"text": "+hasTableCloth: boolean",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAFnotulzBNOeNM=",
+											"_parent": {
+												"$ref": "AAAAAAFneK+Ya5Zn1pA="
+											},
+											"model": {
+												"$ref": "AAAAAAFnotulmxNL8SU="
+											},
+											"font": "Arial;13;0",
+											"left": 869,
+											"top": 988,
+											"width": 209.904296875,
+											"height": 13,
+											"text": "+napkinsQuantity: int",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 864,
 									"top": 833,
 									"width": 219.904296875,
-									"height": 143
+									"height": 173
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -1528,7 +1562,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 869,
-											"top": 981,
+											"top": 1011,
 											"width": 209.904296875,
 											"height": 13,
 											"text": "+Consume(int bread, int water): void",
@@ -1537,7 +1571,7 @@
 									],
 									"font": "Arial;13;0",
 									"left": 864,
-									"top": 976,
+									"top": 1006,
 									"width": 219.904296875,
 									"height": 23
 								},
@@ -1582,7 +1616,7 @@
 							"left": 864,
 							"top": 808,
 							"width": 219.904296875,
-							"height": 191,
+							"height": 221,
 							"nameCompartment": {
 								"$ref": "AAAAAAFneK+Ya5ZiJJU="
 							},
@@ -2231,7 +2265,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 977,
+									"left": 976,
 									"top": 604,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -2314,7 +2348,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 997,
+									"left": 996,
 									"top": 771,
 									"height": 13,
 									"alpha": -0.7853981633974483,
@@ -2334,7 +2368,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 956,
+									"left": 955,
 									"top": 779,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -2384,7 +2418,7 @@
 								"$ref": "AAAAAAFneK8dYpWwEjY="
 							},
 							"lineStyle": 1,
-							"points": "961:585;970:807",
+							"points": "961:585;969:807",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFneMBLg9lCzbk="
@@ -11807,8 +11841,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1122,
-									"top": 1030,
+									"left": 1129,
+									"top": 1043,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -11828,8 +11862,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 1133,
-									"top": 1020,
+									"left": 1140,
+									"top": 1032,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -11849,8 +11883,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1101,
-									"top": 1051,
+									"left": 1108,
+									"top": 1064,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -11870,8 +11904,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1094,
-									"top": 1001,
+									"left": 1113,
+									"top": 1027,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 30,
@@ -11891,8 +11925,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1105,
-									"top": 993,
+									"left": 1123,
+									"top": 1019,
 									"height": 13,
 									"alpha": 0.7853981633974483,
 									"distance": 40,
@@ -11912,8 +11946,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1072,
-									"top": 1017,
+									"left": 1090,
+									"top": 1044,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -11933,8 +11967,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1151,
-									"top": 1059,
+									"left": 1146,
+									"top": 1060,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 30,
@@ -11953,7 +11987,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1159,
+									"left": 1153,
 									"top": 1049,
 									"height": 13,
 									"alpha": -0.7853981633974483,
@@ -11973,7 +12007,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1134,
+									"left": 1129,
 									"top": 1082,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -12019,7 +12053,7 @@
 								"$ref": "AAAAAAFneK+Ya5ZhJOs="
 							},
 							"lineStyle": 1,
-							"points": "1066:999;1159:1095",
+							"points": "1084:1026;1154:1095",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFnmIQzRU4FUJM="
@@ -13926,6 +13960,24 @@
 										"$ref": "AAAAAAFneK+YapZfPQM="
 									},
 									"name": "belongsToSquare",
+									"type": "int"
+								},
+								{
+									"_type": "UMLAttribute",
+									"_id": "AAAAAAFnotuHCRHf908=",
+									"_parent": {
+										"$ref": "AAAAAAFneK+YapZfPQM="
+									},
+									"name": "hasTableCloth",
+									"type": "boolean"
+								},
+								{
+									"_type": "UMLAttribute",
+									"_id": "AAAAAAFnotulmxNL8SU=",
+									"_parent": {
+										"$ref": "AAAAAAFneK+YapZfPQM="
+									},
+									"name": "napkinsQuantity",
 									"type": "int"
 								}
 							],
