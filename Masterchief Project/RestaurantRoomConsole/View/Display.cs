@@ -76,9 +76,11 @@ namespace RestaurantRoomConsole.View
             
         }
         
-        
-
-
-
+        public static void WriteLog(string Line)
+        {
+            //string path = Parametre.logpath;
+            string name = path + "RestaurantLog : " + DateTime.Now + ".txt";
+            System.IO.File.WriteAllText(name, Line);
+        }
     }
 }
