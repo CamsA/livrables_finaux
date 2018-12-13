@@ -35,12 +35,14 @@ namespace Kitchen.Model
                 this.DirtyCrockeryStack = 0;
             }
 
-            View.Display.DisplayMsg("La machine est lancée avec " + dirtyCrockeryToWash + " plat(s) sale(s)", false, true, ConsoleColor.DarkBlue);
+            View.Display.DisplayMsg("Le lave-vaisselle est lancé avec " + dirtyCrockeryToWash + " plat(s) sale(s)", false, true, ConsoleColor.DarkBlue);
 
             Thread.Sleep(10000);
 
-            ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
-            exchangeDesk.SendCleanObject("Crockery", dirtyCrockeryToWash);
+            Kitchen kitchen = Kitchen.GetInstance;
+            kitchen.CleanCrokeryStack += dirtyCrockeryToWash;
+
+            View.Display.DisplayMsg("Le lave-vaisselle a lavé " + dirtyCrockeryToWash + " plat(s) sale(s) qui ont été ajoutés au stock de la cuisine", false, true, ConsoleColor.DarkBlue);
         }
 
         public void Run()

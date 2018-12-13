@@ -51,13 +51,16 @@ namespace Kitchen.Model
                 this.DirtyNapkinsStacks = 0;
             }
 
-            View.Display.DisplayMsg("La machine est lancée avec " + napkinsToWash + " serviette(s) et " + tableClothesToWash + " nappe(s) de table", false, true, ConsoleColor.DarkBlue);
+            View.Display.DisplayMsg("La machine à laver est lancée avec " + napkinsToWash + " serviette(s) et " + tableClothesToWash + " nappe(s) de table", false, true, ConsoleColor.DarkBlue);
 
             Thread.Sleep(15000);
 
             ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
             exchangeDesk.SendCleanObject("Napkins", tableClothesToWash);
             exchangeDesk.SendCleanObject("TableClothes", napkinsToWash);
+
+            View.Display.DisplayMsg("La machine à laver a terminé son cycle. " + napkinsToWash + " serviette(s) et " + tableClothesToWash + " nappe(s) de table ont été lavées", false, true, ConsoleColor.DarkBlue);
+
         }
 
         public void Run()
