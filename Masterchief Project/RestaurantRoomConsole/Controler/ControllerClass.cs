@@ -9,14 +9,14 @@ using RestaurantRoomConsole.View;
 
 namespace RestaurantRoomConsole.Controler
 {
-    public class Conntroller
+    public class ControllerClass
     {
 
         private Modell model;
         private Display display;
         private int countSecondes;
         public ExchangeDesk desk;
-        public Conntroller()
+        public ControllerClass()
         {
             Display.DisplayMsg("Lancement du programme.",false,true,ConsoleColor.White);
             desk = ExchangeDesk.GetInstance;

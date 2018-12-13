@@ -9,6 +9,7 @@ namespace Kitchen.Model
 {
     public class Kitchen
     {
+        public int clock;
         private static Kitchen instance = null;
         private static readonly object padlock = new object();
 
