@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Kitchen.Model
@@ -12,35 +13,58 @@ namespace Kitchen.Model
     {
         private int dirtyNapkinsStack;
         private int dirtyTableClothesStacks;
-        private bool IsRunning;
 
         public int DirtyNapkinsStacks { get => dirtyNapkinsStack; set => dirtyNapkinsStack = value; }
         public int DirtyTableClothesStacks { get => dirtyTableClothesStacks; set => dirtyTableClothesStacks = value; }
-        public bool IsRunning1 { get => IsRunning; set => IsRunning = value; }
 
         public WashingMachine()
         {
             DirtyNapkinsStacks = 0;
             DirtyTableClothesStacks = 0;
-            IsRunning1 = false;
         }
 
-        public void Wash(int napkin, int tableCloth)
+        public void Wash()
         {
-            if (IsRunning1 == false)
+            int tableClothesToWash = 0;
+            int napkinsToWash = 0;
+
+            if (this.DirtyTableClothesStacks >= 10)
             {
-                if (napkin ==10 && tableCloth == 10)
-                {
-                    DirtyNapkinsStacks -= 10;
-                    DirtyTableClothesStacks -= 10;
+                tableClothesToWash = 10;
+                this.DirtyTableClothesStacks -= 10;
 
-                    ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
-                    exchangeDesk.WaitingDirtyNapkins += 10;
-                    exchangeDesk.WaitingDirtyTableClothes += 10;
+            } else if(this.DirtyTableClothesStacks < 10)
+            {
+                tableClothesToWash = this.DirtyTableClothesStacks;
+                this.DirtyTableClothesStacks = 0;
+            }
 
-                    IsRunning1 = true;
-                    Console.WriteLine("Le lave-linge est lancé");
-                }
+            if (this.DirtyNapkinsStacks >= 10)
+            {
+                napkinsToWash = 10;
+                this.DirtyNapkinsStacks -= 10;
+
+            }
+            else if (this.DirtyNapkinsStacks < 10)
+            {
+                napkinsToWash = this.DirtyNapkinsStacks;
+                this.DirtyNapkinsStacks = 0;
+            }
+
+            View.Display.DisplayMsg("La machine est lancée avec " + napkinsToWash + " serviette(s) et " + tableClothesToWash + " nappe(s) de table", false, true, ConsoleColor.DarkBlue);
+
+            Thread.Sleep(15000);
+
+            ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
+            exchangeDesk.SendCleanObject("Napkins", tableClothesToWash);
+            exchangeDesk.SendCleanObject("TableClothes", napkinsToWash);
+        }
+
+        public void Run()
+        {
+            while(true)
+            {
+                this.Wash();
             }
         }
     }
