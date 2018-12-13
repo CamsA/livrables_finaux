@@ -57,13 +57,13 @@ namespace RestaurantRoomConsole.Model
         {
             while (true)
             {
-                loopCount += 1;
+                loopCount ++;
                 Random rnd = new Random();
                 int nbrClients = rnd.Next(2, 6);
 
 
-               GroupClient group = new GroupClient("group" + loopCount, nbrClients, false);
-               Display.DisplayMsg("*** Nouveau groupe de " + nbrClients + " client ***", false, true, ConsoleColor.Green);
+                GroupClient group = new GroupClient("group" + loopCount, nbrClients, false);
+                Display.DisplayMsg("*** Nouveau groupe de " + nbrClients + " client ***", false, true, ConsoleColor.Green);
                 
                 Thread.Sleep(rnd.Next(Parameters.timeSpawnMin, Parameters.timeSpawnMax));
             }

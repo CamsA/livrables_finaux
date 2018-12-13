@@ -96,7 +96,8 @@ namespace RestaurantRoomConsole.Model
                     Display.DisplayMsg("****    Le " + this.name + " a fini de manger " + spmeal, false, false, ConsoleColor.DarkGreen);
                     
                     isEating = false;
-                } 
+                }
+                Thread.Sleep(100);
             }
         }
 
