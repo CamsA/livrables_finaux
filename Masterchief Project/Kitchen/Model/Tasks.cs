@@ -8,6 +8,9 @@ namespace Kitchen.Model
 {
     public class Tasks
     {
+        // Each task constitue a recipe, and each recipe is composed by one or more undertask(s)
+        // For example, for the recipe "onion soup", which is a task, you have at least two
+        //preliminate understaks : "peel the onions" and "cut the onions"
         private List<UnderTask> underTasksList;
         private bool isDone;
 

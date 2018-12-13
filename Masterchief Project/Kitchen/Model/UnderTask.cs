@@ -8,6 +8,7 @@ namespace Kitchen.Model
 {
     public class UnderTask
     {
+        // Each undertask needs a certain amount of time to get done
         private int timeNeeded;
         private bool isDone;
 

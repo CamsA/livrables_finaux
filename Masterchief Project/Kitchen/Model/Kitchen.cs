@@ -13,16 +13,19 @@ namespace Kitchen.Model
         private static Kitchen instance = null;
         private static readonly object padlock = new object();
 
-        private int cleanCrokeryStack = 0;
-        private DishWasherMachine dishMachine = new DishWasherMachine();
-        private WashingMachine washingMachine = new WashingMachine();
+        private DishWasherMachine dishwasherMachine;
+        private WashingMachine washingMachine;
+        private int cleanCrokeryStack;
 
+        public DishWasherMachine DishwasherMachine { get => DishwasherMachine; private set => DishwasherMachine = value; }
+        public WashingMachine WashingMachine { get => washingMachine; private set => washingMachine = value; }
         public int CleanCrokeryStack { get => cleanCrokeryStack; set => cleanCrokeryStack = value; }
-        public DishWasherMachine DishMachine { get => dishMachine; set => dishMachine = value; }
-        public WashingMachine WashingMachine { get => washingMachine; set => washingMachine = value; }
 
         private Kitchen()
         {
+            this.DishwasherMachine = new DishWasherMachine();
+            this.WashingMachine = new WashingMachine();
+            this.CleanCrokeryStack = 0;
         }
 
         public static Kitchen GetInstance
@@ -39,5 +42,6 @@ namespace Kitchen.Model
                 }
             }
         }
+
     }
 }

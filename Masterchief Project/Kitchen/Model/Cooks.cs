@@ -19,6 +19,7 @@ namespace Kitchen.Model
         {
             UnderTask undertask = (UnderTask)t;
             Thread.Sleep(undertask.TimeNeeded);
+            //View.Display.DisplayMsg("Une sous-tâche a été effectuée par un cuisinier", false, true, ConsoleColor.White);
             undertask.IsDone = true;
             _doneEvent.Set();
         }

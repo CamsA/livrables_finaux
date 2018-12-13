@@ -65,7 +65,7 @@ namespace Kitchen.Model
                     this.WaitingDirtyTableClothes += quantity;
                     break;
                 default:
-                    Console.WriteLine("Error : Cannot send dirty object from the kitchen");
+                    View.Display.DisplayMsg("Erreur lors de l'ajout d'un objet sale au stock : " + type, false, true, ConsoleColor.Red);
                     break;
             }
         }
@@ -82,7 +82,7 @@ namespace Kitchen.Model
                         KitchenClientSocket.SendMessage("CTC:" + quantity);
                     break;
                 default :
-                    Console.WriteLine("Error : Object to send from the kitchen not recognized : " + type);
+                    View.Display.DisplayMsg("Erreur : objet inconnu à envoyer à la salle : " + type, false, true, ConsoleColor.Red);
                     break;
             }
         }

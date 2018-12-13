@@ -22,7 +22,7 @@ namespace KitchenTests.Model
             ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
             exchangeDesk.WaitingDirtyCrockery = 10;
             DishWasherEmployee dishWasherEmployee = new DishWasherEmployee();
-            dishWasherEmployee.TakeAndDeposite("Cockery", 10);
+            dishWasherEmployee.MoveDirtyObjects();
 
             Assert.AreEqual(0, exchangeDesk.WaitingDirtyCrockery);
         }
@@ -34,9 +34,9 @@ namespace KitchenTests.Model
             ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
             exchangeDesk.WaitingDirtyCrockery = 10;
             DishWasherEmployee dishWasherEmployee = new DishWasherEmployee();
-            dishWasherEmployee.TakeAndDeposite("Cockery", 10);
+            dishWasherEmployee.MoveDirtyObjects();
 
-            Assert.AreEqual(10, kitchen.DishMachine.DirtyCrockeryStack);
+            Assert.AreEqual(10, kitchen.DishwasherMachine.DirtyCrockeryStack);
         }
 
         [TestMethod]
@@ -46,7 +46,7 @@ namespace KitchenTests.Model
             ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
             exchangeDesk.WaitingDirtyTableClothes = 10;
             DishWasherEmployee dishWasherEmployee = new DishWasherEmployee();
-            dishWasherEmployee.TakeAndDeposite("TableCloth", 10);
+            dishWasherEmployee.MoveDirtyObjects();
 
             Assert.AreEqual(0, exchangeDesk.WaitingDirtyTableClothes);
         }
@@ -58,7 +58,7 @@ namespace KitchenTests.Model
             ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
             exchangeDesk.WaitingDirtyTableClothes = 10;
             DishWasherEmployee dishWasherEmployee = new DishWasherEmployee();
-            dishWasherEmployee.TakeAndDeposite("TableCloth", 10);
+            dishWasherEmployee.MoveDirtyObjects();
 
             Assert.AreEqual(10, kitchen.WashingMachine.DirtyTableClothesStacks);
         }
@@ -70,7 +70,7 @@ namespace KitchenTests.Model
             ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
             exchangeDesk.WaitingDirtyNapkins = 10;
             DishWasherEmployee dishWasherEmployee = new DishWasherEmployee();
-            dishWasherEmployee.TakeAndDeposite("Napkin", 10);
+            dishWasherEmployee.MoveDirtyObjects();
 
             Assert.AreEqual(0, exchangeDesk.WaitingDirtyNapkins);
         }
@@ -82,7 +82,7 @@ namespace KitchenTests.Model
             ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
             exchangeDesk.WaitingDirtyNapkins = 10;
             DishWasherEmployee dishWasherEmployee = new DishWasherEmployee();
-            dishWasherEmployee.TakeAndDeposite("Napkin", 10);
+            dishWasherEmployee.MoveDirtyObjects();
 
             Assert.AreEqual(10, kitchen.WashingMachine.DirtyNapkinsStacks);
         }

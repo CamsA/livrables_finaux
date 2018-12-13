@@ -18,7 +18,7 @@ namespace KitchenTests.Model
         {
             DishWasherMachine dishmachine = new DishWasherMachine();
             dishmachine.DirtyCrockeryStack = 10;
-            dishmachine.Wash(10);
+            dishmachine.Wash();
             Assert.AreEqual(0, dishmachine.DirtyCrockeryStack);
         }
         [TestMethod]
@@ -26,7 +26,7 @@ namespace KitchenTests.Model
         {
             DishWasherMachine dishmachine = new DishWasherMachine();
             dishmachine.DirtyCrockeryStack = 10;
-            dishmachine.Wash(10);
+            dishmachine.Wash();
             Assert.AreEqual(10, Kitchen.Model.Kitchen.GetInstance.CleanCrokeryStack);
         }
     }

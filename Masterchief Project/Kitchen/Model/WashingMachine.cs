@@ -11,6 +11,7 @@ namespace Kitchen.Model
 
     public class WashingMachine
     {
+        // Represents the amounts of dirty napkins and dirty clothes stored next to the washing machine, ready to get washed
         private int dirtyNapkinsStack;
         private int dirtyTableClothesStacks;
 
@@ -19,6 +20,7 @@ namespace Kitchen.Model
 
         public WashingMachine()
         {
+            // By default there is no dirty textile in the stacks
             DirtyNapkinsStacks = 0;
             DirtyTableClothesStacks = 0;
         }
@@ -28,6 +30,7 @@ namespace Kitchen.Model
             int tableClothesToWash = 0;
             int napkinsToWash = 0;
 
+            // If there's more than 10 items waiting to get washed, the dishwasher employee puts only ten in the machine
             if (this.DirtyTableClothesStacks >= 10)
             {
                 tableClothesToWash = 10;
@@ -39,6 +42,7 @@ namespace Kitchen.Model
                 this.DirtyTableClothesStacks = 0;
             }
 
+            // If there's less than 10 items waiting to get washed, the dishwasher employee puts all of them in the machine
             if (this.DirtyNapkinsStacks >= 10)
             {
                 napkinsToWash = 10;
@@ -53,8 +57,10 @@ namespace Kitchen.Model
 
             View.Display.DisplayMsg("La machine à laver est lancée avec " + napkinsToWash + " serviette(s) et " + tableClothesToWash + " nappe(s) de table", false, true, ConsoleColor.DarkBlue);
 
+            // The machine is running for 15 minutes
             Thread.Sleep(15000);
 
+            // Then the dishwasher employee takes the washed textiles and carry them to the exchange desk
             ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
             exchangeDesk.SendCleanObject("Napkins", tableClothesToWash);
             exchangeDesk.SendCleanObject("TableClothes", napkinsToWash);

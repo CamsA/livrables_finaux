@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Kitchen.Model
@@ -11,6 +12,7 @@ namespace Kitchen.Model
 
         public void Peel(string vegetable)
         {
+            Thread.Sleep(1000);
             // todo with vegetable
         }
 
@@ -21,8 +23,14 @@ namespace Kitchen.Model
 
         public void BringMeals(int idMeal)
         {
-            Console.WriteLine("Le commis emmène un plat préparer par le cusinier");
-            ExchangeDesk.GetInstance.AddWaitingOrder(idMeal);
+            View.Display.DisplayMsg("Le commis emmène un plat préparé par le cusinier au comptoir", false, true, ConsoleColor.White);
+            ExchangeDesk.GetInstance.SendPreparedMeal(idMeal);
+        }
+
+        public void Work()
+        {
+            //this.BringMeals();
+            this.Peel("patate");
         }
     }
 }

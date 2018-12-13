@@ -22,7 +22,7 @@ namespace KitchenTests.Model
                 DirtyNapkinsStacks = 10,
                 DirtyTableClothesStacks = 10
             };
-            washingMachine.Wash(10, 10);
+            washingMachine.Wash();
             Assert.AreEqual(0, washingMachine.DirtyNapkinsStacks);
             Assert.AreEqual(0, washingMachine.DirtyTableClothesStacks);
         }

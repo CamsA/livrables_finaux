@@ -43,7 +43,7 @@ namespace Kitchen.Model
                 // Start listening for connections
                 listener.Listen(10);
 
-                Console.WriteLine("Waiting for a connection...");
+                View.Display.DisplayMsg("Cuisine en attente d'un signal de la salle de restauration", false, true, ConsoleColor.DarkYellow);
 
                 // Program is suspended while waiting for an incoming connection
                 handler = listener.Accept();
@@ -54,7 +54,7 @@ namespace Kitchen.Model
             }
             catch (Exception e)
             {
-                Console.WriteLine("Unexpected exception : {0}", e.ToString());
+                View.Display.DisplayMsg("Erreur lors de l'établissement de l'échange entre la cuisine et la salle : " + e.ToString(), false, true, ConsoleColor.Red);
                 Console.Read();
             }
         }
@@ -98,7 +98,7 @@ namespace Kitchen.Model
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.ToString());
+                View.Display.DisplayMsg("Erreur lors de la réponse à un message de la salle : " + message + "\n" + e.ToString(), false, true, ConsoleColor.Red);
             }
         }
 
@@ -109,7 +109,7 @@ namespace Kitchen.Model
             ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
 
             // Show the data on the console
-            Console.WriteLine("\nMessage received : " + msg);
+            // Console.WriteLine("\nMessage received : " + msg);
 
             // Split the message to get the infos
             string[] splittedMsg = msg.Split(':', '<', '>');
@@ -123,23 +123,23 @@ namespace Kitchen.Model
             switch (splittedMsg[0])
             {
                 case "DN":
-                    Console.WriteLine("Serviette(s) sale(s) : " + number);
+                    View.Display.DisplayMsg("Serviette(s) sale(s) reçue(s) de la salle : " + number, false, true, ConsoleColor.DarkYellow);
                     exchangeDesk.AddDirtyObject("Napkins", number);
                     break;
                 case "DTC":
-                    Console.WriteLine("Nappe(s) de table sale(s) : " + number);
+                    View.Display.DisplayMsg("Nappe(s) de table sale(s) reçue(s) de la salle : " + number, false, true, ConsoleColor.DarkYellow);
                     exchangeDesk.AddDirtyObject("TableClothes", number);
                     break;
                 case "DC":
-                    Console.WriteLine("Plat(s) sale(s) : " + number);
+                    View.Display.DisplayMsg("Plat(s) sale(s) reçu(s) de la salle : " + number, false, true, ConsoleColor.DarkYellow);
                     exchangeDesk.AddDirtyObject("Crockery", number);
                     break;
                 case "NO":
-                    Console.WriteLine("Une commande a été passée pour le plat à l'ID " + number);
+                    View.Display.DisplayMsg("Une commande a été passée pour le plat à l'ID " + number, false, true, ConsoleColor.DarkYellow);
                     exchangeDesk.AddWaitingOrder(number);
                     break;
                 default:
-                    Console.WriteLine("Cannot Recognize Message");
+                    View.Display.DisplayMsg("Message incompréhensible en provenance de la salle : " + number, false, true, ConsoleColor.Red);
                     break;
             }
         }

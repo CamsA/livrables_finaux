@@ -19,6 +19,8 @@ namespace Kitchen
         private string datasrc = "local";
         private string dbname = null;
 
+        public string Datasrc { get => datasrc; set => datasrc = value; }
+        public string DBname { get => DBname; set => DBname = value; }
 
         public DBConnect(string namedb)
         {
@@ -35,15 +37,14 @@ namespace Kitchen
             try
             {
                 connection.Open(); // Ouverture de la connexion
+                View.Display.DisplayMsg("La connexion à la base de données est établie", true, true, ConsoleColor.Green);
+
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 // Affiche des erreurs
-                Console.WriteLine("Pas reussi à joindre la base de donnée");
+                View.Display.DisplayMsg("/!\\/!\\/!\\ La connexion à la base de données à échouée /!\\/!\\/!\\" + e.ToString(), true, true, ConsoleColor.Red);
             }
         }
-
-        public string Datasrc { get => datasrc; set => datasrc = value; }
-        public string DBname { get => DBname; set => DBname = value; }
     }
 }

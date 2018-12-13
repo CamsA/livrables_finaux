@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using Kitchen.View;
 
 namespace Kitchen.Model
 {
     public class Chef
     {
+        // Next order the Chef has to take care of
         private int waitingOrder = -1;
         private Tasks waitingTask;
 
@@ -20,6 +20,7 @@ namespace Kitchen.Model
             this.Work();
         }
 
+        // The Chef give to the cooks the order of cooking the meal
         public void GiveRecipe()
         {
             const int CooksAmount = 2;
@@ -51,6 +52,8 @@ namespace Kitchen.Model
             this.WaitingOrder = -1;
         }
 
+        // The Chef read the recipe matching the meal ID from the database,
+        // then transform it in a task to be taken care of by the cooks
         public void ReadRecipe(int idMeal)
         {
             // transforms the idMeal into a Tasks object
@@ -70,24 +73,19 @@ namespace Kitchen.Model
         }
         */
 
+        // Get the first order that has arrived in the kitchen from the restaurant room
         public void GetLastOrder()
         {
             ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
-            try
-            {
-                this.WaitingOrder = exchangeDesk.WaitingOrders.First();
-            } catch(Exception e)
-            {
-                Display.DisplayMsg("Aucune commande n'est présente au comptoir : " + e.ToString(), false, true, ConsoleColor.Red);
-            }
-            
+            this.WaitingOrder = exchangeDesk.WaitingOrders.First();
+            exchangeDesk.WaitingOrders.RemoveAt(0);
         }
 
         public void Work()
         {
             while (true)
             {
-                Display.DisplayMsg("Le chef récupère une commande du comptoir", false, true, ConsoleColor.Blue);
+                View.Display.DisplayMsg("Le chef récupère une commande du comptoir", false, true, ConsoleColor.Blue);
 
                 try
                 {
@@ -95,7 +93,7 @@ namespace Kitchen.Model
                 }
                 catch (Exception e)
                 {
-                    Display.DisplayMsg("Aucune commande n'est présente au comptoir : " + e.ToString(), false, true, ConsoleColor.Red);
+                    View.Display.DisplayMsg("Aucune commande n'est présente au comptoir : " + e.ToString(), false, true, ConsoleColor.Red);
                 }
 
 
@@ -105,7 +103,7 @@ namespace Kitchen.Model
                     // SQLmethode.updateIngredientStockByRecipe(this.WaitingOrder);
                     this.ReadRecipe(this.WaitingOrder);
 
-                    Display.DisplayMsg("Le chef donne un plat à préparer aux cuisiniers", false, true, ConsoleColor.Blue);
+                    View.Display.DisplayMsg("Le chef donne un plat à préparer aux cuisiniers", false, true, ConsoleColor.Blue);
                     this.GiveRecipe();
                 }
 

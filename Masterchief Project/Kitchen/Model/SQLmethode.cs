@@ -9,44 +9,29 @@ namespace Kitchen
     static class SQLmethode
     {
         static string rq_sql;
-        static string table;
-        static int category;
-        static int idRecipe;
 
-        //accesseurs
+        //accesseur
         static string Rq_sql { get => rq_sql; set => rq_sql = value; }
-        static string Table { get => table; set => table = value; }
-        static int Category { get => category; set => category = value; }
-        static int IdRecipe { get => idRecipe; set => idRecipe = value; }
 
         //Les méthodes
-        static string SelectAllFromTable(string ptable)
+        static string SelectAllFromTable(string table)
         {
-            table = ptable;
-
             return Rq_sql = "SELECT * FROM " + table;
         }
 
-        static string SelectRecepiesByType(int pcategory)
+        static string SelectRecepiesByType(int category)
         {
-            category = pcategory;
-
             return Rq_sql = "SELECT IDRecette FROM Recette WHERE Categorie = " + category;
         }
 
-        static string SelectIngredientsAndQuantitiesByRecipes(int precipe)
+        static string SelectIngredientsAndQuantitiesByRecipes(int recipe)
         {
-            idRecipe = precipe;
-
-            return Rq_sql = "SELECT IDIngredient, QuantiteIngredient FROM Compose WHERE IDRecette =" + idRecipe;
+            return Rq_sql = "SELECT IDIngredient, QuantiteIngredient FROM Compose WHERE IDRecette =" + recipe;
         }
 
-        static string UpdateIngredientStockByRecipe(int precipe)
+        static string UpdateIngredientStockByRecipe(int recipe)
         {
-            idRecipe = precipe;
-
-            return Rq_sql = "EXEC SelectRecette @Recette = " + idRecipe;
+            return Rq_sql = "EXEC SelectRecette @Recette = " + recipe;
         }
-
     }
 }

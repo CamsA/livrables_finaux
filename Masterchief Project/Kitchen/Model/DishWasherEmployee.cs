@@ -20,20 +20,19 @@ namespace Kitchen.Model
             if(exchangeDesk.WaitingDirtyCrockery != 0)
             {
                 int quantityMovedCrockery = exchangeDesk.WaitingDirtyCrockery;
+
                 exchangeDesk.WaitingDirtyCrockery = 0;
-                kitchen.DishMachine.DirtyCrockeryStack += quantityMovedCrockery;
-                Console.Write("Le plongeur a pris des plats sale pour les mettre a la machine a laver");
+                kitchen.DishwasherMachine.DirtyCrockeryStack += quantityMovedCrockery;
+                View.Display.DisplayMsg("Le plongeur a pris " + quantityMovedCrockery + " plat(s) sale(s) pour le(s) mettre dans le lave-vaisselle", false, true, ConsoleColor.White);
             }
 
             if (exchangeDesk.WaitingDirtyTableClothes != 0)
             {
-
                 int quantityMovedTableClothes = exchangeDesk.WaitingDirtyTableClothes;
 
                 exchangeDesk.WaitingDirtyTableClothes = 0;
                 kitchen.WashingMachine.DirtyTableClothesStacks += quantityMovedTableClothes;
-
-                Console.Write("Le plongeur a pris des nappes pour les mettre aux lave-linges");
+                View.Display.DisplayMsg("Le plongeur a pris " + quantityMovedTableClothes + " nappes pour les mettre au lave-linge", false, true, ConsoleColor.White);
             }
 
             if (exchangeDesk.WaitingDirtyNapkins != 0)
@@ -42,7 +41,7 @@ namespace Kitchen.Model
 
                 exchangeDesk.WaitingDirtyNapkins = 0;
                 kitchen.WashingMachine.DirtyNapkinsStacks += quantityMovedNapkins;
-                Console.Write("Le plongeur a pris des servitesse pour les mettre aux lave-linges");
+                View.Display.DisplayMsg("Le plongeur a pris " + quantityMovedNapkins + " serviette pour les mettre au lave-linge", false, true, ConsoleColor.White);
             }     
         }
 

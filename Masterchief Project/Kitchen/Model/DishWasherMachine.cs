@@ -10,15 +10,17 @@ namespace Kitchen.Model
 {
     public class DishWasherMachine
     {
-        private int dirtyCrockeryStack = 0;
-
-        public int DirtyCrockeryStack { get => dirtyCrockeryStack; set => dirtyCrockeryStack = value; }
-
         public DishWasherMachine()
         {
             this.DirtyCrockeryStack = 0;
         }
 
+        // Stack where dirty crockery is put waiting to be washed
+        private int dirtyCrockeryStack;
+
+        public int DirtyCrockeryStack { get => dirtyCrockeryStack; set => dirtyCrockeryStack = value; }
+
+        // Wash 24 units of dirty crockery, lasts for 15 seconds
         public void Wash()
         {
             int dirtyCrockeryToWash = 0;

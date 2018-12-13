@@ -34,14 +34,12 @@ namespace Kitchen.Model
             try
             {
                 sender.Connect(remoteEP);
-
-                Console.WriteLine("Socket connected to {0}\n",
-                    sender.RemoteEndPoint.ToString());
+                View.Display.DisplayMsg("La cuisine à ouvert le comptoir d'échange avec la salle (" + sender.RemoteEndPoint.ToString() + ")", false, true, ConsoleColor.Yellow);
 
             }
             catch (Exception e)
             {
-                Console.WriteLine("Unexpected exception : {0}", e.ToString());
+                View.Display.DisplayMsg("Erreur lors de l'établissement de l'échange entre la cuisine et la salle : " + e.ToString(), false, true, ConsoleColor.Red);
                 Console.Read();
             }
         }
@@ -59,12 +57,12 @@ namespace Kitchen.Model
 
                 // Receive the answer
                 int bytesRec = sender.Receive(bytes);
-                Console.WriteLine("Echoed test = {0}",
-                    Encoding.ASCII.GetString(bytes, 0, bytesRec));
+                //Console.WriteLine("Echoed test = {0}",
+                //    Encoding.ASCII.GetString(bytes, 0, bytesRec));
             }
             catch (Exception e)
             {
-                Console.WriteLine("Unexpected exception : {0}", e.ToString());
+                View.Display.DisplayMsg("Erreur lors de l'envoi d'un message à la salle : " + message + "\n" + e.ToString(), false, true, ConsoleColor.Red);
                 Console.Read();
             }
         }
@@ -80,7 +78,7 @@ namespace Kitchen.Model
             }
             catch (Exception e)
             {
-                Console.WriteLine("Unexpected exception : {0}", e.ToString());
+                View.Display.DisplayMsg("Erreur lors de la fermeture du socket : " + e.ToString(), false, true, ConsoleColor.Red);
                 Console.Read();
             }
         }

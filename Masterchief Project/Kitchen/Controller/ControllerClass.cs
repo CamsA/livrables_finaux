@@ -13,15 +13,15 @@ namespace Kitchen.Controller
     {
         private Model.Kitchen kitchen;
         private View.Display display;
-        private int countSecondes;
+        private int countSeconds;
         public ExchangeDesk desk;
 
         public ControllerClass()
         {
-            Display.DisplayMsg("Lancement du programme.", false, true, ConsoleColor.White);
+            Display.DisplayMsg("Lancement de la cuisine", false, true, ConsoleColor.Green);
             desk = ExchangeDesk.GetInstance;
 
-            countSecondes = 0;
+            countSeconds = 0;
 
             Display display = new Display();
             Model.Kitchen kitchen = Model.Kitchen.GetInstance;
