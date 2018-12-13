@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\ControllerClass.cs" />
     <Compile Include="Model\Chef.cs" />
     <Compile Include="Model\DBConnect.cs" />
     <Compile Include="Model\Cooks.cs" />
@@ -81,13 +82,13 @@
     <Compile Include="Model\KitchenClientSocket.cs" />
     <Compile Include="Model\KitchenListenerSocket.cs" />
     <Compile Include="Model\Meal.cs" />
-    <Compile Include="Model\Model.cs" />
     <Compile Include="Model\SQLmethode.cs" />
     <Compile Include="Model\Tasks.cs" />
     <Compile Include="Model\UnderTask.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\WashingMachine.cs" />
+    <Compile Include="View\Display.cs" />
     <EmbeddedResource Include="kitchenForm.resx">
       <DependentUpon>kitchenForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,5 +126,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
