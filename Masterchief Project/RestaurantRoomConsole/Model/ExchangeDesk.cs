@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestaurantRoomConsole.Controler;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ namespace RestaurantRoomConsole.Model
         // Static instance to create the Singleton
         private static ExchangeDesk instance = null;
         private static readonly object padlock = new object();
+        public String test;
 
         // Various stacks of equipments and meals ready to be carried by the waiter
         private int cleanTableClothes;
@@ -24,8 +26,15 @@ namespace RestaurantRoomConsole.Model
 
         // Private constructor
         private ExchangeDesk()
-        { }
+        {
+            this.cleanNapkins = Parameters.nbrCleanNapkins;
+            this.cleanTableClothes = Parameters.nbrCleanTableClothes;
+        }
 
+        public String gettest()
+        {
+            return this.test;
+        }
         // Instanciation and transmission of the instance via a Singleton
         public static ExchangeDesk GetInstance
         {
@@ -47,6 +56,7 @@ namespace RestaurantRoomConsole.Model
         {
             this.preparedMeals.Add(idMeal);
         }
+        
 
         // Add a clean equipment on the desk
         public void AddCleanObject(string type, int quantity)

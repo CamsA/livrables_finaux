@@ -20,7 +20,7 @@ namespace RestaurantRoomConsole.Model
         public Modell()
         {
 
-            MaitreHotel mh = new MaitreHotel();
+            MaitreHotel mh = new MaitreHotel("MaitreHotel1");
             Restaurant restaurant = new Restaurant();
 
             // Création d'un serveur, assigné à la ligne 1
@@ -47,9 +47,6 @@ namespace RestaurantRoomConsole.Model
             {
                 Display.DisplayTables();
                 Thread.Sleep(1000);
-
-
-
             }
         }
 
@@ -58,19 +55,18 @@ namespace RestaurantRoomConsole.Model
         // Générer les clients aléatoirement
         public void LoopGenClient()
         {
-            //while (true)
-           // {
+            while (true)
+            {
                 loopCount += 1;
                 Random rnd = new Random();
                 int nbrClients = rnd.Next(2, 6);
 
 
-                GroupClient group = new GroupClient("group" + loopCount, nbrClients, false);
-                
-                Display.DisplayMsg("*** Nouveau groupe de " + nbrClients + " client ***", false, true, ConsoleColor.Green);
+               GroupClient group = new GroupClient("group" + loopCount, nbrClients, false);
+               Display.DisplayMsg("*** Nouveau groupe de " + nbrClients + " client ***", false, true, ConsoleColor.Green);
                 
                 Thread.Sleep(rnd.Next(Parameters.timeSpawnMin, Parameters.timeSpawnMax));
-            //}
+            }
            
         }
     }

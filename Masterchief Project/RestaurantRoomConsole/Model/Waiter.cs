@@ -27,6 +27,20 @@ namespace RestaurantRoomConsole.Model
             
         }
 
+        private void BringsBreadAndWater(Tables table, GroupClient grp)
+        {
+            if (table.nbrBreadBaskets == 0 && grp.stepMeal == 0)
+            {
+                table.nbrBreadBaskets++;
+                Display.DisplayMsg("Le " + this.name + " apporte 1 barquette de pain pour " + table.name, false, false, ConsoleColor.DarkGray);
+            }
+            if (table.nbrWatterBottles == 0 && grp.stepMeal == 0)
+            {
+                table.nbrWatterBottles++;
+                Display.DisplayMsg("Le " + this.name + " apporte 1 bouteille d'eau pour " + table.name, false, false, ConsoleColor.DarkGray);
+            }
+        }
+
         private bool VerifyTableLine(GroupClient grp)
         {
             bool OK = false;
@@ -35,7 +49,10 @@ namespace RestaurantRoomConsole.Model
                 if (grp.assignedTable == table.name)
                 {
                     if (table.line == this.lineAssigned)
-                    { OK = true;  }
+                    {
+                        BringsBreadAndWater(table, grp);
+                        OK = true;
+                    }
                 } 
             }
             return OK;
@@ -68,22 +85,23 @@ namespace RestaurantRoomConsole.Model
         public void giveMeal(GroupClient grp)
         {
             // Si le groupe de client a fini son dessert, alors on le supprime (  deleteGroupClient()  )
-            if(grp.stepMeal==3) { deleteGroupClient(grp); }
-
+            //if(grp.stepMeal==3) { deleteGroupClient(grp); }
+            if (grp.stepMeal != 3) { 
             // Sinon si le groupe n'est pas en train de choisir, n'est pas en train de manger et a bien choisi les menu 
-            else if (!grp.isChoosingMeal && !grp.isEating && grp.mealChoosen)
-            {
-                String meal=null;
-                if(grp.stepMeal==0) { meal = "l'entrée"; } 
-                else if(grp.stepMeal==1) { meal = "le plat";  }
-                else if(grp.stepMeal==2) { meal = "le dessert"; }
+                if (!grp.isChoosingMeal && !grp.isEating && grp.mealChoosen)
+                {
+                    String meal = null;
+                    if (grp.stepMeal == 0) { meal = "l'entrée"; }
+                    else if (grp.stepMeal == 1) { meal = "le plat"; }
+                    else if (grp.stepMeal == 2) { meal = "le dessert"; }
 
-                Display.DisplayMsg("Le " + this.name + " est en train d'apporter "+meal+" au " + grp.name + "...", false, false, ConsoleColor.Yellow);
+                    Display.DisplayMsg("Le " + this.name + " est en train d'apporter " + meal + " au " + grp.name + "...", false, false, ConsoleColor.Yellow);
+                    
+                    Thread.Sleep(5000);
 
-                Thread.Sleep(5000);
-
-                grp.stepMeal++; // Est rendu à l'entrée
-                grp.isEating = true; // est en train de manger l'entrée
+                    grp.stepMeal++; // Est rendu à l'entrée
+                    grp.isEating = true; // est en train de manger l'entrée
+                }
             }
         }
 

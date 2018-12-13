@@ -1,4 +1,5 @@
-﻿using RestaurantRoomConsole.Model;
+﻿using RestaurantRoomConsole.Controler;
+using RestaurantRoomConsole.Model;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -38,7 +39,16 @@ namespace RestaurantRoomConsole.View
         public static void DisplayTables()
         {
             Console.WriteLine();
-            foreach (Tables table in Restaurant.listTables)
+
+
+            Console.WriteLine("Clients ayant reservés :");
+            foreach (List<String> list in Parameters.listGroupClientReserved.ToList())
+            {
+                Console.WriteLine(" " + list[0] +" " + list[1] +" " + list[2]);
+            }
+            Console.WriteLine();
+            Console.WriteLine();
+                foreach (Tables table in Restaurant.listTables)
             {
                 String occuped = "";
                 String reserved = "";
@@ -55,9 +65,13 @@ namespace RestaurantRoomConsole.View
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write(table.groupAssigned + " | ");
                 Console.ResetColor();
+
                 Console.WriteLine();
-               // Console.Write(table.name + " " + occuped + " " + table.groupAssigned + " " + reserved + " | ");
             }
+            // Infos sur les nappes et serviettes
+            ExchangeDesk desk = ExchangeDesk.GetInstance;
+            Console.WriteLine("Nombre de serviettes dans le desk : " + desk.CleanNapkins);
+            Console.WriteLine("Nombre de nappes dans le desk : " + desk.CleanTableClothes);
             Console.WriteLine();
             
         }

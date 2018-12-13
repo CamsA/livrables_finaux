@@ -27,14 +27,19 @@ namespace RestaurantRoomConsole.Controler
         private Modell model;
         private Display display;
         private int countSecondes;
-
+        public ExchangeDesk desk;
         public Conntroller()
         {
-            
+            Display.DisplayMsg("Lancement du programme.",false,true,ConsoleColor.White);
+            desk = ExchangeDesk.GetInstance;
+
             countSecondes = 0;
 
             display = new Display();
             model = new Modell();
+
+            Thread thlp = new Thread(loopCtr);
+            thlp.Start();
         }
 
         public void threadLoopController()
@@ -42,22 +47,41 @@ namespace RestaurantRoomConsole.Controler
 
         }
 
-        /*public void loopCtr()
+        public void loopCtr()
         {
             while (true)
             {
-                
-                foreach(List<String> list in Parameters.listGroupClientReserved)
+
+                if (Parameters.listGroupClientReserved.Count != 0)
                 {
-                    if(countSecondes==int.Parse(list[2]))
+                    foreach (List<String> list in Parameters.listGroupClientReserved.ToList())
                     {
-                      //  foreach (Restaurant.listGroupClient
+                        if (Parameters.listGroupClientReserved.Count != 0)
+                        {
+                            if (countSecondes == int.Parse(list[2]))
+                            {
+                                Display.DisplayMsg("Le " + list[0] + " qui avait réservé vient d'arriver ! (au bout de "+list[2]+" secondes) !", true, true, ConsoleColor.DarkCyan);
+                                
+
+                                foreach (Tables table in Restaurant.listTables)
+                                {
+                                    if (table.isReserved == true)
+                                    {
+                                        GroupClient group = new GroupClient(list[0], int.Parse(list[1]), true);
+
+                                        //list.RemoveAll(c => list[0] == list[0]);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        else { break; }
                     }
                 }
                 Thread.Sleep(1000);
                 
                 countSecondes++;
             }
-        }*/
+        }
     }
 }

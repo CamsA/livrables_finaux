@@ -11,6 +11,17 @@ namespace RestaurantRoomConsole.Model
         public int rang;
         public int line;
 
+        public bool hasNapkins;
+        public bool hasTableClothes;
+
+        public bool cleanTableClothes;
+        public bool cleanNapkins;
+
+        public int nbrNapkins;
+
+        public int nbrWatterBottles;
+        public int nbrBreadBaskets;
+
         public bool isOccuped;
         public bool isReserved;
         public String name;
@@ -19,6 +30,17 @@ namespace RestaurantRoomConsole.Model
 
         public Tables(int _size, String _name, int _rang, int _line)
         {
+            // Initialisation des serviettes et nappes
+            this.nbrNapkins = 0;
+            this.hasNapkins = false;
+            this.hasTableClothes = false;
+            this.cleanNapkins = false;
+            this.cleanTableClothes = false;
+
+            // Pain et eau :
+            this.nbrBreadBaskets = 0;
+            this.nbrWatterBottles = 0;
+
             // Initialisation des rangs et des lignes ou les tables seront placées
             this.rang = _rang;
             this.line = _line;

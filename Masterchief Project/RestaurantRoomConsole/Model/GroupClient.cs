@@ -25,8 +25,6 @@ namespace RestaurantRoomConsole.Model
         public Thread thmealchoose;
         public Thread theat;
         public bool HasFinishedEat;
-        public GroupClient()
-        { }
 
 
 
@@ -48,7 +46,9 @@ namespace RestaurantRoomConsole.Model
 
             
             // Si hasReserved = true, alors il n'attend pas encore de table
-            if (_hasReserved) { this.isWaitingATable = false; }
+            if (_hasReserved) {
+                this.isWaitingATable = false;
+            }
                 
             clientList = new List<Clients>();
             Restaurant.listGroupClient.Add(this);
@@ -82,14 +82,19 @@ namespace RestaurantRoomConsole.Model
                     if (this.stepMeal == 1) spmeal = "l'entrée";
                     else if (this.stepMeal == 2) spmeal = "le plat";
                     else if (this.stepMeal == 3) spmeal = "le dessert";
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine(DateTime.Now.ToString("mm:ss tt") + " :   ****    Le " + this.name + " est en train de manger " + spmeal);
-                    Console.ResetColor();
-                    Thread.Sleep(5000);
 
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine(DateTime.Now.ToString("mm:ss tt") + " :   ****    Le " + this.name + " a fini de manger le " + spmeal);
-                    Console.ResetColor();
+                    Display.DisplayMsg("****    Le " + this.name + " est en train de manger " + spmeal, false, false, ConsoleColor.Green);
+                    
+                    switch(this.stepMeal)
+                    {
+                        case 1: Thread.Sleep(Parameters.timeEatStarter); break;
+                        case 2: Thread.Sleep(Parameters.timeEatMainCourse); break;
+                        case 3: Thread.Sleep(Parameters.timeEatDessert); break;
+                        default: Thread.Sleep(5000); break;
+                    }
+
+                    Display.DisplayMsg("****    Le " + this.name + " a fini de manger " + spmeal, false, false, ConsoleColor.DarkGreen);
+                    
                     isEating = false;
                 } 
             }

@@ -17,6 +17,9 @@ namespace RestaurantRoomConsole.Controler
 
         public static int timeSpawnMin = 7000;
         public static int timeSpawnMax = 15000;
+        
+        public static int nbrCleanNapkins = 50;
+        public static int nbrCleanTableClothes = 20;
 
         //public static List<String> listGroupClientReserved = new List<String>();
     }

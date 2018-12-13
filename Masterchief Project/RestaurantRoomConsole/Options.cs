@@ -40,6 +40,11 @@ namespace RestaurantRoomConsole
             Parameters.timeSpawnMin = Convert.ToInt32(UDTimeSpawnMin.Value) * 1000;
             Parameters.timeSpawnMax = Convert.ToInt32(UDTimeSpawnMax.Value) * 1000;
 
+            // Nappes et serviettes
+            Parameters.nbrCleanNapkins = Convert.ToInt32(UDCleanNapkins.Value);
+            Parameters.nbrCleanTableClothes = Convert.ToInt32(UDCleanTableClothes.Value);
+
+
             // Remplissage de la liste des groupes ayant reservés (dans la classe Parametres)
             foreach (ListViewItem itm in listView1.Items)
             {

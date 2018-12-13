@@ -16,9 +16,6 @@ namespace RestaurantRoomConsole.Model
         {
             listLines.Add(new Line());
             listLines.Add(new Line());
-            //Line line2 = new Line();
-
-            //Lines.Add()
         }
     }
 }

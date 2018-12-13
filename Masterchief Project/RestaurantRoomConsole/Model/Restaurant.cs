@@ -28,7 +28,7 @@ namespace RestaurantRoomConsole.Model
             foreach (List<String> list in Parameters.listGroupClientReserved)
             {
                 // On créer un noueau group, avec la valeur hasReserved = true
-                GroupClient group = new GroupClient(list[0], int.Parse(list[1]),true);
+               //GroupClient group = new GroupClient(list[0], int.Parse(list[1]),true);
                 foreach(Tables table in listTables)
                 {
                     if(!table.isOccuped && !table.isReserved)

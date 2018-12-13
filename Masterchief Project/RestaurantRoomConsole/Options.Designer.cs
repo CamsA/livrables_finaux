@@ -50,6 +50,11 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.UDTimeSpawnMax = new System.Windows.Forms.NumericUpDown();
+            this.UDTimeSpawnMin = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
             this.UDTimeChooseMenu = new System.Windows.Forms.NumericUpDown();
             this.UDTimeEatDessert = new System.Windows.Forms.NumericUpDown();
             this.UDTimeEatMainCourse = new System.Windows.Forms.NumericUpDown();
@@ -58,11 +63,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.UDTimeSpawnMax = new System.Windows.Forms.NumericUpDown();
-            this.UDTimeSpawnMin = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.UDCleanNapkins = new System.Windows.Forms.NumericUpDown();
+            this.UDCleanTableClothes = new System.Windows.Forms.NumericUpDown();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -71,12 +76,15 @@
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UDTimeSpawnMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UDTimeSpawnMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UDTimeChooseMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UDTimeEatDessert)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UDTimeEatMainCourse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UDTimeEatStarter)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UDTimeSpawnMax)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UDTimeSpawnMin)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UDCleanNapkins)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UDCleanTableClothes)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -202,6 +210,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.groupBox3);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -221,7 +230,7 @@
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(15, 10);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(245, 159);
+            this.groupBox3.Size = new System.Drawing.Size(245, 146);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Console";
@@ -335,6 +344,60 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Clients";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(34, 195);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(167, 13);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "Nombre aléatoire entre min et max";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(22, 174);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(140, 13);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Temps maximum apparition :";
+            // 
+            // UDTimeSpawnMax
+            // 
+            this.UDTimeSpawnMax.Location = new System.Drawing.Point(168, 170);
+            this.UDTimeSpawnMax.Name = "UDTimeSpawnMax";
+            this.UDTimeSpawnMax.Size = new System.Drawing.Size(53, 22);
+            this.UDTimeSpawnMax.TabIndex = 12;
+            this.UDTimeSpawnMax.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            // 
+            // UDTimeSpawnMin
+            // 
+            this.UDTimeSpawnMin.Location = new System.Drawing.Point(168, 146);
+            this.UDTimeSpawnMin.Name = "UDTimeSpawnMin";
+            this.UDTimeSpawnMin.Size = new System.Drawing.Size(53, 22);
+            this.UDTimeSpawnMin.TabIndex = 11;
+            this.UDTimeSpawnMin.Value = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(25, 150);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(137, 13);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Temps minimum apparition :";
+            // 
             // UDTimeChooseMenu
             // 
             this.UDTimeChooseMenu.Location = new System.Drawing.Point(168, 103);
@@ -423,59 +486,64 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Temps pour manger (entrée) :";
             // 
-            // UDTimeSpawnMax
+            // groupBox2
             // 
-            this.UDTimeSpawnMax.Location = new System.Drawing.Point(168, 170);
-            this.UDTimeSpawnMax.Name = "UDTimeSpawnMax";
-            this.UDTimeSpawnMax.Size = new System.Drawing.Size(53, 22);
-            this.UDTimeSpawnMax.TabIndex = 12;
-            this.UDTimeSpawnMax.Value = new decimal(new int[] {
-            15,
+            this.groupBox2.Controls.Add(this.UDCleanTableClothes);
+            this.groupBox2.Controls.Add(this.UDCleanNapkins);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(15, 162);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(245, 98);
+            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Console";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(6, 34);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(151, 13);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Nombre de serviettes propres :";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(6, 56);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(141, 13);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "Nombre de nappes propres :";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // UDCleanNapkins
+            // 
+            this.UDCleanNapkins.Location = new System.Drawing.Point(163, 30);
+            this.UDCleanNapkins.Name = "UDCleanNapkins";
+            this.UDCleanNapkins.Size = new System.Drawing.Size(51, 22);
+            this.UDCleanNapkins.TabIndex = 2;
+            this.UDCleanNapkins.Value = new decimal(new int[] {
+            50,
             0,
             0,
             0});
             // 
-            // UDTimeSpawnMin
+            // UDCleanTableClothes
             // 
-            this.UDTimeSpawnMin.Location = new System.Drawing.Point(168, 146);
-            this.UDTimeSpawnMin.Name = "UDTimeSpawnMin";
-            this.UDTimeSpawnMin.Size = new System.Drawing.Size(53, 22);
-            this.UDTimeSpawnMin.TabIndex = 11;
-            this.UDTimeSpawnMin.Value = new decimal(new int[] {
-            7,
+            this.UDCleanTableClothes.Location = new System.Drawing.Point(163, 53);
+            this.UDCleanTableClothes.Name = "UDCleanTableClothes";
+            this.UDCleanTableClothes.Size = new System.Drawing.Size(51, 22);
+            this.UDCleanTableClothes.TabIndex = 3;
+            this.UDCleanTableClothes.Value = new decimal(new int[] {
+            20,
             0,
             0,
             0});
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(25, 150);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(137, 13);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Temps minimum apparition :";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(22, 174);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(140, 13);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "Temps maximum apparition :";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(34, 195);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(167, 13);
-            this.label9.TabIndex = 14;
-            this.label9.Text = "Nombre aléatoire entre min et max";
             // 
             // Options
             // 
@@ -499,12 +567,16 @@
             this.tabPage3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UDTimeSpawnMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UDTimeSpawnMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UDTimeChooseMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UDTimeEatDessert)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UDTimeEatMainCourse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UDTimeEatStarter)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UDTimeSpawnMax)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UDTimeSpawnMin)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UDCleanNapkins)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UDCleanTableClothes)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -546,5 +618,10 @@
         private System.Windows.Forms.NumericUpDown UDTimeSpawnMax;
         private System.Windows.Forms.NumericUpDown UDTimeSpawnMin;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.NumericUpDown UDCleanTableClothes;
+        private System.Windows.Forms.NumericUpDown UDCleanNapkins;
     }
 }
