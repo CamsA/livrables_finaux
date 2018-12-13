@@ -12,8 +12,6 @@ namespace RestaurantRoomConsole.View
 {
     class Display
     {
-        
-
         //Constructeur
         public Display()
         {

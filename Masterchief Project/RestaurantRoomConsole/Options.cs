@@ -55,7 +55,7 @@ namespace RestaurantRoomConsole
             }
             
             // Instanciation du controller
-            Conntroller controler = new Conntroller();
+            ControllerClass controler = new ControllerClass();
         }
         
         private void Options_Load(object sender, EventArgs e)
