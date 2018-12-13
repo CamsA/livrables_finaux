@@ -46,5 +46,21 @@ namespace Kitchen
                 View.Display.DisplayMsg("/!\\/!\\/!\\ La connexion à la base de données à échouée /!\\/!\\/!\\" + e.ToString(), true, true, ConsoleColor.Red);
             }
         }
+
+        public DataSet GetRows(string dataTableName, string rq_sql)
+        {
+            command.CommandText = rq_sql;
+            adapter.SelectCommand = new SqlCommand(command.CommandText);
+            adapter.SelectCommand.Connection = connection; // Permet de lire les données et remplace le SqlDataReader
+            adapter.Fill(data, dataTableName); // Récupère les données
+            return data;
+        }
+
+        public void ActionOnRows(string rq_sql)
+        {
+
+            command.CommandText = rq_sql;
+            command.ExecuteNonQuery();
+        }
     }
 }

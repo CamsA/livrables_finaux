@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Controller\ControllerClass.cs" />
     <Compile Include="Model\Chef.cs" />
+    <Compile Include="Model\SQLprocess.cs" />
     <Compile Include="Model\DBConnect.cs" />
     <Compile Include="Model\Cooks.cs" />
     <Compile Include="Model\DishWasherMachine.cs" />
