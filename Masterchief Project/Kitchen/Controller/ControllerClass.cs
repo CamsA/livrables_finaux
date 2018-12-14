@@ -25,8 +25,7 @@ namespace Kitchen.Controller
 
             Thread kitchenListenerThread = new Thread(KitchenListenerSocket.Initialize);
             kitchenListenerThread.Start();
-            Thread kitchenClientThread = new Thread(KitchenClientSocket.Initialize);
-            kitchenClientThread.Start();
+            KitchenClientSocket.Initialize();
 
             DBConnect.Start("MasterchiefDB");
             SQLprocess.Start();
