@@ -120,6 +120,7 @@ namespace RestaurantRoomConsole
             }
             Console.WriteLine("--------------------------------");
             Display.DisplayTables();
+            Modell.pauseThread();
         }
 
         private void label1_Click(object sender, EventArgs e)

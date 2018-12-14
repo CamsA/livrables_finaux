@@ -80,5 +80,6 @@ namespace RestaurantRoomConsole.View
             //string name = path + "RestaurantLog : " + DateTime.Now + ".txt";
             //System.IO.File.WriteAllText(name, Line);
         }
+        
     }
 }

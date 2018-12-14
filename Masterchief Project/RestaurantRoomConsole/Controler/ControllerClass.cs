@@ -19,6 +19,11 @@ namespace RestaurantRoomConsole.Controler
         public ControllerClass()
         {
             Display.DisplayMsg("Lancement du programme.",false,true,ConsoleColor.White);
+
+            DBConnect.Start("MasterChiefDB");
+            SQLprocess.Start();
+
+
             desk = ExchangeDesk.GetInstance;
 
             countSecondes = 0;
@@ -56,7 +61,8 @@ namespace RestaurantRoomConsole.Controler
                                     if (table.isReserved == true)
                                     {
                                         GroupClient group = new GroupClient(list[0], int.Parse(list[1]), true);
-
+                                        group.theat.Start();
+                                        Modell.listThreads.Add(group.theat);
                                         //list.RemoveAll(c => list[0] == list[0]);
                                         break;
                                     }

@@ -9,6 +9,8 @@ namespace RestaurantRoomConsole.Model
 {
     public class Restaurant
     {
+
+
         public static List<Tables> listTables = new List<Tables>();
         public static List<GroupClient> listGroupClient = new List<GroupClient>();
 
@@ -23,12 +25,12 @@ namespace RestaurantRoomConsole.Model
             listTables.Add(new Tables(5, "Table3", 2, 3));
             listTables.Add(new Tables(6, "Table4", 2, 4));
 
+
             // Initialisation des groupes ayant reservés
 
             foreach (List<String> list in Parameters.listGroupClientReserved)
             {
-                // On créer un noueau group, avec la valeur hasReserved = true
-               //GroupClient group = new GroupClient(list[0], int.Parse(list[1]),true);
+                // Pour chaque tables
                 foreach(Tables table in listTables)
                 {
                     if(!table.isOccuped && !table.isReserved)

@@ -23,7 +23,7 @@ namespace RestaurantRoomConsole.Model
 
         public static string SelectRecepiesByType(int category)
         {
-            return Rq_sql = "SELECT IDRecette FROM Recette WHERE Categorie = " + category;
+            return Rq_sql = "SELECT IDRecette, NomRecette FROM Recette WHERE Categorie = " + category;
         }
 
         public static string SelectIngredientsAndQuantitiesByRecipes(int recipe)

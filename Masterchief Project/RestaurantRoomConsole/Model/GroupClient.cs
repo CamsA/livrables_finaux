@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -22,30 +23,36 @@ namespace RestaurantRoomConsole.Model
         public int stepMeal;
         public bool isChoosingMeal;
         public bool mealChoosen;
-        public Thread thmealchoose;
+
         public Thread theat;
         public bool HasFinishedEat;
+
+        public List<int> startersList;
+        public List<int> mainCoursesList;
+        public List<int> dessertsList;
 
 
 
         public GroupClient(String _name, int _nbrClients, bool _hasReserved)
         {
+            startersList = new List<int>();
+            mainCoursesList = new List<int>();
+            dessertsList = new List<int>();
+
             this.HasFinishedEat = false;
+
             // Remplissage des valeurs du constructeur
             this.mealChoosen = false;
             theat = new Thread(loopEat);
-            thmealchoose = new Thread(loopChoose);
-            thmealchoose.Start();
-            theat.Start();
             this.hasReserved = _hasReserved; 
             this.name = _name;
             this.size = _nbrClients;
             this.isWaitingATable = true;
             this.isChoosingMeal = false;
             this.stepMeal = 0;
-
             
             // Si hasReserved = true, alors il n'attend pas encore de table
+
             if (_hasReserved) {
                 this.isWaitingATable = false;
             }
@@ -63,15 +70,55 @@ namespace RestaurantRoomConsole.Model
             }
         }
 
-
-        public void loopGen()
+        public void chooseMeal(int _step)
         {
-            while (true)
+
+            DataSet data = new DataSet();
+            DataTable dt = new DataTable();
+
+            data = SQLprocess.GetRecipesByType("MasterChiefDB", _step);
+            dt = data.Tables["MasterChiefDB"];
+
+            List<List<String>> listRecette = new List<List<String>>();
+            List<String> listPerClient = new List<String>();
+            List<int> recettesDispos = new List<int>();
+
+
+            foreach (DataRow dr in dt.Rows)
+                recettesDispos.Add(int.Parse(dr["IDRecette"].ToString()));
+
+
+            Random rnd = new Random();
+            for (int i = 0; i < this.size; i++)
             {
 
-                Thread.Sleep(500);
+                int recetteChoisi = 0;
+
+                switch (_step)
+                {
+                    case 1:
+
+                        recetteChoisi = rnd.Next(0, recettesDispos.Count());
+                        startersList.Add(recettesDispos[recetteChoisi]);
+                        break;
+                    case 2:
+
+                        recetteChoisi = rnd.Next(0, recettesDispos.Count());
+                        mainCoursesList.Add(recettesDispos[recetteChoisi]);
+                        break;
+                    case 3:
+
+                        recetteChoisi = rnd.Next(0, recettesDispos.Count());
+                        dessertsList.Add(recettesDispos[recetteChoisi]);
+                        break;
+                    default:
+                        break;
+                }
+                    
             }
+
         }
+
         public void loopEat()
         {
             while (true)
@@ -97,31 +144,41 @@ namespace RestaurantRoomConsole.Model
                     
                     isEating = false;
                 }
-                Thread.Sleep(100);
-            }
-        }
 
-        public void loopChoose()
-        {
-            while (true)
-            {
                 if (this.isChoosingMeal == true && !this.mealChoosen)
                 {
                     Thread.Sleep(Parameters.timeChooseMenu);
-                    
-                    String spmeal = "";
-                    if (this.stepMeal == 0) spmeal = "l'entrée";
-                    else if (this.stepMeal == 1) spmeal = "le plat";
-                    else if (this.stepMeal == 2) spmeal = "le dessert";
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine(DateTime.Now.ToString("mm:ss tt") + " : Le " + this.name + " viennent de choisir " + spmeal + " !");
-                    Console.ResetColor();
+
+                    chooseMeal(1);
+                    Thread.Sleep(200);
+                    chooseMeal(2);
+                    Thread.Sleep(200);
+                    chooseMeal(3);
+                    Thread.Sleep(200);
 
 
-                    // ** Requete bdd des plats dispos
-                    // Selon le size du group client (for)
 
                     // this.starterlist.Add(int)
+
+                    Display.DisplayMsg("Le " + this.name + " vient de choisir le repas !",false,false,ConsoleColor.Yellow);
+
+                   /** Console.WriteLine("Les clients ont choisi en entrée : ");
+                    foreach (int i in startersList)
+                    {
+                        Console.Write(i + " ");
+                    }
+                    Console.WriteLine("Les clients ont choisi en plat principal : ");
+                    foreach (int i in mainCoursesList)
+                    {
+                        Console.Write(i + " ");
+                    }
+
+                    Console.WriteLine("Les clients ont choisi en dessert : ");
+                    foreach (int i in dessertsList)
+                    {
+                        Console.Write(i + " ");
+                    }*/
+                    Console.WriteLine();
                     this.isChoosingMeal = false;
                     mealChoosen = true;
                 }

@@ -22,8 +22,8 @@ namespace RestaurantRoomConsole.Model
             this.lineAssigned = _lineAssigned;
             this.name = _name;
 
-            lpWaiter = new Thread(new ThreadStart(loopWaiter));
-            lpWaiter.Start();
+            lpWaiter = new Thread(loopWaiter);
+            
             
         }
 
@@ -76,7 +76,7 @@ namespace RestaurantRoomConsole.Model
                 Restaurant.listGroupClient.RemoveAll(c => c.name == grp.name);
 
                 // On arrete les thread de l'objet du groupe pour éviter de manger de la mémoire pour rien
-                grp.thmealchoose.Abort();
+                
                 grp.theat.Abort();
                 
             }

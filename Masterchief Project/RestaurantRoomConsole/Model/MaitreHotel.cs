@@ -10,11 +10,12 @@ namespace RestaurantRoomConsole.Model
     public class MaitreHotel
     {
         public String name;
+        public Thread thmh;
         public MaitreHotel(String _name)
         {
             this.name = _name;
-            Thread thmh = new Thread(loopMh);
-            thmh.Start();
+            thmh = new Thread(loopMh);
+            
 
 
         }
@@ -38,7 +39,7 @@ namespace RestaurantRoomConsole.Model
                 Restaurant.listGroupClient.RemoveAll(c => c.name == grp.name);
 
                 // On arrete les thread de l'objet du groupe pour éviter de manger de la mémoire pour rien
-                grp.thmealchoose.Abort();
+                
                 grp.theat.Abort();
 
                 Thread.Sleep(1000);
@@ -50,26 +51,35 @@ namespace RestaurantRoomConsole.Model
         {
             while (true)
             {
+                // Pour chaque groupes de client du restaurant
                 foreach(GroupClient grp in Restaurant.listGroupClient.ToList())
                 {
+                    // Si un groupe a fini de manger
                     if(grp.stepMeal==3)
                     {
+                        // On le supprime
                         deleteGroupClient(grp);
                     }
                 }
 
+                // Si au moins un table n'est pas occupée
                 if (Restaurant.listTables.Find(item => item.isOccuped == false) != null)
                 {
+                    // Si au moins un table n'est pas reservée
                     if (Restaurant.listTables.Find(item => item.isReserved == false) != null)
                     {
+                        // Pour chaque groupe de client
                         foreach (GroupClient grp in Restaurant.listGroupClient)
                         {
+                            // Si ce groupe n'a pas réservé et attends une table
                             if (grp.isWaitingATable && grp.hasReserved==false)
                             {
                                 foreach (Tables table in Restaurant.listTables)
                                 {
+                                    // Si parmis les tables, une n'est pas occupée ni reservée
                                     if (!table.isOccuped && !table.isReserved)
                                     {
+                                        // On assigne ce groupe à la table correspondante
                                         table.isOccuped = true;
                                         grp.isWaitingATable = false;
                                         grp.assignedTable = table.name;
@@ -79,10 +89,12 @@ namespace RestaurantRoomConsole.Model
                                 }
                                 break;
                             }
+                            // Sinon si le groupe a réservé à l'avance
                             else if(grp.hasReserved == true)
                             {
                                 foreach (Tables table in Restaurant.listTables)
                                 {
+                                    // On assigne ce groupe a une des tables 
                                     if (table.isReserved)
                                     {
                                         table.isReserved = false;

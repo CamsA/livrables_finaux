@@ -12,14 +12,15 @@ namespace RestaurantRoomConsole.Model
     {
         public int rangAssigned;
         public String name;
+        public Thread lpChefDeRang;
 
         public ChefDeRang(String _name, int _rangAssigned)
         {
             this.rangAssigned = _rangAssigned;
             this.name = _name;
 
-            Thread lpChefDeRang = new Thread(loopChefDeRang);
-            lpChefDeRang.Start();
+            lpChefDeRang = new Thread(loopChefDeRang);
+            
 
         }
 
@@ -85,7 +86,7 @@ namespace RestaurantRoomConsole.Model
                     {
                         if (VerifyTable(grp))
                         {
-                                                        // Si le group n'est pas en train de manger, n'est en attente d'une table (donc est assis),
+                            // Si le group n'est pas en train de manger, n'est en attente d'une table (donc est assis),
                             // N'a pas reservé (renforcement), est bien assigné à une table (renforcement) :
                             if (grp.isEating == false && grp.isWaitingATable == false && grp.hasReserved == false && grp.assignedTable != "" && grp.stepMeal == 0)
                             {
