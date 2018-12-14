@@ -83,7 +83,7 @@ namespace Kitchen.Model
                         KitchenClientSocket.SendMessage("CTC:" + quantity);
                     break;
                 default :
-                    View.Display.DisplayMsg("Erreur : objet inconnu à envoyer à la salle : " + type, false, true, ConsoleColor.Red);
+                    View.Display.DisplayMsg("Erreur lors de l'envoi d'un objet propre à la salle : " + type, false, true, ConsoleColor.Red);
                     break;
             }
         }

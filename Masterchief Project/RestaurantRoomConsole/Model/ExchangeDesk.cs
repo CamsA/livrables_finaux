@@ -70,7 +70,7 @@ namespace RestaurantRoomConsole.Model
                     this.CleanNapkins += quantity;
                     break;
                 default:
-                    Console.WriteLine("Error : Cannot add clean object to the stack in restaurant room");
+                    View.Display.DisplayMsg("Erreur lors de l'ajout d'un objet propre au stock : " + type, false, true, ConsoleColor.Red);
                     break;
             }
         }
@@ -90,7 +90,7 @@ namespace RestaurantRoomConsole.Model
                     RestaurantClientSocket.SendMessage("DC:" + quantity);
                     break;
                 default:
-                    Console.WriteLine("Error : Cannot recognize object sent from the restaurant room : " + type);
+                    View.Display.DisplayMsg("Erreur lors de l'envoi d'un objet sale à la cuisine : " + type, false, true, ConsoleColor.Red);
                     break;
             }
         }

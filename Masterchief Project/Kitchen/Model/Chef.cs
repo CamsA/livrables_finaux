@@ -26,6 +26,7 @@ namespace Kitchen.Model
         public Chef()
         {
             this.exchangeDesk = ExchangeDesk.GetInstance;
+            this.waitingTask = new Tasks();
         }
 
         // The Chef give to the cooks the order of cooking the meal
