@@ -9,40 +9,63 @@ using Kitchen;
 
 namespace Kitchen.Model
 {
-    class SQLprocess
+    public static class SQLprocess
     {
-        private DataSet oDS;
-        private SQLmethode oMethode;
-        private DBConnect oDBConnect;
-        private string rq_sql = "";
+        public static DataSet oDS;
+        public static string rq_sql = "";
 
-        public SQLprocess()
+        public static void Start()
         {
             oDS = new DataSet();
-            oMethode = new SQLmethode();
-            oDBConnect = new DBConnect("MasterChiefDB");
+            DBConnect.Start("MasterChiefDB");
         }
 
-        public DataSet DisplayAll(string dataTableName, string table)
+        public static DataSet DisplayAll(string dataTableName, string table)
         {
             oDS.Clear();
-            oDS = oDBConnect.GetRows(dataTableName, oMethode.SelectAllFromTable(table));
+            oDS = DBConnect.GetRows(dataTableName, SQLmethode.SelectAllFromTable(table));
             return oDS;
         }
 
-        public DataSet GetRecipesByType(string dataTableName, int category)
+        public static DataSet GetRecipesByType(string dataTableName, int category)
         {
             oDS.Clear();
-            oDS = oDBConnect.GetRows(dataTableName, oMethode.SelectRecepiesByType(category));
+            oDS = DBConnect.GetRows(dataTableName, SQLmethode.SelectRecepiesByType(category));
             return oDS;
         }
 
-        public DataSet GetQuantiesByRecipes(string dataTableName, int category)
+        public static DataSet GetQuantiesByRecipes(string dataTableName, int category)
         {
             oDS.Clear();
-            oDS = oDBConnect.GetRows(dataTableName, oMethode.SelectRecepiesByType(category));
+            oDS = DBConnect.GetRows(dataTableName, SQLmethode.SelectRecepiesByType(category));
             return oDS;
         }
+
+        public static void UpdateIngredientStock(int recipe)
+        {
+            oDS.Clear();
+            DBConnect.ActionOnRows(SQLmethode.UpdateIngredientStockByRecipe(recipe));
+        }
+
+        public static void UpdateIngredientDay(int recipe)
+        {
+            oDS.Clear();
+            DBConnect.ActionOnRows(SQLmethode.UpdateArrivalDayIngredientStockByRecipe(recipe));
+        }
+
+        public static void AddNewScenario(int path)
+        {
+            oDS.Clear();
+            DBConnect.ActionOnRows(SQLmethode.InsertIntoScenario(path));
+        }
+
+        public static DataSet GetTimeTasksByRecipes(string dataTableName, int recipe)
+        {
+            oDS.Clear();
+            oDS = DBConnect.GetRows(dataTableName, SQLmethode.SelectTimeTasksByRecipes(recipe));
+            return oDS;
+        }
+
 
     }
 }

@@ -9,20 +9,20 @@ using System.Data;
 
 namespace Kitchen
 {
-    public class DBConnect
+    public static class DBConnect
     {
-        private string cnx = "";
-        private SqlDataAdapter adapter = null;
-        private SqlConnection connection = null;
-        private SqlCommand command = null;
-        private DataSet data = null;
-        private string datasrc = "local";
-        private string dbname = null;
+        public static string cnx = "";
+        public static SqlDataAdapter adapter = null;
+        public static SqlConnection connection = null;
+        public static SqlCommand command = null;
+        public static DataSet data = null;
+        public static string datasrc = "local";
+        public static string dbname = null;
 
-        public string Datasrc { get => datasrc; set => datasrc = value; }
-        public string DBname { get => DBname; set => DBname = value; }
+        public static string Datasrc { get => datasrc; set => datasrc = value; }
+        public static string DBname { get => DBname; set => DBname = value; }
 
-        public DBConnect(string namedb)
+        public static void Start(string namedb)
         {
             // Connexion à la base de données
 
@@ -47,7 +47,7 @@ namespace Kitchen
             }
         }
 
-        public DataSet GetRows(string dataTableName, string rq_sql)
+        public static DataSet GetRows(string dataTableName, string rq_sql)
         {
             command.CommandText = rq_sql;
             adapter.SelectCommand = new SqlCommand(command.CommandText);
@@ -56,7 +56,7 @@ namespace Kitchen
             return data;
         }
 
-        public void ActionOnRows(string rq_sql)
+        public static void ActionOnRows(string rq_sql)
         {
 
             command.CommandText = rq_sql;
