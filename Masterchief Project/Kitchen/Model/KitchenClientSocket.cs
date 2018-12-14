@@ -31,7 +31,7 @@ namespace Kitchen.Model
             sender = new Socket(ipAddress.AddressFamily,
                     SocketType.Stream, ProtocolType.Tcp);
 
-            Thread.Sleep(3000);
+            Thread.Sleep(5000);
 
             // Connect the client socket
             try
