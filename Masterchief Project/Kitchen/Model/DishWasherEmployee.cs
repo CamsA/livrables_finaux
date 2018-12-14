@@ -20,11 +20,14 @@ namespace Kitchen.Model
             washingMachineThread.Start();
         }
 
+        // prend les objets du comptoire d'échange pour les mettre dans la cuisine
+        // les objets sont a nettoyers
         public void MoveDirtyObjects()
         {
             Kitchen kitchen = Kitchen.GetInstance;
             ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
            
+            //lave-vaiselle
             if(exchangeDesk.WaitingDirtyCrockery != 0)
             {
                 int quantityMovedCrockery = exchangeDesk.WaitingDirtyCrockery;
@@ -34,6 +37,7 @@ namespace Kitchen.Model
                 View.Display.DisplayMsg("Le plongeur a pris " + quantityMovedCrockery + " plat(s) sale(s) pour le(s) mettre dans le lave-vaisselle", false, true, ConsoleColor.White);
             }
 
+            //lave-linge des nappes
             if (exchangeDesk.WaitingDirtyTableClothes != 0)
             {
                 int quantityMovedTableClothes = exchangeDesk.WaitingDirtyTableClothes;
@@ -43,6 +47,7 @@ namespace Kitchen.Model
                 View.Display.DisplayMsg("Le plongeur a pris " + quantityMovedTableClothes + " nappes pour les mettre au lave-linge", false, true, ConsoleColor.White);
             }
 
+            //lave-linge des serviettes
             if (exchangeDesk.WaitingDirtyNapkins != 0)
             {
                 int quantityMovedNapkins = exchangeDesk.WaitingDirtyNapkins;

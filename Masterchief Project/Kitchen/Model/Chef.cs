@@ -17,6 +17,7 @@ namespace Kitchen.Model
         private string databaseName = "MasterChiefDB";
         private KitchenClerk flavien = new KitchenClerk();
 
+        // accesseur public des attributs priver
         public int WaitingOrder { get => waitingOrder; set => waitingOrder = value; }
         public Tasks WaitingTask { get => waitingTask; set => waitingTask = value; }
         public ExchangeDesk ExchangeDesk { get => exchangeDesk; set => exchangeDesk = value; }
@@ -40,14 +41,18 @@ namespace Kitchen.Model
             foreach (DataRow dataRow in dataTable.Rows)
                 this.WaitingTask.UnderTasksList.Add(new UnderTask(int.Parse(dataRow["DureeTache"].ToString())));
 
+            // configuration pour le threadpool
             const int CooksAmount = 2;
             var doneEvents = new ManualResetEvent[CooksAmount];
             var CooksArray = new Cooks[CooksAmount];
 
+            // pour chaque cuisinier, le chef leurs attribue une sous tache d'une tache
             for (int i = 0; i < CooksAmount; i++)
             {
+                //configuration pour le threadpool
                 doneEvents[i] = new ManualResetEvent(false);
                 var cook = new Cooks(doneEvents[i]);
+
 
                 if (WaitingTask.IsDone == false)
                 {
@@ -57,6 +62,7 @@ namespace Kitchen.Model
                         {
                             ThreadPool.QueueUserWorkItem(cook.Cook, undertask);
                         }
+                        // si toutes les sous-taches d'une tache sont complête alors la tâche est complête
                         if (WaitingTask.UnderTasksList.All(IsDone => true))
                         {
                             WaitingTask.IsDone = true;
@@ -64,8 +70,9 @@ namespace Kitchen.Model
                     }
                 }
             }
-
+            //lorsqu'une sous-tache a fini le chef est avertis
             WaitHandle.WaitAny(doneEvents);
+
             int orderReady = this.WaitingOrder;
             this.WaitingOrder = -1;
             return orderReady;

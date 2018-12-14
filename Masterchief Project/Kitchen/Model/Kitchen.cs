@@ -21,6 +21,7 @@ namespace Kitchen.Model
         public WashingMachine WashingMachine { get => washingMachine; private set => washingMachine = value; }
         public int CleanCrokeryStack { get => cleanCrokeryStack; set => cleanCrokeryStack = value; }
 
+        // constructeur qui initialise les machines
         private Kitchen()
         {
             this.DishwasherMachine = new DishWasherMachine();
