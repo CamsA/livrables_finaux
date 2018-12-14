@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Kitchen.Model;
-using System.Threading;
+using Kitchen.Controller;
 
 namespace Kitchen
 {
@@ -22,13 +23,19 @@ namespace Kitchen
             Application.Run(new kitchenForm());
             */
 
+            ControllerClass controller = new ControllerClass();
+
+
+            //TestsSockets();
+        }
+
+        public static void TestsSockets()
+        {
             TestsSocketsRestaurantToKitchen();
 
             Thread.Sleep(3000);
 
             TestsSocketsKitchenToRestaurant();
-
-
 
             Thread.Sleep(20000);
 

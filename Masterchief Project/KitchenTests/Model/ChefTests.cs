@@ -7,6 +7,7 @@ namespace KitchenTests.Model
     [TestClass]
     public class ChefTests
     {
+        /*
         [TestMethod]
         public void Test_GiveRecipe()
         {
@@ -29,5 +30,6 @@ namespace KitchenTests.Model
 
 
         }
+        */
     }
 }

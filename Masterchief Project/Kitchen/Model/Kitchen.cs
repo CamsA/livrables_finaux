@@ -17,7 +17,7 @@ namespace Kitchen.Model
         private WashingMachine washingMachine;
         private int cleanCrokeryStack;
 
-        public DishWasherMachine DishwasherMachine { get => DishwasherMachine; private set => DishwasherMachine = value; }
+        public DishWasherMachine DishwasherMachine { get => dishwasherMachine; private set => dishwasherMachine = value; }
         public WashingMachine WashingMachine { get => washingMachine; private set => washingMachine = value; }
         public int CleanCrokeryStack { get => cleanCrokeryStack; set => cleanCrokeryStack = value; }
 

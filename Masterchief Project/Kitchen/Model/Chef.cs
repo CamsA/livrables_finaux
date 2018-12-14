@@ -11,13 +11,15 @@ namespace Kitchen.Model
         // Next order the Chef has to take care of
         private int waitingOrder = -1;
         private Tasks waitingTask;
+        private ExchangeDesk exchangeDesk;
 
         public int WaitingOrder { get => waitingOrder; set => waitingOrder = value; }
         public Tasks WaitingTask { get => waitingTask; set => waitingTask = value; }
+        public ExchangeDesk ExchangeDesk { get => exchangeDesk; set => exchangeDesk = value; }
 
         public Chef()
         {
-            this.Work();
+            this.exchangeDesk = ExchangeDesk.GetInstance;
         }
 
         // The Chef give to the cooks the order of cooking the meal
@@ -76,24 +78,22 @@ namespace Kitchen.Model
         // Get the first order that has arrived in the kitchen from the restaurant room
         public void GetLastOrder()
         {
-            ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
-            this.WaitingOrder = exchangeDesk.WaitingOrders.First();
-            exchangeDesk.WaitingOrders.RemoveAt(0);
+            this.WaitingOrder = this.exchangeDesk.WaitingOrders.First();
+            this.exchangeDesk.WaitingOrders.RemoveAt(0);
+            View.Display.DisplayMsg("Le chef récupère une commande du comptoir", false, true, ConsoleColor.Blue);
         }
 
         public void Work()
         {
             while (true)
             {
-                View.Display.DisplayMsg("Le chef récupère une commande du comptoir", false, true, ConsoleColor.Blue);
-
                 try
                 {
                     this.GetLastOrder();
                 }
                 catch (Exception e)
                 {
-                    View.Display.DisplayMsg("Aucune commande n'est présente au comptoir : " + e.ToString(), false, true, ConsoleColor.Red);
+                    // View.Display.DisplayMsg("Aucune commande n'est présente au comptoir : " + e.ToString(), false, true, ConsoleColor.Red);
                 }
 
 

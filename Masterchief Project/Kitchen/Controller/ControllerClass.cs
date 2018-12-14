@@ -11,23 +11,45 @@ namespace Kitchen.Controller
 {
     class ControllerClass
     {
+        private Display display;
         private Model.Kitchen kitchen;
-        private View.Display display;
-        private int countSeconds;
         public ExchangeDesk desk;
+
+        private int countSeconds = 0;
+
 
         public ControllerClass()
         {
-            Display.DisplayMsg("Lancement de la cuisine", false, true, ConsoleColor.Green);
-            desk = ExchangeDesk.GetInstance;
+            Display.DisplayMsg("Démarrage du service en cuisine", false, true, ConsoleColor.Green);
+            ExchangeDesk exchangedesk = ExchangeDesk.GetInstance;
 
-            countSeconds = 0;
+            Thread kitchenListenerThread = new Thread(KitchenListenerSocket.Initialize);
+            kitchenListenerThread.Start();
+            Thread kitchenClientThread = new Thread(KitchenClientSocket.Initialize);
+            kitchenClientThread.Start();
 
-            Display display = new Display();
+            DBConnect.Start("MasterchiefDB");
+            SQLprocess.Start();
+
             Model.Kitchen kitchen = Model.Kitchen.GetInstance;
 
-            //Thread thlp = new Thread(loopCtr);
-            //thlp.Start();
+            this.GetStaffToWork();
+
+            Console.Read();
+            
+        }
+
+        private void GetStaffToWork()
+        {
+            Chef JeanPierreCoffe = new Chef();
+            Thread JeanPierreCoffeThread = new Thread(JeanPierreCoffe.Work);
+            JeanPierreCoffeThread.Start();
+
+            DishWasherEmployee commandantCousteau = new DishWasherEmployee();
+            Thread commandantCousteauThread = new Thread(commandantCousteau.Work);
+            commandantCousteauThread.Start();
+
+
         }
     }
 }

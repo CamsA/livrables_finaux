@@ -10,7 +10,15 @@ namespace Kitchen.Model
     public class DishWasherEmployee
     {
         public DishWasherEmployee()
-        { }
+        {
+            DishWasherMachine dishwasherMachine = new DishWasherMachine();
+            Thread dishwasherMachineThread = new Thread(dishwasherMachine.Run);
+            dishwasherMachineThread.Start();
+
+            WashingMachine washingMachine = new WashingMachine();
+            Thread washingMachineThread = new Thread(washingMachine.Run);
+            washingMachineThread.Start();
+        }
 
         public void MoveDirtyObjects()
         {

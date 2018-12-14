@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
@@ -29,6 +30,8 @@ namespace Kitchen.Model
             // Create the client socket
             sender = new Socket(ipAddress.AddressFamily,
                     SocketType.Stream, ProtocolType.Tcp);
+
+            Thread.Sleep(3000);
 
             // Connect the client socket
             try

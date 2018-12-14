@@ -11,7 +11,7 @@ namespace KitchenTests
     [TestClass]
     public class DBConnectTests
     {
-
+        /*
         DBConnect Connectiontest = null;
 
         [TestMethod]
@@ -48,5 +48,6 @@ namespace KitchenTests
                 Assert.IsTrue(true);
             }
         }
+        */
     }
 }

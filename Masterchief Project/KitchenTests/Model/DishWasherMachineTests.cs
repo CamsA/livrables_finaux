@@ -6,6 +6,7 @@ namespace KitchenTests.Model
     [TestClass]
     public class DishWasherMachineTests
     {
+        /*
         [TestInitialize]
         public void TestInitialize()
         {
@@ -29,5 +30,6 @@ namespace KitchenTests.Model
             dishmachine.Wash();
             Assert.AreEqual(10, Kitchen.Model.Kitchen.GetInstance.CleanCrokeryStack);
         }
+        */
     }
 }
