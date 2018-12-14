@@ -43,7 +43,7 @@ namespace RestaurantRoomConsole.Model
                 // Start listening for connections
                 listener.Listen(10);
 
-                Console.WriteLine("Waiting for a connection...");
+                View.Display.DisplayMsg("Salle de restauration en attente d'un signal de la cuisine", false, true, ConsoleColor.DarkYellow);
 
                 // Program is suspended while waiting for an incoming connection
                 handler = listener.Accept();
@@ -54,7 +54,7 @@ namespace RestaurantRoomConsole.Model
             }
             catch (Exception e)
             {
-                Console.WriteLine("Unexpected exception : {0}", e.ToString());
+                View.Display.DisplayMsg("Erreur lors de l'établissement de l'échange entre la salle et la cuisine : " + e.ToString(), false, true, ConsoleColor.Red);
                 Console.Read();
             }
         }
@@ -98,7 +98,7 @@ namespace RestaurantRoomConsole.Model
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.ToString());
+                View.Display.DisplayMsg("Erreur lors de la réponse à un message de la salle : " + message + "\n" + e.ToString(), false, true, ConsoleColor.Red);
             }
         }
 
@@ -109,7 +109,7 @@ namespace RestaurantRoomConsole.Model
             ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
 
             // Show the data on the console
-            Console.WriteLine("Message received : " + msg);
+            // Console.WriteLine("Message received : " + msg);
 
             // Split the message to get the infos
             string[] splittedMsg = msg.Split(':', '<', '>');
@@ -123,19 +123,19 @@ namespace RestaurantRoomConsole.Model
             switch (splittedMsg[0])
             {
                 case "CN":
-                    Console.WriteLine("Serviette(s) propre(s) : " + number);
+                    View.Display.DisplayMsg("Serviette(s) propre(s) reçue(s) de la cuisine : " + number, false, true, ConsoleColor.DarkYellow);
                     exchangeDesk.AddCleanObject("Napkins", number);
                     break;
                 case "CTC":
-                    Console.WriteLine("Nappe(s) de table propre(s) : " + number);
+                    View.Display.DisplayMsg("Nappe(s) de table propre(s) reçue(s) de la cuisine : " + number, false, true, ConsoleColor.DarkYellow);
                     exchangeDesk.AddCleanObject("TableClothes", number);
                     break;
                 case "RM":
-                    Console.WriteLine("C'est un plat qui a l'ID : " + number);
+                    View.Display.DisplayMsg("Plat(s) prêt(s) reçu(s) de la cuisine : " + number, false, true, ConsoleColor.DarkYellow);
                     exchangeDesk.AddPreparedMeal(number);
                     break;
                 default:
-                    Console.WriteLine("Cannot Recognize Message");
+                    View.Display.DisplayMsg("Message incompréhensible en provenance de la cuisine : " + number, false, true, ConsoleColor.Red);
                     break;
             }
         }

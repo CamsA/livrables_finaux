@@ -38,7 +38,7 @@ namespace Kitchen.Model
             DataTable dataTable = dataSet.Tables[this.DatabaseName];
 
             foreach (DataRow dataRow in dataTable.Rows)
-                WaitingTask.UnderTasksList.Add(new UnderTask(int.Parse(dataRow["DureeTache"].ToString())));
+                this.WaitingTask.UnderTasksList.Add(new UnderTask(int.Parse(dataRow["DureeTache"].ToString())));
 
             const int CooksAmount = 2;
             var doneEvents = new ManualResetEvent[CooksAmount];
@@ -95,8 +95,8 @@ namespace Kitchen.Model
         // Get the first order that has arrived in the kitchen from the restaurant room
         public void GetLastOrder()
         {
-            this.WaitingOrder = this.exchangeDesk.WaitingOrders.First();
-            this.exchangeDesk.WaitingOrders.RemoveAt(0);
+            this.WaitingOrder = this.ExchangeDesk.WaitingOrders.First();
+            this.ExchangeDesk.WaitingOrders.RemoveAt(0);
             View.Display.DisplayMsg("Le chef récupère une commande du comptoir", false, true, ConsoleColor.Blue);
         }
 
