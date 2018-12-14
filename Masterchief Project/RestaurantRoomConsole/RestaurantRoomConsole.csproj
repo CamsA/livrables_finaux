@@ -49,6 +49,7 @@
     <Compile Include="Controler\Parameters.cs" />
     <Compile Include="Model\ChefDeRang.cs" />
     <Compile Include="Model\Clients.cs" />
+    <Compile Include="Model\DBConnect.cs" />
     <Compile Include="Model\ExchangeDesk.cs" />
     <Compile Include="Model\GroupClient.cs" />
     <Compile Include="Model\Line.cs" />
@@ -58,6 +59,8 @@
     <Compile Include="Model\Restaurant.cs" />
     <Compile Include="Model\RestaurantClientSocket.cs" />
     <Compile Include="Model\RestaurantListenerSocket.cs" />
+    <Compile Include="Model\SQLmethode.cs" />
+    <Compile Include="Model\SQLprocess.cs" />
     <Compile Include="Model\Square.cs" />
     <Compile Include="Model\Tables.cs" />
     <Compile Include="Model\Waiter.cs" />
