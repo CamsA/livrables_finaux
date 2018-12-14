@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Data;
+
 
 namespace Kitchen.Model
 {
@@ -12,10 +14,12 @@ namespace Kitchen.Model
         private int waitingOrder = -1;
         private Tasks waitingTask;
         private ExchangeDesk exchangeDesk;
+        private string databaseName = "MasterChiefDB";
 
         public int WaitingOrder { get => waitingOrder; set => waitingOrder = value; }
         public Tasks WaitingTask { get => waitingTask; set => waitingTask = value; }
         public ExchangeDesk ExchangeDesk { get => exchangeDesk; set => exchangeDesk = value; }
+        public string DatabaseName { get => databaseName; private set => databaseName = value; }
 
         public Chef()
         {
@@ -25,6 +29,14 @@ namespace Kitchen.Model
         // The Chef give to the cooks the order of cooking the meal
         public void GiveRecipe()
         {
+
+            DataSet dataSet = SQLprocess.GetTimeTasksByRecipes(this.DatabaseName, this.WaitingOrder);
+
+            DataTable dataTable = dataSet.Tables[this.DatabaseName];
+
+            foreach (DataRow dataRow in dataTable.Rows)
+                WaitingTask.UnderTasksList.Add(new UnderTask(int.Parse(dataRow["DureeTache"].ToString())));
+
             const int CooksAmount = 2;
             var doneEvents = new ManualResetEvent[CooksAmount];
             var CooksArray = new Cooks[CooksAmount];
