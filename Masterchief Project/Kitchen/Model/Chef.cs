@@ -15,11 +15,13 @@ namespace Kitchen.Model
         private Tasks waitingTask;
         private ExchangeDesk exchangeDesk;
         private string databaseName = "MasterChiefDB";
+        private KitchenClerk flavien = new KitchenClerk();
 
         public int WaitingOrder { get => waitingOrder; set => waitingOrder = value; }
         public Tasks WaitingTask { get => waitingTask; set => waitingTask = value; }
         public ExchangeDesk ExchangeDesk { get => exchangeDesk; set => exchangeDesk = value; }
         public string DatabaseName { get => databaseName; private set => databaseName = value; }
+        public KitchenClerk Flavien { get => flavien; set => flavien = value; }
 
         public Chef()
         {
@@ -27,7 +29,7 @@ namespace Kitchen.Model
         }
 
         // The Chef give to the cooks the order of cooking the meal
-        public void GiveRecipe()
+        public int GiveRecipe()
         {
 
             DataSet dataSet = SQLprocess.GetTimeTasksByRecipes(this.DatabaseName, this.WaitingOrder);
@@ -63,7 +65,9 @@ namespace Kitchen.Model
             }
 
             WaitHandle.WaitAny(doneEvents);
+            int orderReady = this.WaitingOrder;
             this.WaitingOrder = -1;
+            return orderReady;
         }
 
         // The Chef read the recipe matching the meal ID from the database,
@@ -116,7 +120,7 @@ namespace Kitchen.Model
                     this.ReadRecipe(this.WaitingOrder);
 
                     View.Display.DisplayMsg("Le chef donne un plat à préparer aux cuisiniers", false, true, ConsoleColor.Blue);
-                    this.GiveRecipe();
+                    this.Flavien.BringMeals(this.GiveRecipe());
                 }
 
                 Thread.Sleep(100);

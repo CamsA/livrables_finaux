@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Kitchen.View;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -12,13 +14,14 @@ namespace Kitchen.Model
 
         public void Peel(string vegetable)
         {
-            Thread.Sleep(1000);
-            // todo with vegetable
+            Thread.Sleep(5000);
+            Display.DisplayMsg("Le Commis a epluché une " + vegetable, false, true, ConsoleColor.DarkGray);
         }
 
-        public void GetIngredients()
+        public void GetIngredients(string vegetable)
         {
-            //todo requete sql avec camille
+            Thread.Sleep(5000);
+            Display.DisplayMsg("Le Commis va cherché une " + vegetable, false, true, ConsoleColor.DarkGray);
         }
 
         public void BringMeals(int idMeal)
