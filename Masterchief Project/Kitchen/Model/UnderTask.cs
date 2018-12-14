@@ -15,11 +15,10 @@ namespace Kitchen.Model
         public int TimeNeeded { get => timeNeeded; set => timeNeeded = value; }
         public bool IsDone { get => isDone; set => isDone = value; }
 
-        public UnderTask()
+        public UnderTask(int timeneeded)
         {
+            this.TimeNeeded = timeneeded;
             IsDone = false;
         }
-
-
     }
 }
