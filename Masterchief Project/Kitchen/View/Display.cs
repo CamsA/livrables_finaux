@@ -8,13 +8,8 @@ using Kitchen.Model;
 
 namespace Kitchen.View
 {
-    class Display
+    static class Display
     {
-        //Constructeur
-        public Display()
-        {
-        }
-
         public static void DisplayMsg(string msg, bool middle, bool lineBreak, ConsoleColor consoleclr)
         {
             String mdle = "";

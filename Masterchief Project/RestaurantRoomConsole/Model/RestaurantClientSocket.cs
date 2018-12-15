@@ -39,13 +39,10 @@ namespace RestaurantRoomConsole.Model
                 sender.Connect(remoteEP);
 
                 View.Display.DisplayMsg("La salle à ouvert le comptoir d'échange avec la cuisine (" + sender.RemoteEndPoint.ToString() + ")", false, true, ConsoleColor.Yellow);
-
-
             }
             catch (Exception e)
             {
                 View.Display.DisplayMsg("Erreur lors de l'établissement de l'échange entre la salle et la cuisine : " + e.ToString(), false, true, ConsoleColor.Red);
-                Console.Read();
             }
         }
 

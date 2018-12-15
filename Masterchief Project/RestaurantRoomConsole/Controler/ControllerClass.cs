@@ -11,7 +11,6 @@ namespace RestaurantRoomConsole.Controler
 {
     public class ControllerClass
     {
-
         private Modell model;
         private Display display;
         private int countSecondes;
@@ -23,7 +22,11 @@ namespace RestaurantRoomConsole.Controler
             DBConnect.Start("MasterChiefDB");
             SQLprocess.Start();
 
-
+            // Initialize the restaurant room sockets
+            Thread restaurantListenerThread = new Thread(RestaurantListenerSocket.Initialize);
+            restaurantListenerThread.Start();
+            RestaurantClientSocket.Initialize();
+            
             desk = ExchangeDesk.GetInstance;
 
             countSecondes = 0;

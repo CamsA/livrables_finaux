@@ -51,7 +51,11 @@ namespace Kitchen.Model
         {
             while (true)
             {
-                this.Wash();
+                if(this.DirtyCrockeryStack > 0)
+                {
+                    this.Wash();
+                }
+                Thread.Sleep(500);
             }
         }
     }

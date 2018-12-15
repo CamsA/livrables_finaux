@@ -62,18 +62,22 @@ namespace Kitchen.Model
 
             // Then the dishwasher employee takes the washed textiles and carry them to the exchange desk
             ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
-            exchangeDesk.SendCleanObject("Napkins", tableClothesToWash);
-            exchangeDesk.SendCleanObject("TableClothes", napkinsToWash);
+
+            if(tableClothesToWash > 0) { exchangeDesk.SendCleanObject("Napkins", tableClothesToWash); }
+            if (napkinsToWash > 0) { exchangeDesk.SendCleanObject("TableClothes", napkinsToWash); }
 
             View.Display.DisplayMsg("La machine à laver a terminé son cycle. " + napkinsToWash + " serviette(s) et " + tableClothesToWash + " nappe(s) de table ont été lavées", false, true, ConsoleColor.DarkBlue);
-
         }
 
         public void Run()
         {
             while(true)
             {
-                this.Wash();
+                if(this.DirtyNapkinsStacks > 0 || this.DirtyTableClothesStacks > 0)
+                {
+                    this.Wash();
+                }
+                Thread.Sleep(500);
             }
         }
     }

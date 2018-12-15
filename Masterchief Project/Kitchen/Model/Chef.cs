@@ -12,14 +12,13 @@ namespace Kitchen.Model
     {
         // Next order the Chef has to take care of
         private int waitingOrder = -1;
-        private Tasks waitingTask;
+
         private ExchangeDesk exchangeDesk;
         private string databaseName = "MasterChiefDB";
         private KitchenClerk flavien = new KitchenClerk();
 
-        // accesseur public des attributs priver
+        // Accessors
         public int WaitingOrder { get => waitingOrder; set => waitingOrder = value; }
-        public Tasks WaitingTask { get => waitingTask; set => waitingTask = value; }
         public ExchangeDesk ExchangeDesk { get => exchangeDesk; set => exchangeDesk = value; }
         public string DatabaseName { get => databaseName; private set => databaseName = value; }
         public KitchenClerk Flavien { get => flavien; set => flavien = value; }
@@ -27,50 +26,42 @@ namespace Kitchen.Model
         public Chef()
         {
             this.exchangeDesk = ExchangeDesk.GetInstance;
-            this.waitingTask = new Tasks();
         }
 
         // The Chef give to the cooks the order of cooking the meal
-        public int GiveRecipe()
+        private int GiveToCooks(Tasks task)
         {
-
-            DataSet dataSet = SQLprocess.GetTimeTasksByRecipes(this.DatabaseName, this.WaitingOrder);
-
-            DataTable dataTable = dataSet.Tables[this.DatabaseName];
-
-            foreach (DataRow dataRow in dataTable.Rows)
-                this.WaitingTask.UnderTasksList.Add(new UnderTask(int.Parse(dataRow["DureeTache"].ToString())));
-
-            // configuration pour le threadpool
+            // Threadpool Parameters
             const int CooksAmount = 2;
             var doneEvents = new ManualResetEvent[CooksAmount];
             var CooksArray = new Cooks[CooksAmount];
 
-            // pour chaque cuisinier, le chef leurs attribue une sous tache d'une tache
+            // The Chef gives the task undertasks to the Cooks until they've completed them all
             for (int i = 0; i < CooksAmount; i++)
             {
-                //configuration pour le threadpool
+                // Threadpool Parameters
                 doneEvents[i] = new ManualResetEvent(false);
                 var cook = new Cooks(doneEvents[i]);
 
 
-                if (WaitingTask.IsDone == false)
+                if (task.IsDone == false)
                 {
-                    foreach (var undertask in WaitingTask.UnderTasksList)
+                    foreach (var undertask in task.UnderTasksList)
                     {
                         if (undertask.IsDone == false)
                         {
                             ThreadPool.QueueUserWorkItem(cook.Cook, undertask);
                         }
-                        // si toutes les sous-taches d'une tache sont complête alors la tâche est complête
-                        if (WaitingTask.UnderTasksList.All(IsDone => true))
+                        // Completes the task if every of it's undertasks are completed
+                        if (task.UnderTasksList.All(IsDone => true))
                         {
-                            WaitingTask.IsDone = true;
+                            task.IsDone = true;
                         }
                     }
                 }
             }
-            //lorsqu'une sous-tache a fini le chef est avertis
+
+            // Tells the Chef a task has been completed
             WaitHandle.WaitAny(doneEvents);
 
             int orderReady = this.WaitingOrder;
@@ -80,16 +71,26 @@ namespace Kitchen.Model
 
         // The Chef read the recipe matching the meal ID from the database,
         // then transform it in a task to be taken care of by the cooks
-        public void ReadRecipe(int idMeal)
+        public Tasks ReadRecipe()
         {
-            // transforms the idMeal into a Tasks object
-        }
+            Tasks task = new Tasks();
+            DataSet dataSet = SQLprocess.GetTimeTasksByRecipes(this.DatabaseName, this.WaitingOrder);
 
+            DataTable dataTable = dataSet.Tables[this.DatabaseName];
+
+            foreach (DataRow dataRow in dataTable.Rows)
+                task.UnderTasksList.Add(new UnderTask(int.Parse(dataRow["DureeTache"].ToString())));
+
+            return task;
+        }
+        
+        /*
         // Regroups the orders to optimize the cooking
         public void OptimizeCommand(int idMeal)
         {
             //todo requete sql
         }
+        */
 
         /*
         // Remove the meal from the menu if there's not enough ingredients
@@ -125,10 +126,12 @@ namespace Kitchen.Model
                 {
                     // When the order is going to be treated, decrement the stocks
                     // SQLmethode.updateIngredientStockByRecipe(this.WaitingOrder);
-                    this.ReadRecipe(this.WaitingOrder);
+
+                    Tasks waitingTask = this.ReadRecipe();
+                    int idMeal = this.GiveToCooks(waitingTask);
+                    this.Flavien.BringMeals(idMeal);
 
                     View.Display.DisplayMsg("Le chef donne un plat à préparer aux cuisiniers", false, true, ConsoleColor.Blue);
-                    this.Flavien.BringMeals(this.GiveRecipe());
                 }
 
                 Thread.Sleep(100);

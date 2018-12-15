@@ -11,44 +11,53 @@ namespace Kitchen.Controller
 {
     class ControllerClass
     {
-        private Display display;
         private Model.Kitchen kitchen;
-        public ExchangeDesk desk;
-
-        private int countSeconds = 0;
-
+        public ExchangeDesk exchangeDesk;
 
         public ControllerClass()
         {
-            Display.DisplayMsg("Démarrage du service en cuisine", false, true, ConsoleColor.Green);
-            ExchangeDesk exchangedesk = ExchangeDesk.GetInstance;
+            // Connect the Kitchen to the database
+            DBConnect.Start("MasterchiefDB");
+            SQLprocess.Start();
 
+            // Initialize the kitchen sockets
             Thread kitchenListenerThread = new Thread(KitchenListenerSocket.Initialize);
             kitchenListenerThread.Start();
             KitchenClientSocket.Initialize();
 
-            DBConnect.Start("MasterchiefDB");
-            SQLprocess.Start();
-
-            Model.Kitchen kitchen = Model.Kitchen.GetInstance;
+            // Initialize the Kitchen
+            Display.DisplayMsg("Démarrage du service en cuisine", false, true, ConsoleColor.Green);
+            this.exchangeDesk = ExchangeDesk.GetInstance;
+            this.kitchen = Model.Kitchen.GetInstance;
 
             this.GetStaffToWork();
 
-            Console.Read();
+            for (int i = 1; i < 30; i++)
+            {
+                this.exchangeDesk.AddWaitingOrder(i);
+            }
+
             
+
+
+            while(true)
+            {
+                Thread.Sleep(5000);
+            }
         }
 
+        // Launches all the employees comportemental threads
         private void GetStaffToWork()
         {
-            Chef JeanPierreCoffe = new Chef();
-            Thread JeanPierreCoffeThread = new Thread(JeanPierreCoffe.Work);
-            JeanPierreCoffeThread.Start();
+            // The Chef gets to work
+            Chef GordonRamsay = new Chef();
+            Thread GordonRamsayThread = new Thread(GordonRamsay.Work);
+            GordonRamsayThread.Start();
 
+            // The DishwasherEmployee ("plongeur" in French) gets to work
             DishWasherEmployee commandantCousteau = new DishWasherEmployee();
             Thread commandantCousteauThread = new Thread(commandantCousteau.Work);
             commandantCousteauThread.Start();
-
-
         }
     }
 }

@@ -43,7 +43,6 @@ namespace Kitchen.Model
             catch (Exception e)
             {
                 View.Display.DisplayMsg("Erreur lors de l'établissement de l'échange entre la cuisine et la salle : " + e.ToString(), false, true, ConsoleColor.Red);
-                Console.Read();
             }
         }
 
