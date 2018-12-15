@@ -31,19 +31,6 @@ namespace Kitchen.Controller
             this.kitchen = Model.Kitchen.GetInstance;
 
             this.GetStaffToWork();
-
-            for (int i = 1; i < 30; i++)
-            {
-                this.exchangeDesk.AddWaitingOrder(i);
-            }
-
-            
-
-
-            while(true)
-            {
-                Thread.Sleep(5000);
-            }
         }
 
         // Launches all the employees comportemental threads

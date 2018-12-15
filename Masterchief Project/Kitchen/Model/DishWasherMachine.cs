@@ -47,6 +47,7 @@ namespace Kitchen.Model
             View.Display.DisplayMsg("Le lave-vaisselle a lavé " + dirtyCrockeryToWash + " plat(s) sale(s) qui ont été ajoutés au stock de la cuisine", false, true, ConsoleColor.DarkBlue);
         }
 
+        // Comportemental method
         public void Run()
         {
             while (true)

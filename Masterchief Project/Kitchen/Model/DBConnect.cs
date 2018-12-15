@@ -24,25 +24,24 @@ namespace Kitchen
 
         public static void Start(string namedb)
         {
-            // Connexion à la base de données
+            // Connection to the database
 
             adapter = new SqlDataAdapter();
             command = new SqlCommand();
             data = new DataSet();
             datasrc = Environment.MachineName;
             dbname = namedb;
-            cnx = "Data Source=" + datasrc + ";Initial Catalog=" + dbname + ";Integrated Security=True"; //Paramètres de la connexion
-            connection = new SqlConnection(cnx);//Instanciation de la connexion
+            cnx = "Data Source=" + datasrc + ";Initial Catalog=" + dbname + ";Integrated Security=True"; // Connexion parameters
+            connection = new SqlConnection(cnx);// Instanciation of the connection
 
             try
             {
-                connection.Open(); // Ouverture de la connexion
+                connection.Open(); // Opens the connection
                 View.Display.DisplayMsg("La connexion à la base de données est établie", true, true, ConsoleColor.Green);
 
             }
             catch (Exception e)
             {
-                // Affiche des erreurs
                 View.Display.DisplayMsg("/!\\/!\\/!\\ La connexion à la base de données à échouée /!\\/!\\/!\\" + e.ToString(), true, true, ConsoleColor.Red);
             }
         }
@@ -51,14 +50,13 @@ namespace Kitchen
         {
             command.CommandText = rq_sql;
             adapter.SelectCommand = new SqlCommand(command.CommandText);
-            adapter.SelectCommand.Connection = connection; // Permet de lire les données et remplace le SqlDataReader
-            adapter.Fill(data, dataTableName); // Récupère les données
+            adapter.SelectCommand.Connection = connection; // Reads the data and replace the SqlDataReader
+            adapter.Fill(data, dataTableName); // Get the data
             return data;
         }
 
         public static void ActionOnRows(string rq_sql)
         {
-
             command.CommandText = rq_sql;
             command.ExecuteNonQuery();
         }

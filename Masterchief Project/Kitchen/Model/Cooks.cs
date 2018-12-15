@@ -15,16 +15,16 @@ namespace Kitchen.Model
             _doneEvent = doneEvent;
         }
 
-        //le cuisinier cuisine la sous-tache donnée
+        // The cook takes care of the undertask assigned to him
         public void Cook(Object t)
         {
-            //transforme l'objet en entreé de la fonction en sous-tache
+            // Transforms the object t into an undertask
             UnderTask undertask = (UnderTask)t;
-            // attend le temps de la tache
+            // Cooks the undertask
             Thread.Sleep(undertask.TimeNeeded);
             //View.Display.DisplayMsg("Une sous-tâche a été effectuée par un cuisinier", false, true, ConsoleColor.White);
             undertask.IsDone = true;
-            //avertis le threadpool que la fonction est fini
+            // Tells the threadpool that the undertask is complete
             _doneEvent.Set();
         }
     }

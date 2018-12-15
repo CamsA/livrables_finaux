@@ -14,12 +14,14 @@ namespace Kitchen.Model
         private int waitingOrder = -1;
 
         private ExchangeDesk exchangeDesk;
+        private Kitchen kitchen;
         private string databaseName = "MasterChiefDB";
         private KitchenClerk flavien = new KitchenClerk();
 
         // Accessors
         public int WaitingOrder { get => waitingOrder; set => waitingOrder = value; }
         public ExchangeDesk ExchangeDesk { get => exchangeDesk; set => exchangeDesk = value; }
+        public Kitchen Kitchen { get => kitchen; set => kitchen = value; }
         public string DatabaseName { get => databaseName; private set => databaseName = value; }
         public KitchenClerk Flavien { get => flavien; set => flavien = value; }
 
@@ -43,7 +45,7 @@ namespace Kitchen.Model
                 doneEvents[i] = new ManualResetEvent(false);
                 var cook = new Cooks(doneEvents[i]);
 
-
+                // Send each undertask in the task to the Cooks
                 if (task.IsDone == false)
                 {
                     foreach (var undertask in task.UnderTasksList)
@@ -79,7 +81,7 @@ namespace Kitchen.Model
             DataTable dataTable = dataSet.Tables[this.DatabaseName];
 
             foreach (DataRow dataRow in dataTable.Rows)
-                task.UnderTasksList.Add(new UnderTask(int.Parse(dataRow["DureeTache"].ToString())));
+                task.UnderTasksList.Add(new UnderTask(int.Parse(dataRow["DureeTache"].ToString()) * 1000));
 
             return task;
         }
@@ -127,13 +129,20 @@ namespace Kitchen.Model
                     // When the order is going to be treated, decrement the stocks
                     // SQLmethode.updateIngredientStockByRecipe(this.WaitingOrder);
 
-                    Tasks waitingTask = this.ReadRecipe();
-                    int idMeal = this.GiveToCooks(waitingTask);
-                    this.Flavien.BringMeals(idMeal);
-
                     View.Display.DisplayMsg("Le chef donne un plat à préparer aux cuisiniers", false, true, ConsoleColor.Blue);
-                }
 
+                    // Transforms the order id into a task
+                    Tasks waitingTask = this.ReadRecipe();
+
+                    // Give the task to the cooks
+                    int idMeal = this.GiveToCooks(waitingTask);
+
+                    // Takes one unit of crockery to prepare the meal
+                    this.Kitchen.CleanCrokeryStack--;
+
+                    // Calls the kitchen clerk to send it to the exchange desk
+                    this.Flavien.BringMeals(idMeal);
+                }
                 Thread.Sleep(100);
             }
         }

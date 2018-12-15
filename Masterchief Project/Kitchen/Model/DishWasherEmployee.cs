@@ -11,6 +11,7 @@ namespace Kitchen.Model
     {
         public DishWasherEmployee()
         {
+            // The employee prepare the two machines at the start of the service
             DishWasherMachine dishwasherMachine = new DishWasherMachine();
             Thread dishwasherMachineThread = new Thread(dishwasherMachine.Run);
             dishwasherMachineThread.Start();
@@ -20,14 +21,13 @@ namespace Kitchen.Model
             washingMachineThread.Start();
         }
 
-        // prend les objets du comptoire d'échange pour les mettre dans la cuisine
-        // les objets sont a nettoyers
+        // Takes the dirty objects from the exchange desk to take care of them
         public void MoveDirtyObjects()
         {
             Kitchen kitchen = Kitchen.GetInstance;
             ExchangeDesk exchangeDesk = ExchangeDesk.GetInstance;
            
-            //lave-vaiselle
+            // Puts dirty crockery in the dishwasher machine
             if(exchangeDesk.WaitingDirtyCrockery != 0)
             {
                 int quantityMovedCrockery = exchangeDesk.WaitingDirtyCrockery;
@@ -37,7 +37,7 @@ namespace Kitchen.Model
                 View.Display.DisplayMsg("Le plongeur a pris " + quantityMovedCrockery + " plat(s) sale(s) pour le(s) mettre dans le lave-vaisselle", false, true, ConsoleColor.White);
             }
 
-            //lave-linge des nappes
+            // Puts dirty table clothes in the washing machine
             if (exchangeDesk.WaitingDirtyTableClothes != 0)
             {
                 int quantityMovedTableClothes = exchangeDesk.WaitingDirtyTableClothes;
@@ -47,7 +47,7 @@ namespace Kitchen.Model
                 View.Display.DisplayMsg("Le plongeur a pris " + quantityMovedTableClothes + " nappes pour les mettre au lave-linge", false, true, ConsoleColor.White);
             }
 
-            //lave-linge des serviettes
+            // Puts dirty napkins in the washing machine
             if (exchangeDesk.WaitingDirtyNapkins != 0)
             {
                 int quantityMovedNapkins = exchangeDesk.WaitingDirtyNapkins;
@@ -58,6 +58,7 @@ namespace Kitchen.Model
             }     
         }
 
+        // Comportemental method
         public void Work()
         {
             while(true)

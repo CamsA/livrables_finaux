@@ -69,6 +69,7 @@ namespace Kitchen.Model
             View.Display.DisplayMsg("La machine à laver a terminé son cycle. " + napkinsToWash + " serviette(s) et " + tableClothesToWash + " nappe(s) de table ont été lavées", false, true, ConsoleColor.DarkBlue);
         }
 
+        // Comportemental method
         public void Run()
         {
             while(true)

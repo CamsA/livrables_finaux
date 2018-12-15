@@ -10,10 +10,10 @@ namespace Kitchen
     {
         public static string rq_sql;
 
-        //accesseur
+        // Accessors
         public static string Rq_sql { get => rq_sql; set => rq_sql = value; }
 
-        //Les méthodes
+        // Methods
         public static string SelectAllFromTable(string table)
         {
             return Rq_sql = "SELECT * FROM " + table;

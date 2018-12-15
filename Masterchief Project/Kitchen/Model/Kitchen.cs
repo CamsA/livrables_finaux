@@ -21,12 +21,10 @@ namespace Kitchen.Model
         public WashingMachine WashingMachine { get => washingMachine; private set => washingMachine = value; }
         public int CleanCrokeryStack { get => cleanCrokeryStack; set => cleanCrokeryStack = value; }
 
-        // constructeur qui initialise les machines
+        // Constructor setting the clean crockery stack to it's initial limit
         private Kitchen()
         {
-            this.DishwasherMachine = new DishWasherMachine();
-            this.WashingMachine = new WashingMachine();
-            this.CleanCrokeryStack = 0;
+            this.CleanCrokeryStack = 150;
         }
 
         public static Kitchen GetInstance
