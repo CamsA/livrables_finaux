@@ -24,14 +24,25 @@ namespace RestaurantRoomConsole.Model
 
             // Initialisation des groupes ayant reservés
 
-            foreach(List<String> listTable in Parameters.listTablesBegin)
+            if (Parameters.configTables)
             {
-                String name = listTable[0];
-                int size = int.Parse(listTable[1]);
-                int rang = int.Parse(listTable[2]);
-                int line = int.Parse(listTable[3]);
+                foreach (List<String> listTable in Parameters.listTablesBegin)
+                {
+                    String name = listTable[0];
+                    int size = int.Parse(listTable[1]);
+                    int rang = int.Parse(listTable[2]);
+                    int line = int.Parse(listTable[3]);
 
-                listTables.Add(new Tables(size, listTable[0].ToString(), rang, line));
+                    listTables.Add(new Tables(size, listTable[0].ToString(), rang, line));
+                }
+            }
+            else
+            {
+                listTables.Add(new Tables(2, "Table1", 1, 1));
+                listTables.Add(new Tables(5, "Table2", 1, 2));
+                listTables.Add(new Tables(7, "Table3", 2, 3));
+                listTables.Add(new Tables(6, "Table4", 2, 4));
+
             }
 
             foreach (List<String> list in Parameters.listGroupClientReserved)
@@ -41,9 +52,12 @@ namespace RestaurantRoomConsole.Model
                 {
                     if(!table.isOccuped && !table.isReserved)
                     {
-                        table.isReserved = true;
-                        table.groupAssigned = list[0];
-                        break;
+                        if (table.size >= int.Parse(list[1]))
+                        {
+                            table.isReserved = true;
+                            table.groupAssigned = list[0];
+                            break;
+                        }
                     }
                 }
 

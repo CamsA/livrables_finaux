@@ -34,18 +34,46 @@ namespace RestaurantRoomConsole.Model
 
 
             // Création des serveurs en fonctions des infos, assigné à la ligne 1 2 3 et 4
-            foreach(List<String> wtr in Parameters.listWaitersBegin)
-            {
-                Waiter waiter = new Waiter(wtr[0], int.Parse(wtr[1]));
-                waiter.lpWaiter.Start();
-                listThreads.Add(waiter.lpWaiter);
-            }
 
-            foreach (List<String> cdr in Parameters.listCdrBegin)
+            if (Parameters.configWorkers)
             {
-                ChefDeRang CDR = new ChefDeRang(cdr[0], int.Parse(cdr[1]));
+                foreach (List<String> wtr in Parameters.listWaitersBegin)
+                {
+                    Waiter waiter = new Waiter(wtr[0], int.Parse(wtr[1]));
+                    waiter.lpWaiter.Start();
+                    listThreads.Add(waiter.lpWaiter);
+                }
+
+                foreach (List<String> cdr in Parameters.listCdrBegin)
+                {
+                    ChefDeRang CDR = new ChefDeRang(cdr[0], int.Parse(cdr[1]));
+                    CDR.lpChefDeRang.Start();
+                    listThreads.Add(CDR.lpChefDeRang);
+                }
+            }
+            else
+            {
+                Waiter waiter1 = new Waiter("waiter1", 1);
+                Waiter waiter2 = new Waiter("waiter1", 2);
+                Waiter waiter3 = new Waiter("waiter1", 3);
+                Waiter waiter4 = new Waiter("waiter1", 4);
+                waiter1.lpWaiter.Start();
+                waiter2.lpWaiter.Start();
+                waiter3.lpWaiter.Start();
+                waiter4.lpWaiter.Start();
+
+                listThreads.Add(waiter1.lpWaiter);
+                listThreads.Add(waiter2.lpWaiter);
+                listThreads.Add(waiter3.lpWaiter);
+                listThreads.Add(waiter4.lpWaiter);
+
+                ChefDeRang CDR = new ChefDeRang("CDR1", 1);
+                ChefDeRang CDR2 = new ChefDeRang("CDR1", 2);
                 CDR.lpChefDeRang.Start();
+                CDR2.lpChefDeRang.Start();
                 listThreads.Add(CDR.lpChefDeRang);
+                listThreads.Add(CDR2.lpChefDeRang);
+
             }
 
             

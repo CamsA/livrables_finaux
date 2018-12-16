@@ -32,6 +32,7 @@ namespace RestaurantRoomConsole
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //listView1.Items..Add(new System.ComponentModel.SortDescription("NomColonne", System.ComponentModel.ListSortDirection.Descending));
             button2.Enabled = true;
             button1.Enabled = false;
 

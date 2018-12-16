@@ -58,7 +58,7 @@ namespace RestaurantRoomConsole
                         if (table.isOccuped) { occuped = "Occupé"; } else { occuped = "libre"; }
                         if (table.isReserved) { reserved = "Réservé"; } else { reserved = "Non réservée"; }
 
-                    textTables = textTables + table.name + " ("+table.rang+", "+table.line+")- ";
+                    textTables = textTables + table.name + " ("+table.size+" places) ("+table.rang+", "+table.line+")- ";
 
                         if (table.isOccuped) { textTables += "Occupée - " ; } else { textTables += "Libre - " ; }
                         if (table.isReserved) { textTables += "Réservée - " ; } else { textTables += "Non réservée - " ; }
@@ -71,7 +71,7 @@ namespace RestaurantRoomConsole
 
                 foreach(GroupClient grp in Restaurant.listGroupClient)
                 {
-                    textClients = textClients + grp.name + " ("+grp.size+") - ";
+                    textClients = textClients + grp.name + " ("+grp.size+" clients) - ";
                     textClients = textClients + grp.assignedTable + " - ";
                     if (grp.isWaitingATable)
                         textClients = textClients + "Attend une table";

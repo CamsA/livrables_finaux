@@ -95,12 +95,15 @@ namespace RestaurantRoomConsole.Model
                                     // Si parmis les tables, une n'est pas occupée ni reservée
                                     if (!table.isOccuped && !table.isReserved)
                                     {
-                                        // On assigne ce groupe à la table correspondante
-                                        table.isOccuped = true;
-                                        grp.isWaitingATable = false;
-                                        grp.assignedTable = table.name;
-                                        table.groupAssigned = grp.name;
-                                        break;
+                                        if (table.size >= grp.size)
+                                        {
+                                            // On assigne ce groupe à la table correspondante
+                                            table.isOccuped = true;
+                                            grp.isWaitingATable = false;
+                                            grp.assignedTable = table.name;
+                                            table.groupAssigned = grp.name;
+                                            break;
+                                        }
                                     }
                                 }
                                 break;
