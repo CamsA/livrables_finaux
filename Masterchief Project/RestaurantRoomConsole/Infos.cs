@@ -135,6 +135,16 @@ namespace RestaurantRoomConsole
                         this.CheckKeyword("Réservée", Color.Red, 0);
                         this.CheckKeyword("Libre", Color.Green, 0);
                         this.CheckKeyword("Non réservée", Color.Green, 0);*/
+
+                    }
+                    if(nbrNapkins.Text != ExchangeDesk.GetInstance.CleanNapkins.ToString())
+                    {
+                        nbrNapkins.Text = (ExchangeDesk.GetInstance.CleanNapkins).ToString();
+                    }
+
+                    if (nbrTableclothes.Text != ExchangeDesk.GetInstance.CleanTableClothes.ToString())
+                    {
+                        nbrTableclothes.Text = (ExchangeDesk.GetInstance.CleanTableClothes).ToString();
                     }
                 });
                 Thread.Sleep(200);

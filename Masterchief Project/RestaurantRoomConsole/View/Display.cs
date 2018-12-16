@@ -86,12 +86,12 @@ namespace RestaurantRoomConsole.View
             }
             
         }
-        [MethodImpl(MethodImplOptions.Synchronized)]
+        //[MethodImpl(MethodImplOptions.Synchronized)]
         public static void WriteLog(string Line)
         {
             
                 
-        System.IO.File.AppendAllText(filePath, Line);
+        //System.IO.File.AppendAllText(filePath, Line);
         }
     }
 }

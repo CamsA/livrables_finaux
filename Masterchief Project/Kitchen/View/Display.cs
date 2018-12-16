@@ -41,7 +41,7 @@ namespace Kitchen.View
 
         public static void WriteLog(string Line)
         {
-            System.IO.File.AppendAllText(filePath, Line);
+           // System.IO.File.AppendAllText(filePath, Line);
         }
     }
 }
