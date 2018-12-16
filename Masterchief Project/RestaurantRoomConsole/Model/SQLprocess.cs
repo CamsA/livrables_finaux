@@ -27,12 +27,12 @@ namespace RestaurantRoomConsole.Model
         //  These are the methods you actually call when you need to excute a request
         //-----------------------------------------------------------------------------
 
-        public static DataSet DisplayAll(string dataTableName, string table)
+        /*public static DataSet DisplayAll(string dataTableName, string table)
         {
             oDS.Clear(); //Clear the dataset from any prvious data 
             oDS = DBConnect.GetRows(dataTableName, SQLmethode.SelectAllFromTable(table)); //As it is a SELECT request that we want to execute, we need GetRows
             return oDS;
-        }
+        }*/
 
         public static DataSet GetRecipesByType(string dataTableName, int category)
         {
@@ -41,12 +41,12 @@ namespace RestaurantRoomConsole.Model
             return oDS;
         }
 
-        public static DataSet GetQuantiesByRecipes(string dataTableName, int category)
+        /*public static DataSet GetQuantiesByRecipes(string dataTableName, int category)
         {
             oDS.Clear();//Clear the dataset from any prvious data
             oDS = DBConnect.GetRows(dataTableName, SQLmethode.SelectRecepiesByType(category));//As it is a SELECT request that we want to execute, we need GetRows
             return oDS;
-        }
+        }*/
 
         public static void UpdateIngredientStock(int recipe)
         {
@@ -54,11 +54,11 @@ namespace RestaurantRoomConsole.Model
             DBConnect.ActionOnRows(SQLmethode.UpdateIngredientStockByRecipe(recipe));//As we want to change something in the database, we need ActionOnRows
         }
 
-        public static void UpdateIngredientDay(int recipe)
+        /*public static void UpdateIngredientDay(int recipe)
         {
             oDS.Clear();//Clear the dataset from any prvious data
             DBConnect.ActionOnRows(SQLmethode.UpdateArrivalDayIngredientStockByRecipe(recipe));//As we want to change something in the database, we need ActionOnRows
-        }
+        }*/
 
         public static void AddNewScenario(int path)
         {
@@ -66,12 +66,12 @@ namespace RestaurantRoomConsole.Model
             DBConnect.ActionOnRows(SQLmethode.InsertIntoScenario(path));//As we want to change something in the database, we need ActionOnRows
         }
 
-        public static DataSet GetTimeTasksByRecipes(string dataTableName, int recipe)
+        /*public static DataSet GetTimeTasksByRecipes(string dataTableName, int recipe)
         {
             oDS.Clear();//Clear the dataset from any prvious data
             oDS = DBConnect.GetRows(dataTableName, SQLmethode.SelectTimeTasksByRecipes(recipe));//As it is a SELECT request that we want to execute, we need GetRows
             return oDS;
-        }
+        }*/
 
     }
 }
