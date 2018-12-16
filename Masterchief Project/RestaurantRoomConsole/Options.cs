@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using RestaurantRoomConsole.Controler;
 using RestaurantRoomConsole.Model;
 using RestaurantRoomConsole.View;
-
+using System.Threading;
 
 namespace RestaurantRoomConsole
 {
@@ -53,11 +53,36 @@ namespace RestaurantRoomConsole
                                                                             itm.SubItems[2].Text });
                Modell.loopCount += 1;
             }
-            
-            // Instanciation du controller
+
             ControllerClass controler = new ControllerClass();
+            //Thread thinfos = new Thread(new System.Threading.ThreadStart(getInfos));
+           // thinfos.Start();
+           /* BackgroundWorker worker = new BackgroundWorker();
+            worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(getInfos);
+            worker.RunWorkerAsync();*/
         }
+        private void getInfos()
+        {
+            while (true)
+            {
+                int t = 0;
+                /*if (this.InvokeRequired)
+                    this.Invoke(new TonDelegate(TaForm.FctionMAJLabel));
+                else
+                    Options.FctionMAJLabel();
+                Console.WriteLine("BONJOUR");
+                UDCleanNapkins.Value += 1;*/
+                UDCleanNapkins.Invoke(new Action(() =>
+                {
+                    UDCleanNapkins.Value += 1;
+                }));
+                Thread.Sleep(500);
+            }
+
+        }
+
         
+
         private void Options_Load(object sender, EventArgs e)
         {
             listView1.View = System.Windows.Forms.View.Details;
@@ -126,6 +151,12 @@ namespace RestaurantRoomConsole
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Infos form2 = new Infos();
+            form2.ShowDialog();
         }
     }
 }

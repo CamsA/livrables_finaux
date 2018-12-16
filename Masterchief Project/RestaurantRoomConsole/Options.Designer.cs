@@ -41,6 +41,11 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.button4 = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.UDCleanTableClothes = new System.Windows.Forms.NumericUpDown();
+            this.UDCleanNapkins = new System.Windows.Forms.NumericUpDown();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
@@ -63,15 +68,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.UDCleanNapkins = new System.Windows.Forms.NumericUpDown();
-            this.UDCleanTableClothes = new System.Windows.Forms.NumericUpDown();
+            this.button5 = new System.Windows.Forms.Button();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.tabPage1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UDCleanTableClothes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UDCleanNapkins)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -82,9 +86,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.UDTimeEatDessert)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UDTimeEatMainCourse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UDTimeEatStarter)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.UDCleanNapkins)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UDCleanTableClothes)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -219,6 +220,65 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Options de base";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.UDCleanTableClothes);
+            this.groupBox2.Controls.Add(this.UDCleanNapkins);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(15, 162);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(245, 98);
+            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Console";
+            // 
+            // UDCleanTableClothes
+            // 
+            this.UDCleanTableClothes.Location = new System.Drawing.Point(163, 53);
+            this.UDCleanTableClothes.Name = "UDCleanTableClothes";
+            this.UDCleanTableClothes.Size = new System.Drawing.Size(51, 22);
+            this.UDCleanTableClothes.TabIndex = 3;
+            this.UDCleanTableClothes.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // UDCleanNapkins
+            // 
+            this.UDCleanNapkins.Location = new System.Drawing.Point(163, 30);
+            this.UDCleanNapkins.Name = "UDCleanNapkins";
+            this.UDCleanNapkins.Size = new System.Drawing.Size(51, 22);
+            this.UDCleanNapkins.TabIndex = 2;
+            this.UDCleanNapkins.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(6, 56);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(141, 13);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "Nombre de nappes propres :";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(6, 34);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(151, 13);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Nombre de serviettes propres :";
             // 
             // groupBox3
             // 
@@ -486,70 +546,22 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Temps pour manger (entrée) :";
             // 
-            // groupBox2
+            // button5
             // 
-            this.groupBox2.Controls.Add(this.UDCleanTableClothes);
-            this.groupBox2.Controls.Add(this.UDCleanNapkins);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(15, 162);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(245, 98);
-            this.groupBox2.TabIndex = 5;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Console";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(6, 34);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(151, 13);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "Nombre de serviettes propres :";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(6, 56);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(141, 13);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "Nombre de nappes propres :";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // UDCleanNapkins
-            // 
-            this.UDCleanNapkins.Location = new System.Drawing.Point(163, 30);
-            this.UDCleanNapkins.Name = "UDCleanNapkins";
-            this.UDCleanNapkins.Size = new System.Drawing.Size(51, 22);
-            this.UDCleanNapkins.TabIndex = 2;
-            this.UDCleanNapkins.Value = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            // 
-            // UDCleanTableClothes
-            // 
-            this.UDCleanTableClothes.Location = new System.Drawing.Point(163, 53);
-            this.UDCleanTableClothes.Name = "UDCleanTableClothes";
-            this.UDCleanTableClothes.Size = new System.Drawing.Size(51, 22);
-            this.UDCleanTableClothes.TabIndex = 3;
-            this.UDCleanTableClothes.Value = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
+            this.button5.Location = new System.Drawing.Point(8, 399);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(292, 23);
+            this.button5.TabIndex = 13;
+            this.button5.Text = "Ouvrir la fenetre des informations";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // Options
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(306, 398);
+            this.ClientSize = new System.Drawing.Size(306, 427);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -561,6 +573,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.tabPage1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UDCleanTableClothes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UDCleanNapkins)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -573,10 +589,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.UDTimeEatDessert)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UDTimeEatMainCourse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UDTimeEatStarter)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.UDCleanNapkins)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UDCleanTableClothes)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -623,5 +635,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.NumericUpDown UDCleanTableClothes;
         private System.Windows.Forms.NumericUpDown UDCleanNapkins;
+        private System.Windows.Forms.Button button5;
     }
 }

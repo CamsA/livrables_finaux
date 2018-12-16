@@ -47,6 +47,12 @@
   <ItemGroup>
     <Compile Include="Controler\ControllerClass.cs" />
     <Compile Include="Controler\Parameters.cs" />
+    <Compile Include="Infos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Infos.Designer.cs">
+      <DependentUpon>Infos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\ChefDeRang.cs" />
     <Compile Include="Model\Clients.cs" />
     <Compile Include="Model\DBConnect.cs" />
@@ -78,6 +84,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Infos.resx">
+      <DependentUpon>Infos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Options.resx">
       <DependentUpon>Options.cs</DependentUpon>
     </EmbeddedResource>
