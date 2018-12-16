@@ -19,8 +19,12 @@ namespace Kitchen
         public static string datasrc = "local";
         public static string dbname = null;
 
+        //Constructors
+
         public static string Datasrc { get => datasrc; set => datasrc = value; }
         public static string DBname { get => DBname; set => DBname = value; }
+
+        //Here is the method that you need to call when you need the database
 
         public static void Start(string namedb)
         {
@@ -31,13 +35,13 @@ namespace Kitchen
             data = new DataSet();
             datasrc = Environment.MachineName;
             dbname = namedb;
-            cnx = "Data Source=" + datasrc + ";Initial Catalog=" + dbname + ";Integrated Security=True"; // Connexion parameters
-            connection = new SqlConnection(cnx);// Instanciation of the connection
+            cnx = "Data Source=" + datasrc + ";Initial Catalog=" + dbname + ";Integrated Security=True"; // Connection parameters
+            connection = new SqlConnection(cnx); // Instanciation of the connection
 
             try
             {
                 connection.Open(); // Opens the connection
-                View.Display.DisplayMsg("La connexion à la base de données est établie", true, true, ConsoleColor.DarkGreen);
+                View.Display.DisplayMsg("La connexion à la base de données est établie", true, true, ConsoleColor.DarkGreen); //To control that all is operational
 
             }
             catch (Exception e)
@@ -46,7 +50,8 @@ namespace Kitchen
             }
         }
 
-        public static DataSet GetRows(string dataTableName, string rq_sql)
+        //It's this method that get and place data when you want to execute a select request
+        public static DataSet GetRows(string dataTableName, string rq_sql) 
         {
             command.CommandText = rq_sql;
             adapter.SelectCommand = new SqlCommand(command.CommandText);
@@ -55,10 +60,11 @@ namespace Kitchen
             return data;
         }
 
+        //It's this method that get and place data when you want to execute a select request
         public static void ActionOnRows(string rq_sql)
         {
-            command.CommandText = rq_sql;
-            command.ExecuteNonQuery();
+            command.CommandText = rq_sql; 
+            command.ExecuteNonQuery(); //Excutes updates, deletes, inserts
         }
     }
 }
