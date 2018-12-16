@@ -58,7 +58,7 @@ namespace RestaurantRoomConsole
                         if (table.isOccuped) { occuped = "Occupé"; } else { occuped = "libre"; }
                         if (table.isReserved) { reserved = "Réservé"; } else { reserved = "Non réservée"; }
 
-                    textTables = textTables + table.name + " - ";
+                    textTables = textTables + table.name + " ("+table.rang+", "+table.line+")- ";
 
                         if (table.isOccuped) { textTables += "Occupée - " ; } else { textTables += "Libre - " ; }
                         if (table.isReserved) { textTables += "Réservée - " ; } else { textTables += "Non réservée - " ; }

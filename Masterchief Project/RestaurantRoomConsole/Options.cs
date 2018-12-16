@@ -16,11 +16,13 @@ namespace RestaurantRoomConsole
 {
     public partial class Options : Form
     {
-        private int count;
+        private int countGroup;
+        private int countTable;
 
         public Options()
         {
-            count = 0;
+            countGroup = 0;
+            countTable = 0;
             InitializeComponent();
         }
 
@@ -51,6 +53,15 @@ namespace RestaurantRoomConsole
                                                                             itm.SubItems[1].Text,
                                                                             itm.SubItems[2].Text });
                Modell.loopCount += 1;
+            }
+
+            foreach (ListViewItem tbl in listView2.Items)
+            {
+                Parameters.listTablesBegin.Add(new List<string>() { tbl.SubItems[0].Text,
+                                                                            tbl.SubItems[1].Text,
+                                                                            tbl.SubItems[2].Text,
+                                                                            tbl.SubItems[3].Text });
+                
             }
 
             ControllerClass controler = new ControllerClass();
@@ -86,6 +97,13 @@ namespace RestaurantRoomConsole
         {
             listView1.View = System.Windows.Forms.View.Details;
             listView1.Columns.Add("Sec avant apparition");
+
+
+            listView2.View = System.Windows.Forms.View.Details;
+            listView2.Columns.Add("Table");
+            listView2.Columns.Add("Nombre");
+            listView2.Columns.Add("Rang");
+            listView2.Columns.Add("Ligne");
         }
         
 
@@ -114,10 +132,10 @@ namespace RestaurantRoomConsole
             else
             {
 
-                listView1.Items.Add(new ListViewItem(new string[] { "Group" + count, numericUpDown1.Text, numericUpDown2.Text }));
+                listView1.Items.Add(new ListViewItem(new string[] { "Group" + countGroup, numericUpDown1.Text, numericUpDown2.Text }));
                 numericUpDown1.BackColor = Color.White;
                 numericUpDown2.BackColor = Color.White;
-                count++;
+                countGroup++;
             }
         }
 
@@ -156,6 +174,38 @@ namespace RestaurantRoomConsole
         {
             Infos form2 = new Infos();
             form2.ShowDialog();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (numericUpDown3.Value < 1)
+            {
+                MessageBox.Show("Vous ne pouvez pas choisir rang 0 !");
+                numericUpDown3.BackColor = Color.FromArgb(255, 128, 128);
+            }
+            else if (numericUpDown4.Value < 1)
+            {
+                MessageBox.Show("Vous ne pouvez pas choisir ligne 0 !");
+                numericUpDown4.BackColor = Color.FromArgb(255, 128, 128);
+            }
+            else if (numericUpDown5.Value < 1)
+            {
+                MessageBox.Show("Vous ne pouvez pas choisir une taille de 0 places !");
+                numericUpDown4.BackColor = Color.FromArgb(255, 128, 128);
+            }
+            else
+            {
+
+                listView2.Items.Add(new ListViewItem(new string[] { "Table" + countTable, numericUpDown5.Text , numericUpDown3.Text, numericUpDown4.Text }));
+                numericUpDown3.BackColor = Color.White;
+                numericUpDown4.BackColor = Color.White;
+                countTable++;
+            }
+        }
+
+        private void numericUpDown1_ValueChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

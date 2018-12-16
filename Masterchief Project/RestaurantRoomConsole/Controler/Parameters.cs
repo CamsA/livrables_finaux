@@ -9,7 +9,7 @@ namespace RestaurantRoomConsole.Controler
     public class Parameters
     {
         public static List<List<String>> listGroupClientReserved = new List<List<string>>();
-
+        public static List<List<String>> listTablesBegin = new List<List<string>>();
         public static int timeEatStarter = 10000;
         public static int timeEatMainCourse = 10000;
         public static int timeEatDessert = 7000;

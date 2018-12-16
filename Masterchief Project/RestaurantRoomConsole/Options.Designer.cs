@@ -68,7 +68,17 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.listView2 = new System.Windows.Forms.ListView();
             this.button5 = new System.Windows.Forms.Button();
+            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
+            this.label14 = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -86,6 +96,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.UDTimeEatDessert)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UDTimeEatMainCourse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UDTimeEatStarter)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -198,6 +212,7 @@
             0,
             0,
             0});
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged_1);
             // 
             // button4
             // 
@@ -365,6 +380,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(8, 13);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -546,6 +562,84 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Temps pour manger (entrée) :";
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.numericUpDown5);
+            this.tabPage4.Controls.Add(this.label14);
+            this.tabPage4.Controls.Add(this.numericUpDown4);
+            this.tabPage4.Controls.Add(this.numericUpDown3);
+            this.tabPage4.Controls.Add(this.label13);
+            this.tabPage4.Controls.Add(this.label12);
+            this.tabPage4.Controls.Add(this.button7);
+            this.tabPage4.Controls.Add(this.button6);
+            this.tabPage4.Controls.Add(this.listView2);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(284, 266);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "tabPage4";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // numericUpDown4
+            // 
+            this.numericUpDown4.Location = new System.Drawing.Point(196, 44);
+            this.numericUpDown4.Name = "numericUpDown4";
+            this.numericUpDown4.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown4.TabIndex = 6;
+            // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.Location = new System.Drawing.Point(197, 18);
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(44, 20);
+            this.numericUpDown3.TabIndex = 5;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(148, 46);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(42, 13);
+            this.label13.TabIndex = 4;
+            this.label13.Text = "Ligne : ";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(149, 20);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(42, 13);
+            this.label12.TabIndex = 3;
+            this.label12.Text = "Rang : ";
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(151, 69);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(67, 23);
+            this.button7.TabIndex = 2;
+            this.button7.Text = "Supprimer";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(58, 69);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(67, 23);
+            this.button6.TabIndex = 1;
+            this.button6.Text = "Ajouter";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // listView2
+            // 
+            this.listView2.Location = new System.Drawing.Point(6, 98);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(272, 162);
+            this.listView2.TabIndex = 0;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            // 
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(8, 399);
@@ -555,6 +649,22 @@
             this.button5.Text = "Ouvrir la fenetre des informations";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // numericUpDown5
+            // 
+            this.numericUpDown5.Location = new System.Drawing.Point(81, 30);
+            this.numericUpDown5.Name = "numericUpDown5";
+            this.numericUpDown5.Size = new System.Drawing.Size(44, 20);
+            this.numericUpDown5.TabIndex = 8;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(33, 32);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(38, 13);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "Taille :";
             // 
             // Options
             // 
@@ -589,6 +699,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.UDTimeEatDessert)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UDTimeEatMainCourse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UDTimeEatStarter)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -636,5 +751,15 @@
         private System.Windows.Forms.NumericUpDown UDCleanTableClothes;
         private System.Windows.Forms.NumericUpDown UDCleanNapkins;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.NumericUpDown numericUpDown5;
+        private System.Windows.Forms.Label label14;
     }
 }

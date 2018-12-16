@@ -20,13 +20,19 @@ namespace RestaurantRoomConsole.Model
         {
 
             // On créer 5 tables(NOmbreDePlace, NomDeLaTable, RangN°, LineN°)
-            listTables.Add(new Tables(5, "Table1", 1, 1));
-            listTables.Add(new Tables(5, "Table2", 1, 2));
-            listTables.Add(new Tables(5, "Table3", 2, 3));
-            listTables.Add(new Tables(6, "Table4", 2, 4));
 
 
             // Initialisation des groupes ayant reservés
+
+            foreach(List<String> listTable in Parameters.listTablesBegin)
+            {
+                String name = listTable[0];
+                int size = int.Parse(listTable[1]);
+                int rang = int.Parse(listTable[2]);
+                int line = int.Parse(listTable[3]);
+
+                listTables.Add(new Tables(size, listTable[0].ToString(), rang, line));
+            }
 
             foreach (List<String> list in Parameters.listGroupClientReserved)
             {
