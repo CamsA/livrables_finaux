@@ -16,6 +16,9 @@ namespace Kitchen.Controller
 
         public ControllerClass()
         {
+            // Start the display class
+            Display display = new Display();
+
             // Connect the Kitchen to the database
             DBConnect.Start("MasterchiefDB");
             SQLprocess.Start();
