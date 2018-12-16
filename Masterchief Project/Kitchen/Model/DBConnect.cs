@@ -37,7 +37,7 @@ namespace Kitchen
             try
             {
                 connection.Open(); // Opens the connection
-                View.Display.DisplayMsg("La connexion à la base de données est établie", true, true, ConsoleColor.Green);
+                View.Display.DisplayMsg("La connexion à la base de données est établie", true, true, ConsoleColor.DarkGreen);
 
             }
             catch (Exception e)

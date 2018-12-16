@@ -19,7 +19,7 @@ namespace RestaurantRoomConsole.Controler
         {
             display = new Display();
 
-            Display.DisplayMsg("Lancement du programme.",false,true,ConsoleColor.White);
+            Display.DisplayMsg("Lancement du programme...", false, true, ConsoleColor.White);
 
             DBConnect.Start("MasterChiefDB");
             SQLprocess.Start();

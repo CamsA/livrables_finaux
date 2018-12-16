@@ -13,12 +13,12 @@ namespace Kitchen.Model
         private static Kitchen instance = null;
         private static readonly object padlock = new object();
 
-        private DishWasherMachine dishwasherMachine;
-        private WashingMachine washingMachine;
+        //private DishWasherMachine dishwasherMachine;
+        //private WashingMachine washingMachine;
         private int cleanCrokeryStack;
 
-        public DishWasherMachine DishwasherMachine { get => dishwasherMachine; private set => dishwasherMachine = value; }
-        public WashingMachine WashingMachine { get => washingMachine; private set => washingMachine = value; }
+        //public DishWasherMachine DishwasherMachine { get => dishwasherMachine; private set => dishwasherMachine = value; }
+        //public WashingMachine WashingMachine { get => washingMachine; private set => washingMachine = value; }
         public int CleanCrokeryStack { get => cleanCrokeryStack; set => cleanCrokeryStack = value; }
 
         // Constructor setting the clean crockery stack to it's initial limit
@@ -41,6 +41,5 @@ namespace Kitchen.Model
                 }
             }
         }
-
     }
 }

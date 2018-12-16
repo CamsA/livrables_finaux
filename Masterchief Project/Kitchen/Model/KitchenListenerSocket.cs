@@ -43,7 +43,7 @@ namespace Kitchen.Model
                 // Start listening for connections
                 listener.Listen(10);
 
-                View.Display.DisplayMsg("Cuisine en attente d'un signal de la salle de restauration", false, true, ConsoleColor.DarkYellow);
+                View.Display.DisplayMsg("Cuisine en attente d'un signal de la salle de restauration", false, false, ConsoleColor.DarkYellow);
 
                 // Program is suspended while waiting for an incoming connection
                 handler = listener.Accept();
@@ -123,23 +123,23 @@ namespace Kitchen.Model
             switch (splittedMsg[0])
             {
                 case "DN":
-                    View.Display.DisplayMsg("Serviette(s) sale(s) reçue(s) de la salle : " + number, false, true, ConsoleColor.DarkYellow);
+                    View.Display.DisplayMsg("Serviette(s) sale(s) reçue(s) de la salle : " + number, false, false, ConsoleColor.DarkYellow);
                     exchangeDesk.AddDirtyObject("Napkins", number);
                     break;
                 case "DTC":
-                    View.Display.DisplayMsg("Nappe(s) de table sale(s) reçue(s) de la salle : " + number, false, true, ConsoleColor.DarkYellow);
+                    View.Display.DisplayMsg("Nappe(s) de table sale(s) reçue(s) de la salle : " + number, false, false, ConsoleColor.DarkYellow);
                     exchangeDesk.AddDirtyObject("TableClothes", number);
                     break;
                 case "DC":
-                    View.Display.DisplayMsg("Plat(s) sale(s) reçu(s) de la salle : " + number, false, true, ConsoleColor.DarkYellow);
+                    View.Display.DisplayMsg("Plat(s) sale(s) reçu(s) de la salle : " + number, false, false, ConsoleColor.DarkYellow);
                     exchangeDesk.AddDirtyObject("Crockery", number);
                     break;
                 case "NO":
-                    View.Display.DisplayMsg("Une commande a été passée pour le plat à l'ID " + number, false, true, ConsoleColor.DarkYellow);
+                    View.Display.DisplayMsg("Une commande a été passée pour le plat à l'ID " + number, false, false, ConsoleColor.DarkYellow);
                     exchangeDesk.AddWaitingOrder(number);
                     break;
                 default:
-                    View.Display.DisplayMsg("Message incompréhensible en provenance de la salle : " + number, false, true, ConsoleColor.Red);
+                    View.Display.DisplayMsg("Message incompréhensible en provenance de la salle : " + number, false, false, ConsoleColor.Red);
                     break;
             }
         }

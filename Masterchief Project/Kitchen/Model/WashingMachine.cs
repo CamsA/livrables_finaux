@@ -55,7 +55,7 @@ namespace Kitchen.Model
                 this.DirtyNapkinsStacks = 0;
             }
 
-            View.Display.DisplayMsg("La machine à laver est lancée avec " + napkinsToWash + " serviette(s) et " + tableClothesToWash + " nappe(s) de table", false, true, ConsoleColor.DarkBlue);
+            View.Display.DisplayMsg("La machine à laver est lancée avec " + napkinsToWash + " serviette(s) et " + tableClothesToWash + " nappe(s) de table", false, true, ConsoleColor.Blue);
 
             // The machine is running for 15 minutes
             Thread.Sleep(15000);
@@ -66,7 +66,7 @@ namespace Kitchen.Model
             if(tableClothesToWash > 0) { exchangeDesk.SendCleanObject("Napkins", tableClothesToWash); }
             if (napkinsToWash > 0) { exchangeDesk.SendCleanObject("TableClothes", napkinsToWash); }
 
-            View.Display.DisplayMsg("La machine à laver a terminé son cycle. " + napkinsToWash + " serviette(s) et " + tableClothesToWash + " nappe(s) de table ont été lavées", false, true, ConsoleColor.DarkBlue);
+            View.Display.DisplayMsg("La machine à laver a terminé son cycle. " + napkinsToWash + " serviette(s) et " + tableClothesToWash + " nappe(s) de table ont été lavées", false, false, ConsoleColor.Blue);
         }
 
         // Comportemental method

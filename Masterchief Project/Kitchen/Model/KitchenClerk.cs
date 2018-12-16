@@ -15,20 +15,20 @@ namespace Kitchen.Model
         public void Peel(string vegetable)
         {
             Thread.Sleep(5000);
-            Display.DisplayMsg("Le Commis a epluché une " + vegetable, false, true, ConsoleColor.DarkGray);
+            Display.DisplayMsg("Le Commis a epluché une " + vegetable, false, false, ConsoleColor.DarkGray);
         }
 
         // Takes an ingredient from the stock
         public void GetIngredients(string vegetable)
         {
             Thread.Sleep(5000);
-            Display.DisplayMsg("Le Commis va chercher une " + vegetable, false, true, ConsoleColor.DarkGray);
+            Display.DisplayMsg("Le Commis va chercher une " + vegetable, false, false, ConsoleColor.DarkGray);
         }
 
         // Brings a prepared meal to the exchange desk
         public void BringMeals(int idMeal)
         {
-            View.Display.DisplayMsg("Le commis emmène un plat préparé par le cuisinier au comptoir", false, true, ConsoleColor.White);
+            View.Display.DisplayMsg("Le commis emmène au comptoir un plat prêt", false, false, ConsoleColor.Gray);
             ExchangeDesk.GetInstance.SendPreparedMeal(idMeal);
         }
 

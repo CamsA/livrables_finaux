@@ -7,6 +7,7 @@ namespace KitchenTests.Model
     [TestClass]
     public class DishWasherEmployeeTests
     {
+        /*
         [TestInitialize]
         public void TestInitialize()
         {
@@ -86,5 +87,6 @@ namespace KitchenTests.Model
 
             Assert.AreEqual(10, kitchen.WashingMachine.DirtyNapkinsStacks);
         }
+        */
     }
 }

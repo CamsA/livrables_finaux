@@ -18,6 +18,7 @@ namespace Kitchen.Controller
         {
             // Start the display class
             Display display = new Display();
+            Display.DisplayMsg("Lancement du programme...", false, true, ConsoleColor.Green);
 
             // Connect the Kitchen to the database
             DBConnect.Start("MasterchiefDB");
@@ -32,6 +33,10 @@ namespace Kitchen.Controller
             Display.DisplayMsg("Démarrage du service en cuisine", false, true, ConsoleColor.Green);
             this.exchangeDesk = ExchangeDesk.GetInstance;
             this.kitchen = Model.Kitchen.GetInstance;
+
+            this.exchangeDesk.WaitingDirtyCrockery = 70;
+            this.exchangeDesk.WaitingDirtyNapkins = 20;
+            this.exchangeDesk.WaitingDirtyTableClothes = 5;
 
             this.GetStaffToWork();
         }

@@ -27,7 +27,7 @@ namespace Kitchen.Model
 
             if (this.DirtyCrockeryStack >= 24)
             {
-                DirtyCrockeryStack = 24;
+                dirtyCrockeryToWash = 24;
                 this.DirtyCrockeryStack -= 24;
 
             }
@@ -37,14 +37,14 @@ namespace Kitchen.Model
                 this.DirtyCrockeryStack = 0;
             }
 
-            View.Display.DisplayMsg("Le lave-vaisselle est lancé avec " + dirtyCrockeryToWash + " plat(s) sale(s)", false, true, ConsoleColor.DarkBlue);
+            View.Display.DisplayMsg("Le lave-vaisselle est lancé avec " + dirtyCrockeryToWash + " plat(s) sale(s)", false, true, ConsoleColor.Blue);
 
             Thread.Sleep(10000);
 
             Kitchen kitchen = Kitchen.GetInstance;
             kitchen.CleanCrokeryStack += dirtyCrockeryToWash;
 
-            View.Display.DisplayMsg("Le lave-vaisselle a lavé " + dirtyCrockeryToWash + " plat(s) sale(s) qui ont été ajoutés au stock de la cuisine", false, true, ConsoleColor.DarkBlue);
+            View.Display.DisplayMsg("Le lave-vaisselle a lavé " + dirtyCrockeryToWash + " plat(s) sale(s) qui ont été ajoutés au stock de la cuisine", false, false, ConsoleColor.Blue);
         }
 
         // Comportemental method

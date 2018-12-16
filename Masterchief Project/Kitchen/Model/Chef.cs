@@ -28,6 +28,7 @@ namespace Kitchen.Model
         public Chef()
         {
             this.exchangeDesk = ExchangeDesk.GetInstance;
+            this.kitchen = Kitchen.GetInstance;
         }
 
         // The Chef give to the cooks the order of cooking the meal
@@ -107,7 +108,7 @@ namespace Kitchen.Model
         {
             this.WaitingOrder = this.ExchangeDesk.WaitingOrders.First();
             this.ExchangeDesk.WaitingOrders.RemoveAt(0);
-            View.Display.DisplayMsg("Le chef récupère une commande du comptoir", false, true, ConsoleColor.Blue);
+            View.Display.DisplayMsg("Le chef récupère une commande du comptoir et la donne à faire aux cuisiniers", false, true, ConsoleColor.Magenta);
         }
 
         public void Work()
@@ -129,8 +130,6 @@ namespace Kitchen.Model
                     // When the order is going to be treated, decrement the stocks
                     // SQLmethode.updateIngredientStockByRecipe(this.WaitingOrder);
 
-                    View.Display.DisplayMsg("Le chef donne un plat à préparer aux cuisiniers", false, true, ConsoleColor.Blue);
-
                     // Transforms the order id into a task
                     Tasks waitingTask = this.ReadRecipe();
 
@@ -138,10 +137,17 @@ namespace Kitchen.Model
                     int idMeal = this.GiveToCooks(waitingTask);
 
                     // Takes one unit of crockery to prepare the meal
-                    //this.Kitchen.CleanCrokeryStack--;
+                    try
+                    {
+                        this.Kitchen.CleanCrokeryStack--;
+                    }
+                    catch (Exception e)
+                    {
+                        View.Display.DisplayMsg("Le chef n'a pas pu dresser l'assiette, car il n'y a plus d'assiette propre : " + e.ToString(), false, false, ConsoleColor.Red);
+                    }
 
-                    // Calls the kitchen clerk to send it to the exchange desk
-                    this.Flavien.BringMeals(idMeal);
+                // Calls the kitchen clerk to send it to the exchange desk
+                this.Flavien.BringMeals(idMeal);
                 }
                 Thread.Sleep(100);
             }
