@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Kitchen
 {
+
+    //This class contains all requests needed for Kitchen
+
     public static class SQLmethode
     {
         public static string rq_sql;
@@ -14,30 +17,30 @@ namespace Kitchen
         public static string Rq_sql { get => rq_sql; set => rq_sql = value; }
 
         // Methods
-        public static string SelectAllFromTable(string table)
-        {
-            return Rq_sql = "SELECT * FROM " + table;
-        }
+        //public static string SelectAllFromTable(string table)
+        //{
+        //    return Rq_sql = "SELECT * FROM " + table;
+        //}
 
-        public static string SelectRecepiesByType(int category)
-        {
-            return Rq_sql = "SELECT IDRecette FROM Recette WHERE Categorie = " + category;
-        }
+        //public static string SelectRecepiesByType(int category)
+        //{
+        //    return Rq_sql = "SELECT IDRecette FROM Recette WHERE Categorie = " + category;
+        //}
 
-        public static string SelectIngredientsAndQuantitiesByRecipes(int recipe)
-        {
-            return Rq_sql = "SELECT IDIngredient, QuantiteIngredient FROM Compose WHERE IDRecette =" + recipe;
-        }
+        //public static string SelectIngredientsAndQuantitiesByRecipes(int recipe)
+        //{
+        //    return Rq_sql = "SELECT IDIngredient, QuantiteIngredient FROM Compose WHERE IDRecette =" + recipe;
+        //}
 
         public static string UpdateIngredientStockByRecipe(int recipe)
         {
             return Rq_sql = "EXEC SelectRecette @Recette = " + recipe;
         }
 
-        public static string UpdateArrivalDayIngredientStockByRecipe(int recipe)
-        {
-            return Rq_sql = "UPDATE StockCuisine SET JourArrivé = JourArrivé + 1 WHERE IDStock = " + recipe;
-        }
+        //public static string UpdateArrivalDayIngredientStockByRecipe(int recipe)
+        //{
+        //    return Rq_sql = "UPDATE StockCuisine SET JourArrivé = JourArrivé + 1 WHERE IDStock = " + recipe;
+        //}
 
         public static string InsertIntoScenario(int path)
         {

@@ -48,11 +48,11 @@ namespace RestaurantRoomConsole.Model
             return oDS;
         }*/
 
-        public static void UpdateIngredientStock(int recipe)
+        /*public static void UpdateIngredientStock(int recipe)
         {
             oDS.Clear();//Clear the dataset from any prvious data
             DBConnect.ActionOnRows(SQLmethode.UpdateIngredientStockByRecipe(recipe));//As we want to change something in the database, we need ActionOnRows
-        }
+        }*/
 
         /*public static void UpdateIngredientDay(int recipe)
         {
