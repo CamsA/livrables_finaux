@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -85,17 +86,12 @@ namespace RestaurantRoomConsole.View
             }
             
         }
-        
+        [MethodImpl(MethodImplOptions.Synchronized)]
         public static void WriteLog(string Line)
         {
-            try
-            {
-                System.IO.File.AppendAllText(filePath, Line);
-            }
-            catch(IOException e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            
+                
+        System.IO.File.AppendAllText(filePath, Line);
         }
     }
 }
