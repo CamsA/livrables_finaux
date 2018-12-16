@@ -79,6 +79,18 @@
             this.button5 = new System.Windows.Forms.Button();
             this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.listView3 = new System.Windows.Forms.ListView();
+            this.listView4 = new System.Windows.Forms.ListView();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -100,6 +112,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
+            this.tabPage5.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -381,6 +394,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Location = new System.Drawing.Point(8, 13);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -564,6 +578,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.checkBox6);
             this.tabPage4.Controls.Add(this.numericUpDown5);
             this.tabPage4.Controls.Add(this.label14);
             this.tabPage4.Controls.Add(this.numericUpDown4);
@@ -578,19 +593,21 @@
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(284, 266);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "tabPage4";
+            this.tabPage4.Text = "Config des tables";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // numericUpDown4
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(196, 44);
+            this.numericUpDown4.Enabled = false;
+            this.numericUpDown4.Location = new System.Drawing.Point(196, 61);
             this.numericUpDown4.Name = "numericUpDown4";
             this.numericUpDown4.Size = new System.Drawing.Size(45, 20);
             this.numericUpDown4.TabIndex = 6;
             // 
             // numericUpDown3
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(197, 18);
+            this.numericUpDown3.Enabled = false;
+            this.numericUpDown3.Location = new System.Drawing.Point(197, 35);
             this.numericUpDown3.Name = "numericUpDown3";
             this.numericUpDown3.Size = new System.Drawing.Size(44, 20);
             this.numericUpDown3.TabIndex = 5;
@@ -598,7 +615,8 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(148, 46);
+            this.label13.Enabled = false;
+            this.label13.Location = new System.Drawing.Point(148, 63);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(42, 13);
             this.label13.TabIndex = 4;
@@ -607,7 +625,8 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(149, 20);
+            this.label12.Enabled = false;
+            this.label12.Location = new System.Drawing.Point(149, 37);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(42, 13);
             this.label12.TabIndex = 3;
@@ -615,7 +634,8 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(151, 69);
+            this.button7.Enabled = false;
+            this.button7.Location = new System.Drawing.Point(151, 86);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(67, 23);
             this.button7.TabIndex = 2;
@@ -624,7 +644,8 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(58, 69);
+            this.button6.Enabled = false;
+            this.button6.Location = new System.Drawing.Point(58, 86);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(67, 23);
             this.button6.TabIndex = 1;
@@ -634,9 +655,10 @@
             // 
             // listView2
             // 
-            this.listView2.Location = new System.Drawing.Point(6, 98);
+            this.listView2.Enabled = false;
+            this.listView2.Location = new System.Drawing.Point(6, 119);
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(272, 162);
+            this.listView2.Size = new System.Drawing.Size(272, 141);
             this.listView2.TabIndex = 0;
             this.listView2.UseCompatibleStateImageBehavior = false;
             // 
@@ -652,7 +674,8 @@
             // 
             // numericUpDown5
             // 
-            this.numericUpDown5.Location = new System.Drawing.Point(81, 30);
+            this.numericUpDown5.Enabled = false;
+            this.numericUpDown5.Location = new System.Drawing.Point(81, 47);
             this.numericUpDown5.Name = "numericUpDown5";
             this.numericUpDown5.Size = new System.Drawing.Size(44, 20);
             this.numericUpDown5.TabIndex = 8;
@@ -660,11 +683,134 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(33, 32);
+            this.label14.Enabled = false;
+            this.label14.Location = new System.Drawing.Point(33, 49);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(38, 13);
             this.label14.TabIndex = 7;
             this.label14.Text = "Taille :";
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.button11);
+            this.tabPage5.Controls.Add(this.button10);
+            this.tabPage5.Controls.Add(this.button9);
+            this.tabPage5.Controls.Add(this.button8);
+            this.tabPage5.Controls.Add(this.label16);
+            this.tabPage5.Controls.Add(this.label15);
+            this.tabPage5.Controls.Add(this.listView4);
+            this.tabPage5.Controls.Add(this.listView3);
+            this.tabPage5.Controls.Add(this.listBox2);
+            this.tabPage5.Controls.Add(this.listBox1);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(284, 266);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Config du personnel";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(17, 39);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(120, 82);
+            this.listBox1.TabIndex = 0;
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(143, 39);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(120, 82);
+            this.listBox2.TabIndex = 1;
+            // 
+            // listView3
+            // 
+            this.listView3.Location = new System.Drawing.Point(16, 156);
+            this.listView3.Name = "listView3";
+            this.listView3.Size = new System.Drawing.Size(121, 77);
+            this.listView3.TabIndex = 2;
+            this.listView3.UseCompatibleStateImageBehavior = false;
+            // 
+            // listView4
+            // 
+            this.listView4.Location = new System.Drawing.Point(142, 156);
+            this.listView4.Name = "listView4";
+            this.listView4.Size = new System.Drawing.Size(121, 77);
+            this.listView4.TabIndex = 3;
+            this.listView4.UseCompatibleStateImageBehavior = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(30, 17);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(39, 13);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "Rang :";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(152, 17);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(39, 13);
+            this.label16.TabIndex = 5;
+            this.label16.Text = "Ligne :";
+            this.label16.Click += new System.EventHandler(this.label16_Click);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(16, 127);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(121, 23);
+            this.button8.TabIndex = 6;
+            this.button8.Text = "Assigner un cdr";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(16, 237);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(121, 23);
+            this.button9.TabIndex = 7;
+            this.button9.Text = "Supprimer ce cdr";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(142, 127);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(120, 23);
+            this.button10.TabIndex = 8;
+            this.button10.Text = "Assigner un serveur";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(143, 237);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(119, 23);
+            this.button11.TabIndex = 9;
+            this.button11.Text = "Supprimer ce serveur";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Location = new System.Drawing.Point(6, 6);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(185, 17);
+            this.checkBox6.TabIndex = 9;
+            this.checkBox6.Text = "Activer la configuration des tables";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
             // 
             // Options
             // 
@@ -704,6 +850,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -761,5 +909,17 @@
         private System.Windows.Forms.ListView listView2;
         private System.Windows.Forms.NumericUpDown numericUpDown5;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.ListView listView4;
+        private System.Windows.Forms.ListView listView3;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.CheckBox checkBox6;
     }
 }

@@ -18,11 +18,15 @@ namespace RestaurantRoomConsole
     {
         private int countGroup;
         private int countTable;
+        private int countCdr;
+        private int countWaiter;
 
         public Options()
         {
             countGroup = 0;
             countTable = 0;
+            countCdr = 0;
+            countWaiter = 0;
             InitializeComponent();
         }
 
@@ -62,6 +66,19 @@ namespace RestaurantRoomConsole
                                                                             tbl.SubItems[2].Text,
                                                                             tbl.SubItems[3].Text });
                 
+            }
+
+            foreach (ListViewItem cdr in listView3.Items)
+            {
+                Parameters.listCdrBegin.Add(new List<string>() { cdr.SubItems[0].Text,
+                                                                            cdr.SubItems[1].Text });
+            }
+
+
+            foreach (ListViewItem wtr in listView4.Items)
+            {
+                Parameters.listWaitersBegin.Add(new List<string>() { wtr.SubItems[0].Text,
+                                                                            wtr.SubItems[1].Text });
             }
 
             ControllerClass controler = new ControllerClass();
@@ -104,6 +121,15 @@ namespace RestaurantRoomConsole
             listView2.Columns.Add("Nombre");
             listView2.Columns.Add("Rang");
             listView2.Columns.Add("Ligne");
+
+            listView3.View = System.Windows.Forms.View.Details;
+            listView3.Columns.Add("Serveur");
+            listView3.Columns.Add("Ligne assignée");
+
+
+            listView4.View = System.Windows.Forms.View.Details;
+            listView4.Columns.Add("Chef de rang");
+            listView4.Columns.Add("Rang assigné");
         }
         
 
@@ -197,6 +223,37 @@ namespace RestaurantRoomConsole
             {
 
                 listView2.Items.Add(new ListViewItem(new string[] { "Table" + countTable, numericUpDown5.Text , numericUpDown3.Text, numericUpDown4.Text }));
+
+                bool OK = false;
+                foreach(var listBoxItem in listBox1.Items)
+                {
+                    if(listBoxItem.ToString() == numericUpDown3.Text)
+                    {
+                        OK = true;
+                        break;
+                    }
+                }
+
+                if(OK == false)
+                    listBox1.Items.Add(numericUpDown3.Text);
+                
+
+
+                bool OK2 = false;
+                foreach (var listBoxItem in listBox2.Items)
+                {
+                    if (listBoxItem.ToString() == numericUpDown4.Text)
+                    {
+                        OK2 = true;
+                        break;
+                    }
+                }
+
+                if(OK2 == false)
+                {
+                    listBox2.Items.Add(numericUpDown4.Text);
+                }
+
                 numericUpDown3.BackColor = Color.White;
                 numericUpDown4.BackColor = Color.White;
                 countTable++;
@@ -205,6 +262,75 @@ namespace RestaurantRoomConsole
 
         private void numericUpDown1_ValueChanged_1(object sender, EventArgs e)
         {
+
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            string rang = listBox1.GetItemText(listBox1.SelectedItem);
+            listView3.Items.Add(new ListViewItem(new string[] { "cdr" + countCdr, rang }));
+            countCdr++;
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+
+            string line = listBox2.GetItemText(listBox2.SelectedItem);
+            listView4.Items.Add(new ListViewItem(new string[] { "cdr" + countWaiter, line }));
+            countWaiter++;
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem eachItem in listView3.SelectedItems)
+            {
+                listView3.Items.Remove(eachItem);
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem eachItem in listView4.SelectedItems)
+            {
+                listView4.Items.Remove(eachItem);
+            }
+        }
+
+        private void checkBox6_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBox6.Checked == true)
+            {
+                MessageBox.Show("Si vous configurez les tables, n'oubliez pas de configurer le personnel ! Sinon, les tables n'aurons aucun chef de rang / serveur d'assigné. (Onglet 'Config du personnel')");
+                numericUpDown3.Enabled = true;
+                numericUpDown4.Enabled = true;
+                numericUpDown5.Enabled = true;
+                button6.Enabled = true;
+                button7.Enabled = true;
+                Parameters.configTables = true;
+                listView2.Enabled = true;
+                label12.Enabled = true;
+                label13.Enabled = true;
+                label14.Enabled = true;
+            }
+            else
+            {
+                numericUpDown3.Enabled = false;
+                numericUpDown4.Enabled = false;
+                numericUpDown5.Enabled = false;
+                button6.Enabled = false;
+                button7.Enabled = false;
+                Parameters.configTables = false;
+                listView2.Enabled = false;
+
+                label12.Enabled = false;
+                label13.Enabled = false;
+                label14.Enabled = false;
+            }
 
         }
     }

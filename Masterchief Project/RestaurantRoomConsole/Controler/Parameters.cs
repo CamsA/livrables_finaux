@@ -10,6 +10,12 @@ namespace RestaurantRoomConsole.Controler
     {
         public static List<List<String>> listGroupClientReserved = new List<List<string>>();
         public static List<List<String>> listTablesBegin = new List<List<string>>();
+        public static List<List<String>> listWaitersBegin = new List<List<string>>();
+        public static List<List<String>> listCdrBegin = new List<List<string>>();
+
+        public static bool configTables = false;
+        public static bool configWorkers = false;
+
         public static int timeEatStarter = 10000;
         public static int timeEatMainCourse = 10000;
         public static int timeEatDessert = 7000;

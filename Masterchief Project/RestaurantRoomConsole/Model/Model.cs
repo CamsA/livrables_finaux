@@ -33,36 +33,31 @@ namespace RestaurantRoomConsole.Model
             MaitreHotel mh = new MaitreHotel("MaitreHotel1");
 
 
-            // Création de 4 serveurs, assigné à la ligne 1 2 3 et 4
-            Waiter waiter = new Waiter("Serveur1", 1);
-            Waiter waiter2 = new Waiter("Serveur2", 2);
-            Waiter waiter3 = new Waiter("Serveur3", 3);
-            Waiter waiter4 = new Waiter("Serveur4", 4);
+            // Création des serveurs en fonctions des infos, assigné à la ligne 1 2 3 et 4
+            foreach(List<String> wtr in Parameters.listWaitersBegin)
+            {
+                Waiter waiter = new Waiter(wtr[0], int.Parse(wtr[1]));
+                waiter.lpWaiter.Start();
+                listThreads.Add(waiter.lpWaiter);
+            }
 
-            // Création d'un chef de rang
-            ChefDeRang CDR = new ChefDeRang("ChefDeRang1", 1);
-            ChefDeRang CDR2 = new ChefDeRang("ChefDeRang2", 2);
+            foreach (List<String> cdr in Parameters.listCdrBegin)
+            {
+                ChefDeRang CDR = new ChefDeRang(cdr[0], int.Parse(cdr[1]));
+                CDR.lpChefDeRang.Start();
+                listThreads.Add(CDR.lpChefDeRang);
+            }
+
+            
 
             mh.thmh.Start();
 
-            waiter.lpWaiter.Start();
-            waiter2.lpWaiter.Start();
-            waiter3.lpWaiter.Start();
-            waiter4.lpWaiter.Start();
-
-            CDR.lpChefDeRang.Start();
-            CDR2.lpChefDeRang.Start();
+            
 
             Thread lpgenClient = new Thread(LoopGenClient);
             lpgenClient.Start();
 
             listThreads.Add(mh.thmh);
-            listThreads.Add(waiter.lpWaiter);
-            listThreads.Add(waiter2.lpWaiter);
-            listThreads.Add(waiter3.lpWaiter);
-            listThreads.Add(waiter4.lpWaiter);
-            listThreads.Add(CDR.lpChefDeRang);
-            listThreads.Add(CDR2.lpChefDeRang);
             listThreads.Add(lpgenClient);
         }
 
