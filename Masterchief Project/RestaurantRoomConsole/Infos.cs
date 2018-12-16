@@ -20,6 +20,27 @@ namespace RestaurantRoomConsole
             InitializeComponent();
         }
 
+        private String choiceStepMeal(int step)
+        {
+            switch (step)
+            {
+                case 0:
+                    return "l'entrée - ";
+                    break;
+                case 1:
+                    return "le plat - ";
+                    break;
+                case 2:
+                    return "le dessert - ";
+                    break;
+                default:
+                    return "";
+                    break;
+            }
+        }
+
+
+
         private void loopInfos()
         {
             while (true)
@@ -27,6 +48,8 @@ namespace RestaurantRoomConsole
 
                 
                 String textTables = "";
+                String textClients = "";
+
                 foreach (Tables table in Restaurant.listTables)
                 {
                     //this.Invoke((MethodInvoker)delegate {
@@ -48,7 +71,38 @@ namespace RestaurantRoomConsole
 
                 foreach(GroupClient grp in Restaurant.listGroupClient)
                 {
+                    textClients = textClients + grp.name + " ("+grp.size+") - ";
+                    textClients = textClients + grp.assignedTable + " - ";
+                    if (grp.isWaitingATable)
+                        textClients = textClients + "Attend une table";
 
+                    if(grp.isEating)
+                        textClients = textClients + "En train de manger " + choiceStepMeal(grp.stepMeal);
+                        
+                    else if(grp.isChoosingMeal)
+                            textClients = textClients + "En train de choisir " + choiceStepMeal(grp.stepMeal);
+                      
+                    else if(grp.mealChoosen && !grp.isEating) {
+                        textClients = textClients + "Attend " + choiceStepMeal(grp.stepMeal);
+                        
+                    }
+                    //public bool hasReserved; {
+
+                    /** public bool isEating;
+                     public bool isWaitingATable;
+                     public int stepMeal;
+                     public bool isChoosingMeal;
+                     public bool mealChoosen;
+
+                     public bool isWaitingMeal;
+
+                     public Thread theat;
+                     public bool HasFinishedEat;
+
+                     public List<int> startersList;
+                     public List<int> mainCoursesList;
+                     public List<int> dessertsList;*/
+                    textClients += "\r\n";
                 }
 
 
@@ -59,13 +113,31 @@ namespace RestaurantRoomConsole
                     {
                         richTextBox1.Text = textTables;
 
-                        this.CheckKeyword("Occupée", Color.Red, 0);
+                        this.CheckKeyword("Occupée", Color.Red, 0, richTextBox1);
+                        this.CheckKeyword("Réservée", Color.Red, 0, richTextBox1);
+                        this.CheckKeyword("Libre", Color.Green, 0, richTextBox1);
+                        this.CheckKeyword("Non réservée", Color.Green, 0, richTextBox1);
+                    }
+
+                    if (textClients != richTextBox2.Text)
+                    {
+                        richTextBox2.Text = textClients;
+
+                        this.CheckKeyword("Attend une table", Color.Red, 0, richTextBox2);
+                        this.CheckKeyword("En train de manger l'entrée", Color.Green, 0, richTextBox2);
+                        this.CheckKeyword("En train de manger le plat", Color.Green, 0, richTextBox2);
+                        this.CheckKeyword("En train de manger le dessert", Color.Green, 0, richTextBox2);
+                        this.CheckKeyword("Attend l'entrée", Color.Orange, 0, richTextBox2);
+                        this.CheckKeyword("Attend le plat", Color.Orange, 0, richTextBox2);
+                        this.CheckKeyword("Attend le dessert", Color.Orange, 0, richTextBox2);
+
+                        /*this.CheckKeyword("Occupée", Color.Red, 0);
                         this.CheckKeyword("Réservée", Color.Red, 0);
                         this.CheckKeyword("Libre", Color.Green, 0);
-                        this.CheckKeyword("Non réservée", Color.Green, 0);
+                        this.CheckKeyword("Non réservée", Color.Green, 0);*/
                     }
                 });
-                Thread.Sleep(500);
+                Thread.Sleep(200);
             }
         }
 
@@ -85,19 +157,19 @@ namespace RestaurantRoomConsole
         {
         }
 
-        private void CheckKeyword(string word, Color color, int startIndex)
+        private void CheckKeyword(string word, Color color, int startIndex, RichTextBox rtb)
         {
-            if (this.richTextBox1.Text.Contains(word))
+            if (rtb.Text.Contains(word))
             {
                 int index = -1;
-                int selectStart = this.richTextBox1.SelectionStart;
+                int selectStart = rtb.SelectionStart;
 
-                while ((index = this.richTextBox1.Text.IndexOf(word, (index + 1))) != -1)
+                while ((index = rtb.Text.IndexOf(word, (index + 1))) != -1)
                 {
-                    this.richTextBox1.Select((index + startIndex), word.Length);
-                    this.richTextBox1.SelectionColor = color;
-                    this.richTextBox1.Select(selectStart, 0);
-                    this.richTextBox1.SelectionColor = Color.Black;
+                    rtb.Select((index + startIndex), word.Length);
+                    rtb.SelectionColor = color;
+                    rtb.Select(selectStart, 0);
+                    rtb.SelectionColor = Color.Black;
                 }
             }
         }

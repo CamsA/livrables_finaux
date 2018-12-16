@@ -41,7 +41,8 @@ namespace RestaurantRoomConsole.Model
 
             // Création d'un chef de rang
             ChefDeRang CDR = new ChefDeRang("ChefDeRang1", 1);
-            
+            ChefDeRang CDR2 = new ChefDeRang("ChefDeRang2", 2);
+
             mh.thmh.Start();
 
             waiter.lpWaiter.Start();
@@ -50,7 +51,7 @@ namespace RestaurantRoomConsole.Model
             waiter4.lpWaiter.Start();
 
             CDR.lpChefDeRang.Start();
-
+            CDR2.lpChefDeRang.Start();
 
             Thread lpgenClient = new Thread(LoopGenClient);
             lpgenClient.Start();
@@ -61,6 +62,7 @@ namespace RestaurantRoomConsole.Model
             listThreads.Add(waiter3.lpWaiter);
             listThreads.Add(waiter4.lpWaiter);
             listThreads.Add(CDR.lpChefDeRang);
+            listThreads.Add(CDR2.lpChefDeRang);
             listThreads.Add(lpgenClient);
         }
 
@@ -102,8 +104,8 @@ namespace RestaurantRoomConsole.Model
         // Générer les clients aléatoirement
         public void LoopGenClient()
         {
-            //while (true)
-            //{
+            while (true)
+            {
                 loopCount ++;
                 Random rnd = new Random();
                 int nbrClients = rnd.Next(2, 6);
@@ -115,18 +117,9 @@ namespace RestaurantRoomConsole.Model
                 listThreads.Add(group.theat);
 
             Display.DisplayMsg("*** Nouveaux clients ! group"+loopCount+" vient d'arriver (" + nbrClients + " clients) ***", false, true, ConsoleColor.Green);
-            /*
-            loopCount++;
-
-            nbrClients = rnd.Next(2, 6);
-
-            GroupClient group2 = new GroupClient("group" + loopCount, nbrClients, false);
-            group2.theat.Start();
-            listThreads.Add(group2.theat);
-            Display.DisplayMsg("*** Nouveaux clients ! group" + loopCount + " vient d'arriver (" + nbrClients + " clients) ***", false, true, ConsoleColor.Green);
-            */
+            
             Thread.Sleep(rnd.Next(Parameters.timeSpawnMin, Parameters.timeSpawnMax));
-            //}
+            }
            
         }
     }

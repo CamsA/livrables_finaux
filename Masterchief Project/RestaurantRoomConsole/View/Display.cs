@@ -3,6 +3,7 @@ using RestaurantRoomConsole.Model;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -87,7 +88,14 @@ namespace RestaurantRoomConsole.View
         
         public static void WriteLog(string Line)
         {
-            System.IO.File.AppendAllText(filePath, Line);
+            try
+            {
+                System.IO.File.AppendAllText(filePath, Line);
+            }
+            catch(IOException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }

@@ -84,11 +84,15 @@ namespace RestaurantRoomConsole.Model
             }
         }
 
+        private void cleanTable(String table)
+        {
+
+        }
         public void giveMeal(GroupClient grp)
         {
             // Si le groupe de client a fini son dessert, alors on le supprime (  deleteGroupClient()  )
-            //if(grp.stepMeal==3) { deleteGroupClient(grp); }
-            if (grp.stepMeal != 3) { 
+            if(grp.stepMeal==3) { cleanTable(grp.assignedTable); }
+            else if (grp.stepMeal != 3) { 
             // Sinon si le groupe n'est pas en train de choisir, n'est pas en train de manger et a bien choisi les menu 
                 if (!grp.isChoosingMeal && !grp.isEating && grp.mealChoosen && !grp.isWaitingMeal)
                 {

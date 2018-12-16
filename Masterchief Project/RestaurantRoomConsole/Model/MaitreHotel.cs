@@ -57,6 +57,22 @@ namespace RestaurantRoomConsole.Model
                     // Si un groupe a fini de manger
                     if(grp.stepMeal==3)
                     {
+                        foreach(Tables table in Restaurant.listTables)
+                        {
+                            if(table.name == grp.assignedTable)
+                            {
+                                table.hasNapkins = false;
+                                table.cleanNapkins = false;
+                                table.nbrNapkins = 0;
+                                table.cleanTableClothes = false;
+                                table.hasTableClothes = false;
+
+                                ExchangeDesk.GetInstance.SendDirtyObject("TableClothes", 1);
+                                ExchangeDesk.GetInstance.SendDirtyObject("Napkins", grp.size);
+                            }
+                        }
+
+
                         // On le supprime
                         deleteGroupClient(grp);
                     }
