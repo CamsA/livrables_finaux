@@ -17,6 +17,8 @@ namespace RestaurantRoomConsole.Controler
         public ExchangeDesk desk;
         public ControllerClass()
         {
+            display = new Display();
+
             Display.DisplayMsg("Lancement du programme.",false,true,ConsoleColor.White);
 
             DBConnect.Start("MasterChiefDB");
@@ -31,7 +33,6 @@ namespace RestaurantRoomConsole.Controler
 
             countSecondes = 0;
 
-            display = new Display();
             model = new Modell();
 
             Thread thlp = new Thread(loopCtr);

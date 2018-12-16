@@ -12,9 +12,15 @@ namespace RestaurantRoomConsole.View
 {
     class Display
     {
+        public static string logSavePath;
+        public static string filePath;
+
         //Constructeur
         public Display()
         {
+            logSavePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\MasterChiefLogs\\RestaurantRoomLogs\\";
+            System.IO.Directory.CreateDirectory(logSavePath);
+            filePath = logSavePath + "RestaurantLog_" + DateTime.Now.ToString("HH-mm-ss") + ".txt";
         }
 
         public static void DisplayMsg(string msg, bool middle, bool lineBreak, ConsoleColor consoleclr)
@@ -25,9 +31,10 @@ namespace RestaurantRoomConsole.View
             
             if(lineBreak) { Console.WriteLine(); }
             if(consoleclr != ConsoleColor.White) { Console.ForegroundColor = consoleclr; }
-            
-            Console.Write(DateTime.Now.ToString("mm:ss tt") + " : " + mdle + msg);
-            Console.WriteLine();
+
+            string formattedMsg = DateTime.Now.ToString("HH:mm:ss") + " :   " + mdle + msg + Environment.NewLine;
+            WriteLog(formattedMsg);
+            Console.Write(formattedMsg);
 
             if (lineBreak)  { Console.WriteLine(); }
 
@@ -37,7 +44,6 @@ namespace RestaurantRoomConsole.View
         public static void DisplayTables()
         {
             Console.WriteLine();
-
 
             Console.WriteLine("Clients ayant reservés :");
             foreach (List<String> list in Parameters.listGroupClientReserved.ToList())
@@ -81,10 +87,7 @@ namespace RestaurantRoomConsole.View
         
         public static void WriteLog(string Line)
         {
-            //string path = Parametre.logpath;
-            //string name = path + "RestaurantLog : " + DateTime.Now + ".txt";
-            //System.IO.File.WriteAllText(name, Line);
+            System.IO.File.AppendAllText(filePath, Line);
         }
-        
     }
 }
