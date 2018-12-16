@@ -133,6 +133,11 @@ namespace RestaurantRoomConsole.Model
                 case "RM":
                     View.Display.DisplayMsg("Plat(s) prêt(s) reçu(s) de la cuisine : " + number, false, true, ConsoleColor.DarkYellow);
                     exchangeDesk.AddPreparedMeal(number);
+                    foreach(int i in exchangeDesk.PreparedMeals)
+                    {
+                        Console.WriteLine("plats prets : " + i);
+                    }
+                    
                     break;
                 default:
                     View.Display.DisplayMsg("Message incompréhensible en provenance de la cuisine : " + number, false, true, ConsoleColor.Red);

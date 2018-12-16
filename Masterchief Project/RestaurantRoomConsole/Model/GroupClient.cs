@@ -23,6 +23,8 @@ namespace RestaurantRoomConsole.Model
         public int stepMeal;
         public bool isChoosingMeal;
         public bool mealChoosen;
+        
+        public bool isWaitingMeal;
 
         public Thread theat;
         public bool HasFinishedEat;
@@ -35,6 +37,7 @@ namespace RestaurantRoomConsole.Model
 
         public GroupClient(String _name, int _nbrClients, bool _hasReserved)
         {
+            this.isWaitingMeal = false;
             startersList = new List<int>();
             mainCoursesList = new List<int>();
             dessertsList = new List<int>();
@@ -117,6 +120,7 @@ namespace RestaurantRoomConsole.Model
                     
             }
 
+
         }
 
         public void loopEat()
@@ -126,9 +130,9 @@ namespace RestaurantRoomConsole.Model
                 if (this.isEating)
                 {
                     String spmeal = "";
-                    if (this.stepMeal == 1) spmeal = "l'entrée";
-                    else if (this.stepMeal == 2) spmeal = "le plat";
-                    else if (this.stepMeal == 3) spmeal = "le dessert";
+                    if (this.stepMeal == 0) spmeal = "l'entrée";
+                    else if (this.stepMeal == 1) spmeal = "le plat";
+                    else if (this.stepMeal == 2) spmeal = "le dessert";
 
                     Display.DisplayMsg("****    Le " + this.name + " est en train de manger " + spmeal, false, false, ConsoleColor.Green);
                     
@@ -141,7 +145,7 @@ namespace RestaurantRoomConsole.Model
                     }
 
                     Display.DisplayMsg("****    Le " + this.name + " a fini de manger " + spmeal, false, false, ConsoleColor.DarkGreen);
-                    
+                    this.stepMeal += 1;
                     isEating = false;
                 }
 
@@ -161,8 +165,9 @@ namespace RestaurantRoomConsole.Model
                     // this.starterlist.Add(int)
 
                     Display.DisplayMsg("Le " + this.name + " vient de choisir le repas !",false,false,ConsoleColor.Yellow);
+                    ExchangeDesk desk = ExchangeDesk.GetInstance;
 
-                   /** Console.WriteLine("Les clients ont choisi en entrée : ");
+                   Console.WriteLine("Les clients ont choisi en entrée : ");
                     foreach (int i in startersList)
                     {
                         Console.Write(i + " ");
@@ -177,7 +182,7 @@ namespace RestaurantRoomConsole.Model
                     foreach (int i in dessertsList)
                     {
                         Console.Write(i + " ");
-                    }*/
+                    }
                     Console.WriteLine();
                     this.isChoosingMeal = false;
                     mealChoosen = true;

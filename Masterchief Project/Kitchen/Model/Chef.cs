@@ -138,7 +138,7 @@ namespace Kitchen.Model
                     int idMeal = this.GiveToCooks(waitingTask);
 
                     // Takes one unit of crockery to prepare the meal
-                    this.Kitchen.CleanCrokeryStack--;
+                    //this.Kitchen.CleanCrokeryStack--;
 
                     // Calls the kitchen clerk to send it to the exchange desk
                     this.Flavien.BringMeals(idMeal);

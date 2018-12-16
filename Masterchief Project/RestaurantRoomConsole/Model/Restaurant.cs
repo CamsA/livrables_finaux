@@ -21,7 +21,7 @@ namespace RestaurantRoomConsole.Model
 
             // On créer 5 tables(NOmbreDePlace, NomDeLaTable, RangN°, LineN°)
             listTables.Add(new Tables(5, "Table1", 1, 1));
-            listTables.Add(new Tables(5, "Table2", 1, 1));
+            listTables.Add(new Tables(5, "Table2", 1, 2));
             listTables.Add(new Tables(5, "Table3", 2, 3));
             listTables.Add(new Tables(6, "Table4", 2, 4));
 

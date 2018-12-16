@@ -114,9 +114,18 @@ namespace RestaurantRoomConsole.Model
                 group.theat.Start();
                 listThreads.Add(group.theat);
 
-                Display.DisplayMsg("*** Nouveaux clients ! group"+loopCount+" vient d'arriver (" + nbrClients + " clients) ***", false, true, ConsoleColor.Green);
-                
-                Thread.Sleep(rnd.Next(Parameters.timeSpawnMin, Parameters.timeSpawnMax));
+            Display.DisplayMsg("*** Nouveaux clients ! group"+loopCount+" vient d'arriver (" + nbrClients + " clients) ***", false, true, ConsoleColor.Green);
+
+            loopCount++;
+
+            nbrClients = rnd.Next(2, 6);
+
+            GroupClient group2 = new GroupClient("group" + loopCount, nbrClients, false);
+            group2.theat.Start();
+            listThreads.Add(group2.theat);
+            Display.DisplayMsg("*** Nouveaux clients ! group" + loopCount + " vient d'arriver (" + nbrClients + " clients) ***", false, true, ConsoleColor.Green);
+
+            Thread.Sleep(rnd.Next(Parameters.timeSpawnMin, Parameters.timeSpawnMax));
             //}
            
         }

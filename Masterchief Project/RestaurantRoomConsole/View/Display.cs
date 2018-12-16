@@ -53,7 +53,7 @@ namespace RestaurantRoomConsole.View
                 if (table.isOccuped) { occuped = "Occupé"; } else { occuped = "libre"; }
                 if (table.isReserved) { reserved = "Réservé"; } else { reserved = "Non réservée"; }
                 
-                Console.Write(DateTime.Now.ToString("mm:ss tt") + " " + table.name + " - ");
+                Console.Write(DateTime.Now.ToString("hh:mm:ss tt") + " " + table.name + " - ");
                 if (occuped == "Occupé") { Console.ForegroundColor = ConsoleColor.Red; }
                 Console.Write(occuped + " - ");
                 Console.ResetColor();
@@ -71,6 +71,11 @@ namespace RestaurantRoomConsole.View
             Console.WriteLine("Nombre de serviettes dans le desk : " + desk.CleanNapkins);
             Console.WriteLine("Nombre de nappes dans le desk : " + desk.CleanTableClothes);
             Console.WriteLine();
+            
+            foreach(int i in desk.PreparedMeals)
+            {
+                Console.WriteLine("I / " + i);
+            }
             
         }
         

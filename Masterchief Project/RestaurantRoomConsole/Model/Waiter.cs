@@ -17,8 +17,10 @@ namespace RestaurantRoomConsole.Model
         public String name;
         public Thread lpWaiter;
 
+        public List<GroupClient> toServe;
         public Waiter(String _name, int _lineAssigned)
         {
+            this.toServe = new List<GroupClient>();
             this.lineAssigned = _lineAssigned;
             this.name = _name;
 
@@ -88,19 +90,19 @@ namespace RestaurantRoomConsole.Model
             //if(grp.stepMeal==3) { deleteGroupClient(grp); }
             if (grp.stepMeal != 3) { 
             // Sinon si le groupe n'est pas en train de choisir, n'est pas en train de manger et a bien choisi les menu 
-                if (!grp.isChoosingMeal && !grp.isEating && grp.mealChoosen)
+                if (!grp.isChoosingMeal && !grp.isEating && grp.mealChoosen && !grp.isWaitingMeal)
                 {
-                    String meal = null;
-                    if (grp.stepMeal == 0) { meal = "l'entrée"; }
-                    else if (grp.stepMeal == 1) { meal = "le plat"; }
-                    else if (grp.stepMeal == 2) { meal = "le dessert"; }
-
-                    Display.DisplayMsg("Le " + this.name + " est en train d'apporter " + meal + " au " + grp.name + "...", false, false, ConsoleColor.Yellow);
+                    ExchangeDesk desk = ExchangeDesk.GetInstance;
                     
-                    Thread.Sleep(5000);
+                    String meal = null;
+                    if (grp.stepMeal == 0) { meal = "de l'entrée";   desk.SendOrders(grp.startersList); }
+                    else if (grp.stepMeal == 1) { meal = "du plat";  desk.SendOrders(grp.mainCoursesList); }
+                    else if (grp.stepMeal == 2) { meal = "du dessert";  desk.SendOrders(grp.dessertsList); }
 
-                    grp.stepMeal++; // Est rendu à l'entrée
-                    grp.isEating = true; // est en train de manger l'entrée
+                    this.toServe.Add(grp);
+                    
+                    Display.DisplayMsg("la commande " + meal + " a été transmise à la cuisine ! ",true,true, ConsoleColor.Gray);
+                    grp.isWaitingMeal = true;
                 }
             }
         }
@@ -110,6 +112,8 @@ namespace RestaurantRoomConsole.Model
         {
             while(true)
             {
+
+
                 if (Restaurant.listGroupClient.Count != 0)
                 {
                     foreach (GroupClient grp in Restaurant.listGroupClient.ToList())
@@ -118,11 +122,78 @@ namespace RestaurantRoomConsole.Model
 
                         if (VerifyTableLine(grp))
                         {
+
+                            ExchangeDesk desk = ExchangeDesk.GetInstance;
                             // Si le group n'est pas en train de manger, n'est en attente d'une table (donc est assis),
                             // N'a pas reservé (renforcement), est bien assigné à une table (renforcement) :
-                            if (grp.isEating == false && grp.isWaitingATable == false && grp.hasReserved == false && grp.assignedTable != "")
+                            if (grp.isWaitingMeal == false && grp.isEating == false && grp.isWaitingATable == false && grp.hasReserved == false && grp.assignedTable != "")
                             {
+                                
                                 giveMeal(grp);
+                                break;
+                            }
+                            
+                            if (grp.isWaitingMeal && desk.PreparedMeals.Count >= grp.size)
+                            {
+                                List<int> templistdesk = new List<int>();
+
+                                for (int i = 0; i < grp.size; i++)
+                                {
+                                    templistdesk.Add(desk.PreparedMeals[i]);
+                                }
+
+                                /*foreach(int i in grp.startersList)
+                                {
+                                    Console.WriteLine("starter list : " + i);
+                                }
+                                foreach (int i in templistdesk)
+                                {
+                                    Console.WriteLine("temp list desk : " + i);
+                                }*/
+                                bool result = false;
+                                switch (grp.stepMeal)
+                                {
+                                    case 0:
+                                       result = templistdesk.All(s => grp.startersList.Contains(s)) && grp.startersList.All(s => templistdesk.Contains(s));
+
+                                        break;
+
+                                    case 1:
+                                        result = templistdesk.All(s => grp.mainCoursesList.Contains(s)) && grp.mainCoursesList.All(s => templistdesk.Contains(s));
+
+                                        break;
+                                    case 2:
+                                        result = templistdesk.All(s => grp.dessertsList.Contains(s)) && grp.dessertsList.All(s => templistdesk.Contains(s));
+
+                                        break;
+                                    default:
+                                        result = false;
+                                        break;
+                                }
+                                
+                                
+                                if (result)
+                                {
+                                    Console.WriteLine("EQUAAAAAL");
+
+                                    
+                                    desk.PreparedMeals.RemoveRange(0, grp.size);
+                                      
+                                    foreach (int i in desk.PreparedMeals)
+                                    {
+                                        int ind = desk.PreparedMeals.IndexOf(i);
+                                        Console.WriteLine("Prepared MEAL : " + i + "  index : " + ind);
+                                    }
+                                    grp.isWaitingMeal = false;
+
+                                    String meal = "";
+                                    if (grp.stepMeal == 0) { meal = "de l'entrée"; }
+                                    else if (grp.stepMeal == 1) { meal = "du plat"; }
+                                    else if (grp.stepMeal == 2) { meal = "du dessert"; }
+                                    Display.DisplayMsg("la commande "+meal+ " pour le " + grp.name + " est prête !", true, true, ConsoleColor.Cyan);
+                                    grp.isEating = true;
+                                   
+                                }
                             }
                         }
                     }

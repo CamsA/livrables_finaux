@@ -19,6 +19,7 @@ namespace RestaurantRoomConsole.Model
         private int cleanNapkins;
         private List<int> preparedMeals = new List<int>();
 
+        
         // Getters and Setters
         public int CleanTableClothes { get => cleanTableClothes; set => cleanTableClothes = value; }
         public int CleanNapkins { get => cleanNapkins; set => cleanNapkins = value; }
@@ -54,7 +55,7 @@ namespace RestaurantRoomConsole.Model
         // Add a meal on the desk
         public void AddPreparedMeal(int idMeal)
         {
-            this.preparedMeals.Add(idMeal);
+            this.PreparedMeals.Add(idMeal);
         }
         
 
