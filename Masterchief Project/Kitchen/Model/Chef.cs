@@ -82,7 +82,7 @@ namespace Kitchen.Model
             DataTable dataTable = dataSet.Tables[this.DatabaseName];
 
             foreach (DataRow dataRow in dataTable.Rows)
-                task.UnderTasksList.Add(new UnderTask(int.Parse(dataRow["DureeTache"].ToString()) * 1000));
+                task.UnderTasksList.Add(new UnderTask(int.Parse(dataRow["DureeTache"].ToString())));
 
             return task;
         }
@@ -109,7 +109,6 @@ namespace Kitchen.Model
             this.WaitingOrder = this.ExchangeDesk.WaitingOrders.First();
             this.ExchangeDesk.WaitingOrders.RemoveAt(0);
             View.Display.DisplayMsg("Le chef récupère une commande du comptoir et la donne à faire aux cuisiniers", false, true, ConsoleColor.Magenta);
-            SQLprocess.UpdateIngredientStock(this.waitingOrder);
         }
 
         public void Work()
@@ -129,7 +128,7 @@ namespace Kitchen.Model
                 if (this.WaitingOrder != -1)
                 {
                     // When the order is going to be treated, decrement the stocks
-                    // SQLmethode.updateIngredientStockByRecipe(this.WaitingOrder);
+                    SQLmethode.UpdateIngredientStockByRecipe(this.WaitingOrder);
 
                     // Transforms the order id into a task
                     Tasks waitingTask = this.ReadRecipe();
