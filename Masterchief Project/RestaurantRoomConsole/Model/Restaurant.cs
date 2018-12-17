@@ -38,10 +38,48 @@ namespace RestaurantRoomConsole.Model
             }
             else
             {
-                listTables.Add(new Tables(2, "Table1", 1, 1));
-                listTables.Add(new Tables(5, "Table2", 1, 2));
-                listTables.Add(new Tables(7, "Table3", 2, 3));
-                listTables.Add(new Tables(6, "Table4", 2, 4));
+                //                         taille, nom, carré, rang
+
+                // carré 1
+                // rang 1
+                listTables.Add(new Tables(2, "Table7", 1, 1));
+                listTables.Add(new Tables(2, "Table8", 1, 1));
+                listTables.Add(new Tables(4, "Table5", 1, 1));
+                listTables.Add(new Tables(4, "Table6", 1, 1));
+                listTables.Add(new Tables(6, "Table3", 1, 1));
+                listTables.Add(new Tables(6, "Table4", 1, 1));
+                listTables.Add(new Tables(8, "Table1", 1, 1));
+                listTables.Add(new Tables(8, "Table2", 1, 1));
+
+                // rang 2
+                listTables.Add(new Tables(2, "Table14", 1, 2));
+                listTables.Add(new Tables(2, "Table15", 1, 2));
+                listTables.Add(new Tables(4, "Table9", 1, 2));
+                listTables.Add(new Tables(4, "Table10", 1, 2));
+                listTables.Add(new Tables(4, "Table11", 1, 2));
+                listTables.Add(new Tables(8, "Table13", 1, 2));
+                listTables.Add(new Tables(10, "Table12", 1, 2));
+
+                // carré2
+                // rang 3
+                listTables.Add(new Tables(2, "Table21", 2, 3));
+                listTables.Add(new Tables(2, "Table22", 2, 3));
+                listTables.Add(new Tables(4, "Table18", 2, 3));
+                listTables.Add(new Tables(4, "Table19", 2, 3));
+                listTables.Add(new Tables(4, "Table20", 2, 3));
+                listTables.Add(new Tables(8, "Table17", 2, 3));
+                listTables.Add(new Tables(10, "Table16", 2, 3));
+
+                // rang 4
+                listTables.Add(new Tables(2, "Table29", 2, 4));
+                listTables.Add(new Tables(2, "Table30", 2, 4));
+                listTables.Add(new Tables(4, "Table27", 2, 4));
+                listTables.Add(new Tables(4, "Table28", 2, 4));
+                listTables.Add(new Tables(6, "Table24", 2, 4));
+                listTables.Add(new Tables(6, "Table25", 2, 4));
+                listTables.Add(new Tables(6, "Table26", 2, 4));
+                listTables.Add(new Tables(8, "Table23", 2, 4));
+
 
             }
 
@@ -60,7 +98,6 @@ namespace RestaurantRoomConsole.Model
                         }
                     }
                 }
-
             }
         }
     }

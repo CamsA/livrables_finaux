@@ -38,12 +38,13 @@ namespace RestaurantRoomConsole.Model
             try
             {
                 connection.Open(); // Opens the connection
-                View.Display.DisplayMsg("La connexion à la base de données est établie", true, true, ConsoleColor.Green);//To control that all is operational
+                //View.Display.DisplayMsg("La connexion à la base de données est établie", true, true, ConsoleColor.Green);//To control that all is operational
 
             }
             catch (Exception e)
             {
-                View.Display.DisplayMsg("/!\\/!\\/!\\ La connexion à la base de données à échouée /!\\/!\\/!\\" + e.ToString(), true, true, ConsoleColor.Red);
+                Console.WriteLine(e.Message);
+               // View.Display.DisplayMsg("/!\\/!\\/!\\ La connexion à la base de données à échouée /!\\/!\\/!\\" + e.ToString(), true, true, ConsoleColor.Red);
             }
         }
 

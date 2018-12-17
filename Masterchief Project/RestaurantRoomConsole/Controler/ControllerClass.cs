@@ -17,12 +17,14 @@ namespace RestaurantRoomConsole.Controler
         public ExchangeDesk desk;
         public ControllerClass()
         {
+            Thread.Sleep(1000);
             display = new Display();
 
-            Display.DisplayMsg("Lancement du programme...", false, true, ConsoleColor.White);
-
             DBConnect.Start("MasterChiefDB");
+            
             SQLprocess.Start();
+            //SQLprocess.GetRecipesByType("MasterChiefDB",1);
+            //SQLprocess.AddNewScenario(Display.filePath);
 
             // Initialize the restaurant room sockets
             Thread restaurantListenerThread = new Thread(RestaurantListenerSocket.Initialize);

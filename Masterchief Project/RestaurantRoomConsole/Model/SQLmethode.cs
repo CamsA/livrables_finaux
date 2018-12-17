@@ -45,7 +45,7 @@ namespace RestaurantRoomConsole.Model
         //    return Rq_sql = "UPDATE StockCuisine SET JourArrivé = JourArrivé + 1 WHERE IDStock = " + recipe;
         //}
 
-        public static string InsertIntoScenario(int path)
+        public static string InsertIntoScenario(String path)
         {
             return Rq_sql = "INSERT INTO Scenario( CheminRacine, Date ) VALUES('" + path + "', GETDATE()); ";
         }

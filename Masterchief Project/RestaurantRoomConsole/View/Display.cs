@@ -22,7 +22,9 @@ namespace RestaurantRoomConsole.View
         {
             logSavePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\MasterChiefLogs\\RestaurantRoomLogs\\";
             System.IO.Directory.CreateDirectory(logSavePath);
+
             filePath = logSavePath + "RestaurantLog_" + DateTime.Now.ToString("HH-mm-ss") + ".txt";
+
         }
 
         public static void DisplayMsg(string msg, bool middle, bool lineBreak, ConsoleColor consoleclr)
@@ -86,12 +88,17 @@ namespace RestaurantRoomConsole.View
             }
             
         }
-        //[MethodImpl(MethodImplOptions.Synchronized)]
+        [MethodImpl(MethodImplOptions.Synchronized)]
         public static void WriteLog(string Line)
         {
-            
-                
-        //System.IO.File.AppendAllText(filePath, Line);
+        try
+            {
+                System.IO.File.AppendAllText(filePath, Line);
+            }         
+            catch(Exception e)
+            {
+               Console.WriteLine(e.Message);
+            }
         }
     }
 }

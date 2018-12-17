@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kitchen.Model;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace Kitchen.View
             logSavePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\MasterChiefLogs\\KitchenLogs\\";
             System.IO.Directory.CreateDirectory(logSavePath);
             filePath = logSavePath + "KitchenLog_" + DateTime.Now.ToString("HH-mm-ss") + ".txt";
+            //SQLprocess.AddNewScenario(filePath);
         }
 
         public static void DisplayMsg(string msg, bool middle, bool lineBreak, ConsoleColor consoleclr)
@@ -41,7 +43,14 @@ namespace Kitchen.View
 
         public static void WriteLog(string Line)
         {
-           // System.IO.File.AppendAllText(filePath, Line);
+            try
+            {
+                System.IO.File.AppendAllText(filePath, Line);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }

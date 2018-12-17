@@ -109,6 +109,7 @@ namespace Kitchen.Model
             this.WaitingOrder = this.ExchangeDesk.WaitingOrders.First();
             this.ExchangeDesk.WaitingOrders.RemoveAt(0);
             View.Display.DisplayMsg("Le chef récupère une commande du comptoir et la donne à faire aux cuisiniers", false, true, ConsoleColor.Magenta);
+            SQLprocess.UpdateIngredientStock(this.waitingOrder);
         }
 
         public void Work()
