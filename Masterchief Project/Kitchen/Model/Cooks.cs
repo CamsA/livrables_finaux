@@ -21,7 +21,7 @@ namespace Kitchen.Model
             // Transforms the object t into an undertask
             UnderTask undertask = (UnderTask)t;
             // Cooks the undertask
-            Thread.Sleep(undertask.TimeNeeded);
+            Thread.Sleep(undertask.TimeNeeded * 600);
             //View.Display.DisplayMsg("Une sous-tâche a été effectuée par un cuisinier", false, true, ConsoleColor.White);
             undertask.IsDone = true;
             // Tells the threadpool that the undertask is complete
