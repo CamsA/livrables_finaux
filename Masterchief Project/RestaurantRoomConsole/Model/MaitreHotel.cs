@@ -11,15 +11,18 @@ namespace RestaurantRoomConsole.Model
     {
         public String name;
         public Thread thmh;
+
+        // Constructeur
         public MaitreHotel(String _name)
         {
             this.name = _name;
-            thmh = new Thread(loopMh);
-            
 
+            // Nouveau thread
+            thmh = new Thread(loopMh);
 
         }
 
+        // Supprimer un group de client
         private void deleteGroupClient(GroupClient grp)
         {
             if (!grp.isChoosingMeal && !grp.isEating && grp.mealChoosen)
@@ -55,7 +58,12 @@ namespace RestaurantRoomConsole.Model
                 foreach(GroupClient grp in Restaurant.listGroupClient.ToList())
                 {
                     // Si un groupe a fini de manger
-                    if(grp.stepMeal==3)
+
+                    // stepmeal = 0 -> entrée
+                    // stepmeal = 1 -> plat
+                    // stepmeal = 2 -> dessert
+                    // stepmeal = 3 -> a fini de manger
+                    if (grp.stepMeal==3)
                     {
                         foreach(Tables table in Restaurant.listTables)
                         {

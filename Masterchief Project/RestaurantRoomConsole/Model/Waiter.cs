@@ -145,15 +145,7 @@ namespace RestaurantRoomConsole.Model
                                 {
                                     templistdesk.Add(desk.PreparedMeals[i]);
                                 }
-
-                                /*foreach(int i in grp.startersList)
-                                {
-                                    Console.WriteLine("starter list : " + i);
-                                }
-                                foreach (int i in templistdesk)
-                                {
-                                    Console.WriteLine("temp list desk : " + i);
-                                }*/
+                                
                                 bool result = false;
                                 switch (grp.stepMeal)
                                 {
@@ -178,22 +170,17 @@ namespace RestaurantRoomConsole.Model
                                 
                                 if (result)
                                 {
-                                    Console.WriteLine("EQUAAAAAL");
 
                                     
                                     desk.PreparedMeals.RemoveRange(0, grp.size);
                                       
-                                    foreach (int i in desk.PreparedMeals)
-                                    {
-                                        int ind = desk.PreparedMeals.IndexOf(i);
-                                        Console.WriteLine("Prepared MEAL : " + i + "  index : " + ind);
-                                    }
                                     grp.isWaitingMeal = false;
 
                                     String meal = "";
                                     if (grp.stepMeal == 0) { meal = "de l'entrée"; }
                                     else if (grp.stepMeal == 1) { meal = "du plat"; }
                                     else if (grp.stepMeal == 2) { meal = "du dessert"; }
+
                                     Display.DisplayMsg("la commande "+meal+ " pour le " + grp.name + " est prête !", true, true, ConsoleColor.Cyan);
                                     grp.isEating = true;
                                    

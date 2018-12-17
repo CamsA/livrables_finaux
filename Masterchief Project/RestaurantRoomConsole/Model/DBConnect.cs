@@ -18,7 +18,6 @@ namespace RestaurantRoomConsole.Model
         public static string datasrc = "local";
         public static string dbname = null;
 
-        //Constructors
         public static string Datasrc { get => datasrc; set => datasrc = value; }
         public static string DBname { get => DBname; set => DBname = value; }
 
